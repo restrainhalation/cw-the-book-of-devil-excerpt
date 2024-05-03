@@ -36,6 +36,22 @@ export type Coupon = {
   points: number,
 };
 
+/** 性別 */
+export type Sex = {
+  /** ID */
+  id: number;
+  /** 名前 */
+  name: string;
+  /** 父親になれるか */
+  canBeAFather: boolean,
+  /** 母親になれるか */
+  canBeAMother: boolean,
+  /** 身体的特徴 */
+  physical: Physical;
+  /** 精神的特徴 */
+  mental: Mental;
+};
+
 /** 年代 */
 export type Period = {
   /** ID */
