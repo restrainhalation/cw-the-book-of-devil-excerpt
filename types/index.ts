@@ -72,6 +72,30 @@ export type Period = {
   coupons: Coupon[];
 };
 
+/** 素質 */
+export type Nature = {
+  /** ID */
+  id: number;
+  /** 名前 */
+  name: string;
+  /** 特殊型発生に必要となる遺伝子1数 */
+  geneCount: number,
+  /** 初期遺伝子 */
+  genePattern: string,
+  /** 最大レベル */
+  maxLevel: number,
+  /** 特殊型か */
+  isSpecial: boolean,
+  /** 身体的特徴 */
+  physical: Physical;
+  /** 精神的特徴 */
+  mental: Mental;
+  /** 説明 */
+  description?: string,
+  /** 派生元の素質の ID */
+  baseNaturesId: number[],
+};
+
 /** 特性 */
 export type Characteristic = {
   /** ID */
