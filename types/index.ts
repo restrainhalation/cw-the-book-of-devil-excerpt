@@ -28,6 +28,34 @@ export type Mental = {
   trickish: number;
 };
 
+/** 経歴（クーポン） */
+export type Coupon = {
+  /** 名前 */
+  name: string,
+  /** 得点 */
+  points: number,
+};
+
+/** 年代 */
+export type Period = {
+  /** ID */
+  id: number;
+  /** 名前 */
+  name: string;
+  /** 選択肢表示時に最初から選択されているか */
+  default: boolean;
+  /** 登録時のレベル */
+  level: number | undefined;
+  /** 子供を作る時の消費EP(0で子供を作れない) */
+  spendEP: number;
+  /** 身体的特徴 */
+  physical: Physical;
+  /** 精神的特徴 */
+  mental: Mental;
+  /** 経歴（クーポン） */
+  coupons: Coupon[];
+};
+
 /** 特性 */
 export type Characteristic = {
   /** ID */
