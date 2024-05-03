@@ -11,7 +11,7 @@ export const SEXES: { [key: string]: Sex } = {
     mental: { aggressive: 0.5, brave: 0.0, cautious: 0.0, cheerful: 0.0, trickish: 0.0 },
   },
   FEMALE: {
-    id: 1,
+    id: 2,
     name: '♀',
     canBeAFather: false,
     canBeAMother: true,
