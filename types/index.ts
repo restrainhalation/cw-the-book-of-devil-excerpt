@@ -27,19 +27,19 @@ export type Physical = {
   /** 敏捷性 */
   agility: number;
   /** 知力 */
-  intelligence: number,
+  intelligence: number;
   /** 筋力 */
   strength: number;
   /** 生命力 */
   vitality: number;
   /** 精神力 */
-  mind: number,
+  mind: number;
 };
 
 /** 精神的特徴 */
 export type Mental = {
   /** 温厚／好戦（平和性／好戦性） */
-  aggressive: number,
+  aggressive: number;
   /** 内気／陽気（内向性／社交性） */
   cheerful: number;
   /** 臆病／勇敢（臆病性／勇猛性） */
@@ -53,9 +53,9 @@ export type Mental = {
 /** 経歴（クーポン） */
 export type Coupon = {
   /** 名前 */
-  name: string,
+  name: string;
   /** 得点 */
-  points: number,
+  points: number;
 };
 
 /** 性別 */
@@ -65,9 +65,9 @@ export type Sex = {
   /** 名前 */
   name: string;
   /** 父親になれるか */
-  canBeAFather: boolean,
+  canBeAFather: boolean;
   /** 母親になれるか */
-  canBeAMother: boolean,
+  canBeAMother: boolean;
   /** 身体的特徴 */
   physical: Physical;
   /** 精神的特徴 */
@@ -101,21 +101,21 @@ export type Nature = {
   /** 名前 */
   name: string;
   /** 特殊型発生に必要となる遺伝子1数 */
-  geneCount: number,
+  geneCount: number;
   /** 初期遺伝子 */
-  genePattern: string,
+  genePattern: string;
   /** 最大レベル */
-  maxLevel: number,
+  maxLevel: number;
   /** 特殊型か */
-  isSpecial: boolean,
+  isSpecial: boolean;
   /** 身体的特徴 */
   physical: Physical;
   /** 精神的特徴 */
   mental: Mental;
   /** 説明 */
-  description?: string,
+  description?: string;
   /** 派生元の素質の ID */
-  baseNaturesId: number[],
+  baseNaturesId: number[];
 };
 
 /** 特性 */
