@@ -1,3 +1,25 @@
+/** キャラクター */
+export type Character = {
+  /** 経歴 */
+  coupons: Coupon[];
+  /** 性別 */
+  sex?: Sex;
+  /** 年代 */
+  period?: Period;
+  /** 素質 */
+  nature?: Nature;
+  /** 特性 */
+  characteristics: Characteristic[];
+};
+
+/** 能力 */
+export type Ability = {
+  /** 身体的特徴 */
+  physical: Physical;
+  /** 精神的特徴 */
+  mental: Mental;
+};
+
 /** 身体的特徴 */
 export type Physical = {
   /** 器用度 */
