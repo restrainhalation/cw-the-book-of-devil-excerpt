@@ -8,7 +8,7 @@ import {
   Skeleton,
   Container,
 } from '@mantine/core';
-import { useAtomValue, useSetAtom } from 'jotai';
+import { useAtom, useSetAtom } from 'jotai';
 import { abilityAtom, characterAtom } from '@/store';
 import { CHARACTERISTICS } from '@/constants';
 import type { Characteristic, Physical, Mental } from '@/types';
@@ -28,14 +28,47 @@ for (let i = 0; i < CHARACTERISTICS.length; i += 1) {
 
 export default function Index() {
   // Jotai のキャラクター atom
-  const character = useAtomValue(characterAtom);
+  const [character, setCharacter] = useAtom(characterAtom);
   // Jotai の能力 atom
   const setAbility = useSetAtom(abilityAtom);
 
   /**
+   * 特性の ON／OFF が変更されたときに実行して
+   * Jotai のキャラクター atom を更新する
+   * @param characteristicId 特性 ID
+   * @returns void
+   */
+  const onChangeCharacteristic = (characteristicId:number) => {
+    // ID をもとに、操作された特性を特定する
+    const changedCharacteristic = CHARACTERISTICS.find((current) => current.id === characteristicId);
+    // 特性を特定できないとき、実装内の定数の整合性が取れていないため、中断する
+    if (!changedCharacteristic) return;
+
+    // Jotai を参照し、キャラクター atom に ID が示す特性が含まれるか
+    const hasStoredCharacteristic = !!character.characteristics.find((current) => current.id === characteristicId);
+
+    // Jotai のキャラクター atom から、操作された特性と同じグループの特性があれば取り除く
+    character.characteristics = character.characteristics
+      .filter((current) => current.group !== changedCharacteristic.group);
+
+    if (!hasStoredCharacteristic) {
+      // 新たな特性が付加されたとき
+      // ---
+      // Jotai のキャラクター atom に ID を追加する
+      character.characteristics.push(changedCharacteristic);
+    }
+
+    // Jotai のキャラクター atom を更新する
+    setCharacter(character);
+
+    // 能力 atom を更新する
+    onChangeCharacterAtom();
+  };
+
+  /**
    * キャラクター atom が変更されたとき、能力 atom を更新する
    */
-  const onChange = () => {
+  const onChangeCharacterAtom = () => {
     // 身体的特徴
     const physicalAbilities: Physical[] = character.characteristics.map((current) => current.physical);
     // 精神的特徴
@@ -81,7 +114,7 @@ export default function Index() {
                   <GridCol key={groupId} span={{ base: 12, xs: 6 }}>
                     <CharacteristicGroup
                       characteristics={characteristics}
-                      onChange={onChange}
+                      onChange={onChangeCharacteristic}
                     />
                   </GridCol>
                 )
