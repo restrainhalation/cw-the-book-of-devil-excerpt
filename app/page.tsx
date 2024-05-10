@@ -10,8 +10,9 @@ import {
 } from '@mantine/core';
 import { useAtom, useSetAtom } from 'jotai';
 import { abilityAtom, characterAtom } from '@/store';
-import { CHARACTERISTICS } from '@/constants';
+import { SEXES, CHARACTERISTICS } from '@/constants';
 import type { Characteristic, Physical, Mental } from '@/types';
+import Sex from '@/components/Sex/Sex';
 import CharacteristicGroup from '@/components/CharacteristicGroup/CharacteristicGroup';
 
 // ２つ１組の特性マップ
@@ -31,6 +32,37 @@ export default function Index() {
   const [character, setCharacter] = useAtom(characterAtom);
   // Jotai の能力 atom
   const setAbility = useSetAtom(abilityAtom);
+
+  /**
+   * 性別の ON／OFF が変更されたときに実行して
+   * Jotai のキャラクター atom を更新する
+   * @param sexId {number} 性別 ID
+   */
+  const onChangeSex = (sexId:number) => {
+    // ID をもとに、操作された性別を特定する
+    const changedSex = Object.values(SEXES).find((current) => current.id === sexId);
+    // 性別を特定できないとき、実装内の定数の整合性が取れていないため、中断する
+    if (!changedSex) return;
+
+    // Jotai を参照し、キャラクター atom が ID の示す性別になっているか
+    const hasStoredSex = character.sex?.id === sexId;
+
+    // Jotai のキャラクター atom の性別を未選択状態にする
+    character.sex = undefined;
+
+    if (!hasStoredSex) {
+      // 新たな性別が選択されたとき
+      // ---
+      // Jotai のキャラクター atom の性別を更新する
+      character.sex = changedSex;
+    }
+
+    // Jotai のキャラクター atom を更新する
+    setCharacter(character);
+
+    // 能力 atom を更新する
+    onChangeCharacterAtom();
+  };
 
   /**
    * 特性の ON／OFF が変更されたときに実行して
@@ -70,9 +102,13 @@ export default function Index() {
    */
   const onChangeCharacterAtom = () => {
     // 身体的特徴
-    const physicalAbilities: Physical[] = character.characteristics.map((current) => current.physical);
+    let physicalAbilities: Physical[] = [];
+    if (character.sex?.physical) physicalAbilities.push(character.sex.physical);
+    physicalAbilities = physicalAbilities.concat(character.characteristics.map((current) => current.physical));
     // 精神的特徴
-    const mentalAbilities: Mental[] = character.characteristics.map((current) => current.mental);
+    let mentalAbilities: Mental[] = [];
+    if (character.sex?.mental) mentalAbilities.push(character.sex.mental);
+    mentalAbilities = mentalAbilities.concat(character.characteristics.map((current) => current.mental));
     setAbility({
       physical: {
         dexterity: 6 + physicalAbilities.reduce((sum, physical) => sum + physical.dexterity, 0),
@@ -101,7 +137,7 @@ export default function Index() {
         <Grid>
           <GridCol span={{ base: 12, xs: 6 }}>
             <Stack justify="center">
-              <Skeleton height={70} radius="md" animate={false} />
+              <Sex onChange={onChangeSex}></Sex>
               <Skeleton height={90} radius="md" animate={false} />
               <Skeleton height={140} radius="md" animate={false} />
             </Stack>
