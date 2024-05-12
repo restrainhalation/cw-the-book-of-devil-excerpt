@@ -1,5 +1,6 @@
 import '@/styles/globals.css';
 import '@mantine/core/styles.css';
+import '@mantine/charts/styles.css';
 import React from 'react';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { theme } from '../theme';
