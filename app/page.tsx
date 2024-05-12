@@ -5,15 +5,15 @@ import {
   Grid,
   GridCol,
   Stack,
-  Skeleton,
   Container,
 } from '@mantine/core';
 import { useAtom, useSetAtom } from 'jotai';
 import { abilityAtom, characterAtom } from '@/store';
-import { SEXES, PERIODS, CHARACTERISTICS } from '@/constants';
+import { SEXES, PERIODS, NATURES, CHARACTERISTICS } from '@/constants';
 import type { Characteristic, Physical, Mental } from '@/types';
 import Sex from '@/components/Sex/Sex';
 import Period from '@/components/Period/Period';
+import Nature from '@/components/Nature/Nature';
 import CharacteristicGroup from '@/components/CharacteristicGroup/CharacteristicGroup';
 
 // ２つ１組の特性マップ
@@ -97,6 +97,37 @@ export default function Index() {
   };
 
   /**
+   * 素質の ON／OFF が変更されたときに実行して
+   * Jotai のキャラクター atom を更新する
+   * @param periodId {number} 素質 ID
+   */
+  const onChangeNature = (natureId:number) => {
+    // ID をもとに、操作された素質を特定する
+    const changedNature = Object.values(NATURES).find((current) => current.id === natureId);
+    // 素質を特定できないとき、実装内の定数の整合性が取れていないため、中断する
+    if (!changedNature) return;
+
+    // Jotai を参照し、キャラクター atom が ID の示す素質になっているか
+    const hasStoredNature = character.nature?.id === natureId;
+
+    // Jotai のキャラクター atom の素質を未選択状態にする
+    character.nature = undefined;
+
+    if (!hasStoredNature) {
+      // 新たな素質が選択されたとき
+      // ---
+      // Jotai のキャラクター atom の素質を更新する
+      character.nature = changedNature;
+    }
+
+    // Jotai のキャラクター atom を更新する
+    setCharacter(character);
+
+    // 能力 atom を更新する
+    onChangeCharacterAtom();
+  };
+
+  /**
    * 特性の ON／OFF が変更されたときに実行して
    * Jotai のキャラクター atom を更新する
    * @param characteristicId 特性 ID
@@ -136,13 +167,14 @@ export default function Index() {
     // 身体的特徴
     let physicalAbilities: Physical[] = [];
     if (character.sex?.physical) physicalAbilities.push(character.sex.physical);
-
     if (character.period?.physical) physicalAbilities.push(character.period.physical);
+    if (character.nature?.physical) physicalAbilities.push(character.nature.physical);
     physicalAbilities = physicalAbilities.concat(character.characteristics.map((current) => current.physical));
     // 精神的特徴
     let mentalAbilities: Mental[] = [];
     if (character.sex?.mental) mentalAbilities.push(character.sex.mental);
     if (character.period?.mental) mentalAbilities.push(character.period.mental);
+    if (character.nature?.mental) mentalAbilities.push(character.nature.mental);
     mentalAbilities = mentalAbilities.concat(character.characteristics.map((current) => current.mental));
     setAbility({
       physical: {
@@ -174,7 +206,7 @@ export default function Index() {
             <Stack justify="center">
               <Sex onChange={onChangeSex}></Sex>
               <Period onChange={onChangePeriod}></Period>
-              <Skeleton height={140} radius="md" animate={false} />
+              <Nature onChange={onChangeNature}></Nature>
             </Stack>
           </GridCol>
           <GridCol span={{ base: 12, xs: 6 }}>
