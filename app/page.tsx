@@ -10,9 +10,10 @@ import {
 } from '@mantine/core';
 import { useAtom, useSetAtom } from 'jotai';
 import { abilityAtom, characterAtom } from '@/store';
-import { SEXES, CHARACTERISTICS } from '@/constants';
+import { SEXES, PERIODS, CHARACTERISTICS } from '@/constants';
 import type { Characteristic, Physical, Mental } from '@/types';
 import Sex from '@/components/Sex/Sex';
+import Period from '@/components/Period/Period';
 import CharacteristicGroup from '@/components/CharacteristicGroup/CharacteristicGroup';
 
 // ２つ１組の特性マップ
@@ -65,6 +66,37 @@ export default function Index() {
   };
 
   /**
+   * 年代の ON／OFF が変更されたときに実行して
+   * Jotai のキャラクター atom を更新する
+   * @param periodId {number} 年代 ID
+   */
+  const onChangePeriod = (periodId:number) => {
+    // ID をもとに、操作された年代を特定する
+    const changedPeriod = Object.values(PERIODS).find((current) => current.id === periodId);
+    // 年代を特定できないとき、実装内の定数の整合性が取れていないため、中断する
+    if (!changedPeriod) return;
+
+    // Jotai を参照し、キャラクター atom が ID の示す年代になっているか
+    const hasStoredPeriod = character.period?.id === periodId;
+
+    // Jotai のキャラクター atom の年代を未選択状態にする
+    character.period = undefined;
+
+    if (!hasStoredPeriod) {
+      // 新たな年代が選択されたとき
+      // ---
+      // Jotai のキャラクター atom の年代を更新する
+      character.period = changedPeriod;
+    }
+
+    // Jotai のキャラクター atom を更新する
+    setCharacter(character);
+
+    // 能力 atom を更新する
+    onChangeCharacterAtom();
+  };
+
+  /**
    * 特性の ON／OFF が変更されたときに実行して
    * Jotai のキャラクター atom を更新する
    * @param characteristicId 特性 ID
@@ -104,10 +136,13 @@ export default function Index() {
     // 身体的特徴
     let physicalAbilities: Physical[] = [];
     if (character.sex?.physical) physicalAbilities.push(character.sex.physical);
+
+    if (character.period?.physical) physicalAbilities.push(character.period.physical);
     physicalAbilities = physicalAbilities.concat(character.characteristics.map((current) => current.physical));
     // 精神的特徴
     let mentalAbilities: Mental[] = [];
     if (character.sex?.mental) mentalAbilities.push(character.sex.mental);
+    if (character.period?.mental) mentalAbilities.push(character.period.mental);
     mentalAbilities = mentalAbilities.concat(character.characteristics.map((current) => current.mental));
     setAbility({
       physical: {
@@ -138,7 +173,7 @@ export default function Index() {
           <GridCol span={{ base: 12, xs: 6 }}>
             <Stack justify="center">
               <Sex onChange={onChangeSex}></Sex>
-              <Skeleton height={90} radius="md" animate={false} />
+              <Period onChange={onChangePeriod}></Period>
               <Skeleton height={140} radius="md" animate={false} />
             </Stack>
           </GridCol>
