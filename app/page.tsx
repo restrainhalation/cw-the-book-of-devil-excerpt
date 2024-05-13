@@ -6,6 +6,7 @@ import {
   GridCol,
   Stack,
   Container,
+  Skeleton,
 } from '@mantine/core';
 import { useAtom, useSetAtom } from 'jotai';
 import { abilityAtom, characterAtom } from '@/store';
@@ -200,29 +201,41 @@ export default function Index() {
       <Title ta="center" mt={50}>
         タイトル
       </Title>
-      <Container my="md">
+      <Container my="md" size="lg">
         <Grid>
           <GridCol span={{ base: 12, xs: 6 }}>
             <Stack justify="center">
               <Sex onChange={onChangeSex}></Sex>
               <Period onChange={onChangePeriod}></Period>
               <Nature onChange={onChangeNature}></Nature>
+              <Grid>
+                {Object
+                  .entries(characteristicsGroupMap)
+                  .map(([groupId, characteristics]) =>
+                    <GridCol key={groupId} span={{ base: 12, xs: 6 }}>
+                      <CharacteristicGroup
+                        characteristics={characteristics}
+                        onChange={onChangeCharacteristic}
+                      />
+                    </GridCol>
+                  )
+                }
+              </Grid>
             </Stack>
           </GridCol>
           <GridCol span={{ base: 12, xs: 6 }}>
-            <Grid>
-              {Object
-                .entries(characteristicsGroupMap)
-                .map(([groupId, characteristics]) =>
-                  <GridCol key={groupId} span={{ base: 12, xs: 6 }}>
-                    <CharacteristicGroup
-                      characteristics={characteristics}
-                      onChange={onChangeCharacteristic}
-                    />
-                  </GridCol>
-                )
-              }
-            </Grid>
+            <Stack>
+              <Skeleton height={250} radius="md" animate={false} />
+              <Grid>
+                <GridCol span={{ base: 12, xs: 6 }}>
+                  <Skeleton height={200} radius="md" animate={false} />
+                </GridCol>
+                <GridCol span={{ base: 12, xs: 6 }}>
+                  <Skeleton height={200} radius="md" animate={false} />
+                </GridCol>
+              </Grid>
+              <Skeleton height={250} radius="md" animate={false} />
+            </Stack>
           </GridCol>
         </Grid>
       </Container>
