@@ -44,7 +44,7 @@ const SexInput: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) => {
   return (
     <>
       <Group justify="center">
-        {Object.values(SEXES).map((sex) => (
+        {SEXES.map((sex) => (
             <Chip
               key={sex.id}
               value={sex.id}

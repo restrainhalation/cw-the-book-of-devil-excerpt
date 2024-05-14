@@ -1,8 +1,8 @@
 import type { Period } from '@/types';
 
 /** 年代 */
-export const PERIODS: { [key: string]: Period } = {
-  CHILD: {
+export const PERIODS: Period[] = [
+  {
     id: 1,
     name: '子供',
     default: false,
@@ -12,7 +12,7 @@ export const PERIODS: { [key: string]: Period } = {
     mental: { aggressive: 0.0, brave: 0.0, cautious: -0.5, cheerful: 0.5, trickish: 0.0 },
     coupons: [],
   },
-  YOUNG: {
+  {
     id: 2,
     name: '若者',
     default: true,
@@ -22,7 +22,7 @@ export const PERIODS: { [key: string]: Period } = {
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.0, cheerful: 0.0, trickish: 0.0 },
     coupons: [],
   },
-  ADULT: {
+  {
     id: 3,
     name: '大人',
     default: false,
@@ -34,7 +34,7 @@ export const PERIODS: { [key: string]: Period } = {
       { name: '熟練', points: 2 },
     ],
   },
-  OLD: {
+  {
     id: 4,
     name: '老人',
     default: false,
@@ -46,4 +46,4 @@ export const PERIODS: { [key: string]: Period } = {
       { name: '老獪', points: 4 },
     ],
   },
-};
+];

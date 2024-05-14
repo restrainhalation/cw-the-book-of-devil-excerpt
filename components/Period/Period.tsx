@@ -44,7 +44,7 @@ const Period: FC<{ onChange?: (periodId:number) => void; }> = ({ onChange }) => 
   return (
     <>
       <Group justify="center">
-        {Object.values(PERIODS).map((period) => (
+        {PERIODS.map((period) => (
             <Chip
               key={period.id}
               value={period.id}

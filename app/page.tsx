@@ -42,7 +42,7 @@ export default function Index() {
    */
   const onChangeSex = (sexId:number) => {
     // ID をもとに、操作された性別を特定する
-    const changedSex = Object.values(SEXES).find((current) => current.id === sexId);
+    const changedSex = SEXES.find((current) => current.id === sexId);
     // 性別を特定できないとき、実装内の定数の整合性が取れていないため、中断する
     if (!changedSex) return;
 
@@ -73,7 +73,7 @@ export default function Index() {
    */
   const onChangePeriod = (periodId:number) => {
     // ID をもとに、操作された年代を特定する
-    const changedPeriod = Object.values(PERIODS).find((current) => current.id === periodId);
+    const changedPeriod = PERIODS.find((current) => current.id === periodId);
     // 年代を特定できないとき、実装内の定数の整合性が取れていないため、中断する
     if (!changedPeriod) return;
 
