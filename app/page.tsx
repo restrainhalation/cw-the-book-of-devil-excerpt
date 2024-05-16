@@ -8,7 +8,7 @@ import {
   Container,
   Skeleton,
 } from '@mantine/core';
-import { useAtom, useSetAtom } from 'jotai';
+import { useAtom } from 'jotai';
 import { abilityAtom, characterAtom } from '@/store';
 import { SEXES, PERIODS, NATURES, CHARACTERISTICS } from '@/constants';
 import type { Characteristic, Physical, Mental } from '@/types';
@@ -16,6 +16,7 @@ import Sex from '@/components/Sex/Sex';
 import Period from '@/components/Period/Period';
 import Nature from '@/components/Nature/Nature';
 import CharacteristicGroup from '@/components/CharacteristicGroup/CharacteristicGroup';
+import MentalAbilitiyChart from '@/components/MentalAbilitiyChart/MentalAbilitiyChart';
 
 // ２つ１組の特性マップ
 const characteristicsGroupMap: { [key: number]: Characteristic[] } = {};
@@ -33,7 +34,7 @@ export default function Index() {
   // Jotai のキャラクター atom
   const [character, setCharacter] = useAtom(characterAtom);
   // Jotai の能力 atom
-  const setAbility = useSetAtom(abilityAtom);
+  const [ability, setAbility] = useAtom(abilityAtom);
 
   /**
    * 性別の ON／OFF が変更されたときに実行して
@@ -226,14 +227,7 @@ export default function Index() {
           <GridCol span={{ base: 12, xs: 6 }}>
             <Stack>
               <Skeleton height={250} radius="md" animate={false} />
-              <Grid>
-                <GridCol span={{ base: 12, xs: 6 }}>
-                  <Skeleton height={200} radius="md" animate={false} />
-                </GridCol>
-                <GridCol span={{ base: 12, xs: 6 }}>
-                  <Skeleton height={200} radius="md" animate={false} />
-                </GridCol>
-              </Grid>
+              <MentalAbilitiyChart mentalAbilities={ability.mental}></MentalAbilitiyChart>
               <Skeleton height={250} radius="md" animate={false} />
             </Stack>
           </GridCol>
