@@ -16,6 +16,7 @@ import Sex from '@/components/Sex/Sex';
 import Period from '@/components/Period/Period';
 import Nature from '@/components/Nature/Nature';
 import CharacteristicGroup from '@/components/CharacteristicGroup/CharacteristicGroup';
+import PhysicalAbilitiyChart from '@/components/PhysicalAbilitiyChart/PhysicalAbilitiyChart';
 import MentalAbilitiyChart from '@/components/MentalAbilitiyChart/MentalAbilitiyChart';
 
 // ２つ１組の特性マップ
@@ -226,7 +227,7 @@ export default function Index() {
           </GridCol>
           <GridCol span={{ base: 12, xs: 6 }}>
             <Stack>
-              <Skeleton height={250} radius="md" animate={false} />
+              <PhysicalAbilitiyChart physicalAbilities={ability.physical}></PhysicalAbilitiyChart>
               <MentalAbilitiyChart mentalAbilities={ability.mental}></MentalAbilitiyChart>
               <Skeleton height={250} radius="md" animate={false} />
             </Stack>
