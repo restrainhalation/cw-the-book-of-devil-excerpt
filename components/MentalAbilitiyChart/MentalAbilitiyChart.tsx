@@ -45,6 +45,12 @@ export const options = {
       display: true,
       text: '精神的特徴',
     },
+    tooltip: {
+      callbacks: {
+        label: (context : any) =>
+          `${context.dataset.label}: ${context.parsed.x < 0 ? context.parsed.x * -1 : context.parsed.x}`,
+      },
+    },
   },
   scales: {
     x: {
