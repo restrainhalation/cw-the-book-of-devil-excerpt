@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import {
   Title,
   Grid,
@@ -36,6 +37,11 @@ export default function Index() {
   const [character, setCharacter] = useAtom(characterAtom);
   // Jotai の能力 atom
   const [ability, setAbility] = useAtom(abilityAtom);
+
+  useEffect(() => {
+    // 能力 atom を更新する
+    onChangeCharacterAtom();
+  }, []);
 
   /**
    * 性別の ON／OFF が変更されたときに実行して
