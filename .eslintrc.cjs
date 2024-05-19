@@ -16,5 +16,6 @@ module.exports = {
     'max-len': [
       'error', 120
     ],
+    '@typescript-eslint/semi': 'off',
   },
 };
