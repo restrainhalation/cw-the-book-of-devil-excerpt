@@ -10,10 +10,10 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import type { Physical } from '@/types';
-import { PHYSICAL_ABILITY_NAME } from '@/constants';
+import { PHYSICAL_ABILITIES } from '@/constants';
 
 /** 身体的特徴の名前の配列 */
-const PHYSICAL_ABILITY_NAMES = Object.values(PHYSICAL_ABILITY_NAME).map((abilityName) => abilityName);
+const PHYSICAL_ABILITY_NAMES = PHYSICAL_ABILITIES.map((physicalAbility) => physicalAbility.name);
 
 ChartJS.register(
   CategoryScale,

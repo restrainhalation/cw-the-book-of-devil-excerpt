@@ -1,18 +1,53 @@
-/** 身体的特徴の名前 */
-export const PHYSICAL_ABILITY_NAME: { [key: string]: string } = {
-    /** 器用度 */
-    dexterity: '器用度',
-    /** 敏捷性 */
-    agility: '敏捷性',
-    /** 知力 */
-    intelligence: '知力',
-    /** 筋力 */
-    strength: '筋力',
-    /** 生命力 */
-    vitality: '生命力',
-    /** 精神力 */
-    mind: '精神力',
-};
+import {
+  IconTargetArrow, IconRun, IconSchool, IconBarbell, IconSeeding, IconEmpathize,
+} from '@tabler/icons-react'
+import { AbilityConstant } from '@/types';
+
+/** 身体的特徴 */
+export const PHYSICAL_ABILITIES: AbilityConstant[] = [
+  /** 器用度 */
+  {
+    id: 'dexterity',
+    name: '器用度',
+    order: 1,
+    icon: IconTargetArrow,
+  },
+  /** 敏捷性 */
+  {
+    id: 'agility',
+    name: '敏捷性',
+    order: 2,
+    icon: IconRun,
+  },
+  /** 知力 */
+  {
+    id: 'intelligence',
+    name: '知力',
+    order: 3,
+    icon: IconSchool,
+  },
+  /** 筋力 */
+  {
+    id: 'strength',
+    name: '筋力',
+    order: 4,
+    icon: IconBarbell,
+  },
+  /** 生命力 */
+  {
+    id: 'vitality',
+    name: '生命力',
+    order: 5,
+    icon: IconSeeding,
+  },
+  /** 精神力 */
+  {
+    id: 'mind',
+    name: '精神力',
+    order: 6,
+    icon: IconEmpathize,
+  },
+];
 
 /** 精神的特徴の名前 */
 export const MENTAL_ABILITY_NAME: { [key: string]: string[] } = {

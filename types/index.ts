@@ -1,3 +1,6 @@
+import { Icon, IconProps } from '@tabler/icons-react';
+import { ForwardRefExoticComponent, RefAttributes } from 'react';
+
 /** キャラクター */
 export type Character = {
   /** 経歴 */
@@ -130,4 +133,16 @@ export type Characteristic = {
   physical: Physical;
   /** 精神的特徴 */
   mental: Mental;
+};
+
+/** 能力定数 */
+export type AbilityConstant = {
+  /** ID */
+  id: string;
+  /** 名前 */
+  name: string;
+  /** 出力する順番 */
+  order: number;
+  /** アイコンコンポーネント */
+  icon: ForwardRefExoticComponent<Omit<IconProps, 'ref'> & RefAttributes<Icon>>;
 };
