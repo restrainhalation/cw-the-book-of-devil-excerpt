@@ -1,10 +1,11 @@
 import {
   IconTargetArrow, IconRun, IconSchool, IconBarbell, IconSeeding, IconEmpathize,
+  IconSwords, IconConfetti, IconChessKnight, IconPuzzle, IconSpy,
 } from '@tabler/icons-react'
-import { AbilityConstant } from '@/types';
+import { PhysicalAbilityConstant, MentalAbilityConstant } from '@/types';
 
 /** 身体的特徴 */
-export const PHYSICAL_ABILITIES: AbilityConstant[] = [
+export const PHYSICAL_ABILITIES: PhysicalAbilityConstant[] = [
   /** 器用度 */
   {
     id: 'dexterity',
@@ -49,16 +50,51 @@ export const PHYSICAL_ABILITIES: AbilityConstant[] = [
   },
 ];
 
-/** 精神的特徴の名前 */
-export const MENTAL_ABILITY_NAME: { [key: string]: string[] } = {
+/** 精神的特徴 */
+export const MENTAL_ABILITIES: MentalAbilityConstant[] = [
   /** 温厚／好戦（平和性／好戦性） */
-  aggressive: ['温厚（平和性）', '好戦（好戦性）'],
+  {
+    id: 'aggressive',
+    names: ['温厚（平和性）', '好戦（好戦性）'],
+    nameOfBoth1: '温厚／好戦',
+    nameOfBoth2: '平和性／好戦性',
+    order: 1,
+    icon: IconSwords,
+  },
   /** 内気／陽気（内向性／社交性） */
-  cheerful: ['内気（内向性）', '陽気（社交性）'],
+  {
+    id: 'cheerful',
+    names: ['内気（内向性）', '陽気（社交性）'],
+    nameOfBoth1: '内気／陽気',
+    nameOfBoth2: '内向性／社交性',
+    order: 2,
+    icon: IconConfetti,
+  },
   /** 臆病／勇敢（臆病性／勇猛性） */
-  brave: ['臆病（臆病性）', '勇敢（勇猛性）'],
+  {
+    id: 'brave',
+    names: ['臆病（臆病性）', '勇敢（勇猛性）'],
+    nameOfBoth1: '臆病／勇敢',
+    nameOfBoth2: '臆病性／勇猛性',
+    order: 3,
+    icon: IconChessKnight,
+  },
   /** 大胆／慎重（大胆性／慎重性） */
-  cautious: ['大胆（大胆性）', '慎重（慎重性）'],
+  {
+    id: 'cautious',
+    names: ['大胆（大胆性）', '慎重（慎重性）'],
+    nameOfBoth1: '大胆／慎重',
+    nameOfBoth2: '大胆性／慎重性',
+    order: 4,
+    icon: IconPuzzle,
+  },
   /** 正直／狡猾（正直性／狡猾性） */
-  trickish: ['正直（正直性）', '狡猾（狡猾性）'],
-};
+  {
+    id: 'trickish',
+    names: ['正直（正直性）', '狡猾（狡猾性）'],
+    nameOfBoth1: '正直／狡猾',
+    nameOfBoth2: '正直性／狡猾性',
+    order: 5,
+    icon: IconSpy,
+  },
+];

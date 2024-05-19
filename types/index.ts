@@ -135,12 +135,28 @@ export type Characteristic = {
   mental: Mental;
 };
 
-/** 能力定数 */
-export type AbilityConstant = {
+/** 身体的特徴定数 */
+export type PhysicalAbilityConstant = {
   /** ID */
   id: string;
   /** 名前 */
   name: string;
+  /** 出力する順番 */
+  order: number;
+  /** アイコンコンポーネント */
+  icon: ForwardRefExoticComponent<Omit<IconProps, 'ref'> & RefAttributes<Icon>>;
+};
+
+/** 精神的特徴定数 */
+export type MentalAbilityConstant = {
+  /** ID */
+  id: string;
+  /** 正負の名前の配列 */
+  names: string[];
+  /** 正負を結合した名前１ */
+  nameOfBoth1: string;
+  /** 正負を結合した名前２ */
+  nameOfBoth2: string;
   /** 出力する順番 */
   order: number;
   /** アイコンコンポーネント */

@@ -10,12 +10,12 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import type { Mental } from '@/types';
-import { MENTAL_ABILITY_NAME } from '@/constants';
+import { MENTAL_ABILITIES } from '@/constants';
 
 /** マイナス値の精神的特徴の名前の配列 */
-const NEGATIVE_MENTAL_ABILITY_NAME = Object.values(MENTAL_ABILITY_NAME).map(([negative]) => negative);
+const NEGATIVE_MENTAL_ABILITY_NAME = MENTAL_ABILITIES.map((mentalAbility) => mentalAbility.names[0]);
 /** プラス値の精神的特徴の名前の配列 */
-const POSITIVE_MENTAL_ABILITY_NAME = Object.values(MENTAL_ABILITY_NAME).map(([, positive]) => positive);
+const POSITIVE_MENTAL_ABILITY_NAME = MENTAL_ABILITIES.map((mentalAbility) => mentalAbility.names[1]);
 /** Chart.js の datasets[n].data 向けに使う配列のテンプレート */
 const DATA_TEMPLATE = [null, null, null, null, null];
 
@@ -95,7 +95,7 @@ const MentalAbilitiyChart: FC<{ mentalAbilities: Mental; }> = ({ mentalAbilities
       tempData[index] = value;
       return {
         scaleID: isPositive ? 'y2' : 'y',
-        label: MENTAL_ABILITY_NAME[key][isPositive ? 1 : 0],
+        label: MENTAL_ABILITIES.find((mentalAbility) => mentalAbility.id === key)?.names[isPositive ? 1 : 0] || '',
         data: tempData,
         backgroundColor: isPositive ? 'rgb(53, 162, 235)' : 'rgb(255, 99, 132)',
       };
