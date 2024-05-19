@@ -17,8 +17,8 @@ import Sex from '@/components/Sex/Sex';
 import Period from '@/components/Period/Period';
 import Nature from '@/components/Nature/Nature';
 import CharacteristicGroup from '@/components/CharacteristicGroup/CharacteristicGroup';
-import PhysicalAbilitiyChart from '@/components/PhysicalAbilitiyChart/PhysicalAbilitiyChart';
-import MentalAbilitiyChart from '@/components/MentalAbilitiyChart/MentalAbilitiyChart';
+import PhysicalAbilityChart from '@/components/PhysicalAbilityChart/PhysicalAbilityChart';
+import MentalAbilityChart from '@/components/MentalAbilityChart/MentalAbilityChart';
 
 // ２つ１組の特性マップ
 const characteristicsGroupMap: { [key: number]: Characteristic[] } = {};
@@ -233,8 +233,8 @@ export default function Index() {
           </GridCol>
           <GridCol span={{ base: 12, xs: 6 }}>
             <Stack>
-              <PhysicalAbilitiyChart physicalAbilities={ability.physical}></PhysicalAbilitiyChart>
-              <MentalAbilitiyChart mentalAbilities={ability.mental}></MentalAbilitiyChart>
+              <PhysicalAbilityChart physicalAbilities={ability.physical}></PhysicalAbilityChart>
+              <MentalAbilityChart mentalAbilities={ability.mental}></MentalAbilityChart>
               <Skeleton height={250} radius="md" animate={false} />
             </Stack>
           </GridCol>

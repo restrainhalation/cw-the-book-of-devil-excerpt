@@ -77,16 +77,16 @@ export const options = {
 
 /**
  * 精神的特徴グラフのコンポーネントのパラメータ
- * @typedef MentalAbilitiyChartParams
+ * @typedef MentalAbilityChartParams
  * @property {Mental} mentalAbilities 精神的特徴
  */
 
 /**
  * 精神的特徴グラフのコンポーネント
- * @param {MentalAbilitiyChartParams} param0 コンポーネントのパラメータ
- * @return {React.FC<MentalAbilitiyChartParams>} コンポーネント
+ * @param {MentalAbilityChartParams} param0 コンポーネントのパラメータ
+ * @return {React.FC<MentalAbilityChartParams>} コンポーネント
  */
-const MentalAbilitiyChart: FC<{ mentalAbilities: Mental; }> = ({ mentalAbilities }) => {
+const MentalAbilityChart: FC<{ mentalAbilities: Mental; }> = ({ mentalAbilities }) => {
   const data = {
     labels: ['', '', '', '', ''],
     datasets: Object.entries(mentalAbilities).map(([key, value], index) => {
@@ -104,4 +104,4 @@ const MentalAbilitiyChart: FC<{ mentalAbilities: Mental; }> = ({ mentalAbilities
   return <Bar options={options} data={data} />;
 };
 
-export default MentalAbilitiyChart;
+export default MentalAbilityChart;

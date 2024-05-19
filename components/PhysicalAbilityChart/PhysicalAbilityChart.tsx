@@ -63,16 +63,16 @@ export const options = {
 
 /**
  * 身体的特徴グラフのコンポーネントのパラメータ
- * @typedef PhysicalAbilitiyChartParams
+ * @typedef PhysicalAbilityChartParams
  * @property {Physical} physicalAbilities 身体的特徴
  */
 
 /**
  * 身体的特徴グラフのコンポーネント
- * @param {PhysicalAbilitiyChartParams} param0 コンポーネントのパラメータ
- * @return {React.FC<PhysicalAbilitiyChartParams>} コンポーネント
+ * @param {PhysicalAbilityChartParams} param0 コンポーネントのパラメータ
+ * @return {React.FC<PhysicalAbilityChartParams>} コンポーネント
  */
-const PhysicalAbilitiyChart: FC<{ physicalAbilities: Physical; }> = ({ physicalAbilities }) => {
+const PhysicalAbilityChart: FC<{ physicalAbilities: Physical; }> = ({ physicalAbilities }) => {
   const data = {
     labels: PHYSICAL_ABILITY_NAMES,
     datasets: [
@@ -88,4 +88,4 @@ const PhysicalAbilitiyChart: FC<{ physicalAbilities: Physical; }> = ({ physicalA
   return <Bar options={options} data={data} />;
 };
 
-export default PhysicalAbilitiyChart;
+export default PhysicalAbilityChart;
