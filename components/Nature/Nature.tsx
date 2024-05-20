@@ -1,8 +1,9 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import { Group, Chip } from '@mantine/core';
+import { Group, Chip, Tooltip } from '@mantine/core';
 import { NATURES } from '@/constants';
+import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
 
 /**
  * 素質コンポーネントのパラメータ
@@ -45,15 +46,27 @@ const NatureInput: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange }
     <>
       <Group justify="center">
         {Object.values(NATURES).map((nature) => (
-            <Chip
-              key={nature.id}
-              value={nature.id}
-              variant="outline"
-              checked={selectedId === nature.id}
-              onClick={() => handleChangeNature(nature.id)}
-            >
-              {nature.name}
-            </Chip>
+          <Tooltip
+            key={nature.id}
+            label={
+              <AbilityInfomationList physical={nature.physical} mental={nature.mental} />
+            }
+            withArrow
+            position="right"
+            transitionProps={{ transition: 'pop' }}
+          >
+            <div>
+              <Chip
+                key={nature.id}
+                value={nature.id}
+                variant="outline"
+                checked={selectedId === nature.id}
+                onClick={() => handleChangeNature(nature.id)}
+              >
+                {nature.name}
+              </Chip>
+            </div>
+          </Tooltip>
           ))}
       </Group>
     </>

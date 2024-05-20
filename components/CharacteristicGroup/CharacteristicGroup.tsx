@@ -1,8 +1,9 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import { Group, Chip } from '@mantine/core';
+import { Group, Chip, Tooltip } from '@mantine/core';
 import type { Characteristic } from '@/types';
+import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
 
 /**
  * ２つ１組の特性コンポーネントのパラメータ
@@ -49,15 +50,27 @@ const CharacteristicGroup: FC<{
     <>
       <Group justify="center">
         {characteristics.map((characteristic) => (
-          <Chip
+          <Tooltip
             key={characteristic.id}
-            value={characteristic.id}
-            variant="outline"
-            checked={selectedId === characteristic.id}
-            onClick={() => handleChangeCharacteristic(characteristic.id)}
+            label={
+              <AbilityInfomationList physical={characteristic.physical} mental={characteristic.mental} />
+            }
+            withArrow
+            position="right"
+            transitionProps={{ transition: 'pop' }}
           >
-            {characteristic.name}
-          </Chip>
+            <div>
+              <Chip
+                key={characteristic.id}
+                value={characteristic.id}
+                variant="outline"
+                checked={selectedId === characteristic.id}
+                onClick={() => handleChangeCharacteristic(characteristic.id)}
+              >
+                {characteristic.name}
+              </Chip>
+            </div>
+          </Tooltip>
         ))}
       </Group>
     </>

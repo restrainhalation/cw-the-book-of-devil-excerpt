@@ -1,8 +1,9 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import { Group, Chip } from '@mantine/core';
+import { Group, Chip, Tooltip } from '@mantine/core';
 import { PERIODS } from '@/constants';
+import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
 
 /**
  * 年代コンポーネントのパラメータ
@@ -45,16 +46,28 @@ const Period: FC<{ onChange?: (periodId:number) => void; }> = ({ onChange }) => 
     <>
       <Group justify="center">
         {PERIODS.map((period) => (
-            <Chip
-              key={period.id}
-              value={period.id}
-              variant="outline"
-              checked={selectedId === period.id}
-              onClick={() => handleChangePeriod(period.id)}
-            >
-              {period.name}
-            </Chip>
-          ))}
+          <Tooltip
+            key={period.id}
+            label={
+              <AbilityInfomationList physical={period.physical} mental={period.mental} />
+            }
+            withArrow
+            position="right"
+            transitionProps={{ transition: 'pop' }}
+          >
+            <div>
+              <Chip
+                key={period.id}
+                value={period.id}
+                variant="outline"
+                checked={selectedId === period.id}
+                onClick={() => handleChangePeriod(period.id)}
+              >
+                {period.name}
+              </Chip>
+            </div>
+          </Tooltip>
+        ))}
       </Group>
     </>
   );

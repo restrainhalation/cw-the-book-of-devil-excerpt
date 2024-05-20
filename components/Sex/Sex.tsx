@@ -1,8 +1,9 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import { Group, Chip } from '@mantine/core';
+import { Group, Chip, Tooltip } from '@mantine/core';
 import { SEXES } from '@/constants';
+import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
 
 /**
  * 性別コンポーネントのパラメータ
@@ -45,16 +46,28 @@ const SexInput: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) => {
     <>
       <Group justify="center">
         {SEXES.map((sex) => (
-            <Chip
-              key={sex.id}
-              value={sex.id}
-              variant="outline"
-              checked={selectedId === sex.id}
-              onClick={() => handleChangeSex(sex.id)}
-            >
-              {sex.name}
-            </Chip>
-          ))}
+          <Tooltip
+            key={sex.id}
+            label={
+              <AbilityInfomationList physical={sex.physical} mental={sex.mental} />
+            }
+            withArrow
+            position="right"
+            transitionProps={{ transition: 'pop' }}
+          >
+            <div>
+              <Chip
+                key={sex.id}
+                value={sex.id}
+                variant="outline"
+                checked={selectedId === sex.id}
+                onClick={() => handleChangeSex(sex.id)}
+              >
+                {sex.name}
+              </Chip>
+            </div>
+          </Tooltip>
+        ))}
       </Group>
     </>
   );
