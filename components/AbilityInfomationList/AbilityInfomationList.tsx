@@ -2,10 +2,17 @@ import React, { FC, ForwardRefExoticComponent, RefAttributes } from 'react';
 import { Badge, Text, Group, rem } from '@mantine/core';
 import {
   Icon, IconProps,
-  IconArrowUpRight, IconArrowDownRight,
+  IconArrowUpRight, IconArrowDownRight, IconArrowRight,
+  IconCircleDashed,
 } from '@tabler/icons-react';
 import type { Physical, Mental } from '@/types';
 import { PHYSICAL_ABILITIES, MENTAL_ABILITIES } from '@/constants';
+
+/** 能力の上下がない場合の便宜上の ID */
+const UNAFFECTED_ID = 'unaffected'
+
+/** 能力の上下がない場合の便宜上の名前 */
+const UNAFFECTED_NAME = 'なし'
 
 /** 能力の ID と出力順のマップ */
 const ABILITY_ORDER_MAP: { [id: string]: number } = Object.assign(
@@ -18,7 +25,7 @@ const ABILITY_ORDER_MAP: { [id: string]: number } = Object.assign(
 const ABILITY_ICON_MAP: {
   [id: string]: ForwardRefExoticComponent<Omit<IconProps, 'ref'> & RefAttributes<Icon>>
 } = Object.assign(
-  {},
+  { [UNAFFECTED_ID]: IconCircleDashed },
   ...PHYSICAL_ABILITIES.map((physicalAbility) => ({ [physicalAbility.id]: physicalAbility.icon })),
   ...MENTAL_ABILITIES.map((mentalAbility) => ({ [mentalAbility.id]: mentalAbility.icon }))
 );
@@ -43,15 +50,23 @@ const AbilityNameTag: FC<{
   return (
     <Badge
       size="sm"
-      color={isPhysical ? 'violet.5' : 'violet.9'}
+      color={
+        id === UNAFFECTED_ID
+          ? 'gray.6'
+          : isPhysical
+            ? 'violet.5'
+            : 'violet.9'
+      }
       leftSection={
         <AbilityNameTagIcon style={{ width: rem(12), height: rem(12) }} />
       }
     >
       {
-        isPhysical
-          ? (PHYSICAL_ABILITIES.find((physicalAbility) => physicalAbility.id === id)?.name || '')
-          : (MENTAL_ABILITIES.find((mentalAbility) => mentalAbility.id === id)?.nameOfBoth1 || '')
+        id === UNAFFECTED_ID
+          ? UNAFFECTED_NAME
+          : isPhysical
+            ? (PHYSICAL_ABILITIES.find((physicalAbility) => physicalAbility.id === id)?.name || '')
+            : (MENTAL_ABILITIES.find((mentalAbility) => mentalAbility.id === id)?.nameOfBoth1 || '')
       }
     </Badge>
   );
@@ -77,8 +92,16 @@ const AbilityInfomation: FC<{
   isPhysical?: boolean,
   isPositive?: boolean,
 }> = ({ id, value, isPhysical, isPositive }) => {
-  const DiffIcon = isPositive ? IconArrowUpRight : IconArrowDownRight;
-  const valueTextColorClass = isPositive ? 'text-teal-700' : 'text-red-800';
+  const DiffIcon = value === 0
+    ? IconArrowRight
+    : isPositive
+      ? IconArrowUpRight
+      : IconArrowDownRight;
+  const valueTextColorClass = value === 0
+    ? 'text-gray-500'
+    : isPositive
+      ? 'text-teal-700'
+      : 'text-red-800';
   const valueClasses = `${valueTextColorClass} leading-none flex items-center`;
   return (
     <Group justify="space-between" m="2" className="w-40">
@@ -123,31 +146,38 @@ export const AbilityInfomationList: FC<{
       isPhysical: false,
       isPositive: value > 0,
     }));
-  return (
-    <>
-      {physicalValues
-        .concat(mentalValues)
-        .sort((a, b) =>
-          a.isPhysical !== b.isPhysical
-            ? (
-                a.isPhysical
-                  ? -1
-                  : 1
-              )
-            : a.isPhysical === b.isPhysical &&
-                (ABILITY_ORDER_MAP[a.id] || 0) < (ABILITY_ORDER_MAP[b.id] || 0)
+  const abilities = physicalValues
+    .concat(mentalValues)
+    .sort((a, b) =>
+      a.isPhysical !== b.isPhysical
+        ? (
+            a.isPhysical
               ? -1
               : 1
-        )
-        .map((ability) =>
-          <AbilityInfomation
-            key={ability.id}
-            id={ability.id}
-            value={ability.value}
-            isPhysical={ability.isPhysical}
-            isPositive={ability.isPositive}
+          )
+        : a.isPhysical === b.isPhysical &&
+            (ABILITY_ORDER_MAP[a.id] || 0) < (ABILITY_ORDER_MAP[b.id] || 0)
+          ? -1
+          : 1
+  )
+  return (
+    <>
+      {abilities.length > 0
+        ? abilities
+          .map((ability) =>
+            <AbilityInfomation
+              key={ability.id}
+              id={ability.id}
+              value={ability.value}
+              isPhysical={ability.isPhysical}
+              isPositive={ability.isPositive}
+            />
+          )
+        : <AbilityInfomation
+            id={UNAFFECTED_ID}
+            value={0}
           />
-      )}
+      }
     </>
   );
 };
