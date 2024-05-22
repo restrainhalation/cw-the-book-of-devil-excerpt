@@ -1,3 +1,18 @@
+import {
+  IconAward,
+  IconBulb,
+  IconCards,
+  IconClover,
+  IconDiamond,
+  IconPeace,
+  IconScale,
+  IconShieldHalf,
+  IconTrident,
+  IconUniverse,
+  IconUser,
+  IconVocabulary,
+
+} from '@tabler/icons-react';
 import { Nature } from '@/types';
 
 /** 素質 */
@@ -13,6 +28,7 @@ export const NATURES: Nature[] = [
     mental: { aggressive: -0.5, brave: 0.0, cautious: 0.5, cheerful: 0.0, trickish: 0.0 },
     description: 'バランスのよい肉体を意志力が支える',
     baseNaturesId: [],
+    icon: IconClover,
   },
   {
     id: 2,
@@ -25,6 +41,7 @@ export const NATURES: Nature[] = [
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.0, cheerful: 0.5, trickish: 0.0 },
     description: '抜け目のなさであらゆる局面に対応',
     baseNaturesId: [],
+    icon: IconScale,
   },
   {
     id: 3,
@@ -37,6 +54,7 @@ export const NATURES: Nature[] = [
     mental: { aggressive: 0.0, brave: 1.0, cautious: 0.0, cheerful: 0.0, trickish: 0.0 },
     description: '力強く隙のない能力の持ち主',
     baseNaturesId: [],
+    icon: IconShieldHalf,
   },
   {
     id: 4,
@@ -49,6 +67,7 @@ export const NATURES: Nature[] = [
     mental: { aggressive: 0.5, brave: 0.5, cautious: -0.5, cheerful: 0.0, trickish: 0.0 },
     description: '全てを正面突破する戦車の如き勇者',
     baseNaturesId: [],
+    icon: IconTrident,
   },
   {
     id: 5,
@@ -61,6 +80,7 @@ export const NATURES: Nature[] = [
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.5, cheerful: 0.0, trickish: 0.0 },
     description: '理性と智力に裏打ちされた実力',
     baseNaturesId: [],
+    icon: IconVocabulary,
   },
   {
     id: 6,
@@ -73,6 +93,7 @@ export const NATURES: Nature[] = [
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.5, cheerful: 0.0, trickish: 0.5 },
     description: '知性一つを武器にあらゆる存在と渡り合う',
     baseNaturesId: [],
+    icon: IconCards,
   },
   {
     id: 7,
@@ -84,6 +105,7 @@ export const NATURES: Nature[] = [
     physical: { agility: -2, dexterity: -2, intelligence: -2, mind: -2, strength: -2, vitality: -2 },
     mental: { aggressive: 0.0, brave: -0.5, cautious: 0.5, cheerful: 0.0, trickish: 0.0 },
     baseNaturesId: [],
+    icon: IconUser,
   },
   {
     id: 8,
@@ -98,6 +120,7 @@ export const NATURES: Nature[] = [
       1, // 標準型
       2, // 万能型
     ],
+    icon: IconDiamond,
   },
   {
     id: 9,
@@ -112,6 +135,7 @@ export const NATURES: Nature[] = [
       3, // 勇将型
       4, // 豪傑型
     ],
+    icon: IconAward,
   },
   {
     id: 10,
@@ -126,6 +150,7 @@ export const NATURES: Nature[] = [
       5, // 知将型
       6, // 策士型
     ],
+    icon: IconBulb,
   },
   {
     id: 11,
@@ -137,6 +162,7 @@ export const NATURES: Nature[] = [
     physical: { agility: 1, dexterity: 1, intelligence: 2, mind: 2, strength: 2, vitality: 1 },
     mental: { aggressive: 0.0, brave: 0.5, cautious: 0.0, cheerful: 0.5, trickish: -0.5 },
     baseNaturesId: [],
+    icon: IconPeace,
   },
   {
     id: 12,
@@ -148,5 +174,6 @@ export const NATURES: Nature[] = [
     physical: { agility: 2, dexterity: 2, intelligence: 2, mind: 2, strength: 2, vitality: 2 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.0, cheerful: 0.0, trickish: 0.0 },
     baseNaturesId: [],
+    icon: IconUniverse,
   },
 ];

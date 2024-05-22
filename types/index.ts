@@ -119,6 +119,8 @@ export type Nature = {
   description?: string;
   /** 派生元の素質の ID */
   baseNaturesId: number[];
+  /** アイコンコンポーネント */
+  icon: ForwardRefExoticComponent<Omit<IconProps, 'ref'> & RefAttributes<Icon>>;
 };
 
 /** 特性 */
