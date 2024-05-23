@@ -75,6 +75,8 @@ export type Sex = {
   physical: Physical;
   /** 精神的特徴 */
   mental: Mental;
+  /** アイコンコンポーネント */
+  icon: ForwardRefExoticComponent<Omit<IconProps, 'ref'> & RefAttributes<Icon>>;
 };
 
 /** 年代 */
