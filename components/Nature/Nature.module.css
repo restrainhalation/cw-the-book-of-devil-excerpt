@@ -1,0 +1,27 @@
+.nature {
+  width: 100%;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+  border-radius: var(--mantine-radius-md);
+  border: rem(1px) solid transparent;
+
+  @mixin hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7)) !important;
+  }
+}
+
+.selected {
+  border: rem(1px) solid var(--mantine-color-blue-6);
+}
+
+.selected.isSpecial {
+  border: rem(1px) solid var(--mantine-color-orange-6);
+}
+
+.selectedText {
+  color: var(--mantine-color-blue-6);
+  font-weight: bold !important;
+}
+
+.selectedText.isSpecial {
+  color: var(--mantine-color-orange-6);
+}
