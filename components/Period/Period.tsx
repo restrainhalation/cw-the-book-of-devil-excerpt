@@ -1,9 +1,11 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import { Group, Chip, Tooltip } from '@mantine/core';
+import { Tooltip, SimpleGrid, Text, UnstyledButton, rem } from '@mantine/core';
+import { IconCircleCheckFilled } from '@tabler/icons-react';
 import { PERIODS } from '@/constants';
 import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
+import classes from '@/components/Period/Period.module.css';
 
 /**
  * 年代コンポーネントのパラメータ
@@ -44,7 +46,7 @@ const Period: FC<{ onChange?: (periodId:number) => void; }> = ({ onChange }) => 
 
   return (
     <>
-      <Group justify="center">
+      <SimpleGrid cols={4}>
         {PERIODS.map((period) => (
           <Tooltip
             key={period.id}
@@ -56,19 +58,33 @@ const Period: FC<{ onChange?: (periodId:number) => void; }> = ({ onChange }) => 
             transitionProps={{ transition: 'pop' }}
           >
             <div>
-              <Chip
-                key={period.id}
-                value={period.id}
-                variant="outline"
-                checked={selectedId === period.id}
+              <UnstyledButton
                 onClick={() => handleChangePeriod(period.id)}
+                data-checked={selectedId === period.id || undefined}
+                className={classes.button}
               >
-                {period.name}
-              </Chip>
+                <div className={classes.body}>
+                  <Text c="dimmed" size="xs" lh={1} mb={5}>
+                    {period.subName}
+                  </Text>
+                  <Text fw={500} size="sm" lh={1}>
+                    {period.name}
+                  </Text>
+                </div>
+                {
+                  selectedId === period.id
+                    ? <IconCircleCheckFilled
+                        style={{ width: rem(25), height: rem(25) }}
+                        className="inline-block"
+                        color="var(--mantine-color-blue-6)"
+                      />
+                    : ''
+                }
+              </UnstyledButton>
             </div>
           </Tooltip>
         ))}
-      </Group>
+      </SimpleGrid>
     </>
   );
 };

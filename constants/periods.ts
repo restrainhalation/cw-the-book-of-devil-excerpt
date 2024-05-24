@@ -5,6 +5,7 @@ export const PERIODS: Period[] = [
   {
     id: 1,
     name: '子供',
+    subName: 'Child',
     default: false,
     level: undefined,
     spendEP: 0,
@@ -15,6 +16,7 @@ export const PERIODS: Period[] = [
   {
     id: 2,
     name: '若者',
+    subName: 'Young',
     default: true,
     level: 1,
     spendEP: 40,
@@ -25,6 +27,7 @@ export const PERIODS: Period[] = [
   {
     id: 3,
     name: '大人',
+    subName: 'Adult',
     default: false,
     level: 2,
     spendEP: 30,
@@ -37,6 +40,7 @@ export const PERIODS: Period[] = [
   {
     id: 4,
     name: '老人',
+    subName: 'Old',
     default: false,
     level: 2,
     spendEP: 20,

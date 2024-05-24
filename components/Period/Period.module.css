@@ -1,0 +1,29 @@
+.button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
+  border-radius: var(--mantine-radius-sm);
+  padding: var(--mantine-spacing-sm);
+  border: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-8));
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
+
+  @mixin hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7)) !important;
+  }
+
+  &[data-checked] {
+    border-color: var(--mantine-color-blue-filled);
+    background-color: var(--mantine-color-blue-light);
+
+    @mixin hover {
+      background-color: light-dark(var(--mantine-color-blue-1), var(--mantine-color-blue-9)) !important;
+    }
+  }
+}
+
+.body {
+  flex: 1;
+}

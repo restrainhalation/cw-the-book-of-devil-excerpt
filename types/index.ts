@@ -85,6 +85,8 @@ export type Period = {
   id: number;
   /** 名前 */
   name: string;
+  /** 選択肢として表示される時の名前 */
+  subName: string;
   /** 選択肢表示時に最初から選択されているか */
   default: boolean;
   /** 登録時のレベル */
