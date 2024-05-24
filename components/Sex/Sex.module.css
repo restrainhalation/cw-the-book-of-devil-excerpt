@@ -1,0 +1,74 @@
+.selected .wrapper {
+  background-color: var(--mantine-color-gray-4);
+}
+
+.selectedMale .wrapper {
+  background-color: var(--mantine-color-blue-4);
+}
+
+.selectedFemale .wrapper {
+  background-color: var(--mantine-color-pink-4);
+}
+
+.selectedMale .wrapper .name, .selectedFemale .wrapper .name {
+  color: var(--mantine-color-white);
+}
+
+.selectedMale .wrapper .overlay, .selectedFemale .wrapper .overlay {
+  color: var(--mantine-color-white);
+}
+
+.selectedMale .wrapper {
+  border: rem(1px) solid var(--mantine-color-blue-4);
+
+  @mixin hover {
+    background-color: var(--mantine-color-blue-7) !important;
+  }
+}
+
+.selectedFemale .wrapper {
+  border: rem(1px) solid var(--mantine-color-pink-4);
+
+  @mixin hover {
+    background-color: var(--mantine-color-pink-7) !important;
+  }
+}
+
+.wrapper {
+  height: rem(50px);
+  padding-top: var(--mantine-spacing-md);
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: calc(var(--mantine-spacing-lg) * 1.5) var(--mantine-spacing-lg);
+  border-radius: var(--mantine-radius-lg);
+  border: rem(1px) solid var(--mantine-color-gray-3);
+
+  @mixin hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7)) !important;
+  }
+}
+
+.name {
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  position: relative;
+  z-index: 1;
+  font-size: rem(18px);
+  font-weight: 800;
+  letter-spacing: rem(-0.5px);
+  line-height: 0;
+  top: rem(15px);
+}
+
+.overlay {
+  z-index: 0;
+  position: absolute;
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  font-weight: 900;
+  opacity: 0.1;
+  font-size: rem(30px);
+  line-height: 1;
+  top: rem(3px);
+}

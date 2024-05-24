@@ -1,9 +1,11 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import { Group, Chip, Tooltip } from '@mantine/core';
+import { Text, Tooltip, UnstyledButton, SimpleGrid, rem } from '@mantine/core';
+import { IconCircleCheckFilled } from '@tabler/icons-react';
 import { SEXES } from '@/constants';
 import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
+import classes from '@/components/Sex/Sex.module.css';
 
 /**
  * 性別コンポーネントのパラメータ
@@ -16,7 +18,7 @@ import { AbilityInfomationList } from '@/components/AbilityInfomationList/Abilit
  * @param {SexParams} param0 コンポーネントのパラメータ
  * @return {React.FC<SexParams>} コンポーネント
  */
-const SexInput: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) => {
+const Sex: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) => {
   // ON になっている性別の ID
   const [selectedId, setSelectedId] = useState<number>();
 
@@ -44,8 +46,9 @@ const SexInput: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) => {
 
   return (
     <>
-      <Group justify="center">
+      <SimpleGrid cols={2} spacing={10}>
         {SEXES.map((sex) => (
+
           <Tooltip
             key={sex.id}
             label={
@@ -55,22 +58,39 @@ const SexInput: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) => {
             position="right"
             transitionProps={{ transition: 'pop' }}
           >
-            <div>
-              <Chip
-                key={sex.id}
-                value={sex.id}
-                variant="outline"
-                checked={selectedId === sex.id}
-                onClick={() => handleChangeSex(sex.id)}
-              >
-                {sex.name}
-              </Chip>
-            </div>
+            <UnstyledButton
+              className={
+                selectedId === sex.id
+                  ? classes[`selected${sex.name}`]
+                  : ''
+              }
+              onClick={() => handleChangeSex(sex.id)}
+            >
+              <div className={classes.wrapper}>
+                <div>
+                  <Text className={classes.name}>
+                    <sex.icon />
+                  </Text>
+                  <Text className={classes.overlay} role="presentation">
+                    {sex.name}
+                  </Text>
+                </div>
+                {
+                  selectedId === sex.id
+                    ? <IconCircleCheckFilled
+                        style={{ width: rem(40), height: rem(40) }}
+                        className="inline-block"
+                        color="white"
+                      />
+                    : ''
+                }
+              </div>
+            </UnstyledButton>
           </Tooltip>
         ))}
-      </Group>
+      </SimpleGrid>
     </>
   );
 };
 
-export default SexInput;
+export default Sex;
