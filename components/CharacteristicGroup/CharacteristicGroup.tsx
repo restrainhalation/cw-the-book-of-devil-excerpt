@@ -1,15 +1,18 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import { Group, Chip, Tooltip } from '@mantine/core';
+import { Text, Tooltip, rem, Paper, SimpleGrid } from '@mantine/core';
+import { IconCircleCheckFilled } from '@tabler/icons-react';
 import type { Characteristic } from '@/types';
 import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
+import classes from '@/components/CharacteristicGroup/CharacteristicGroup.module.css'
 
 /**
  * ２つ１組の特性コンポーネントのパラメータ
  * @typedef CharacteristicGroupParams
  * @property {Characteristic[]} characteristics ２つ１組の特性の配列
  * @property {((characteristicId:number) => void) | undefined} onChange 値を変更した際に実行するメソッド
+ * @property {boolean} isLatterHalfOfQuarter 特性４組ごとの後半２組に当たるか
  */
 
 /**
@@ -20,7 +23,8 @@ import { AbilityInfomationList } from '@/components/AbilityInfomationList/Abilit
 const CharacteristicGroup: FC<{
   characteristics: Characteristic[];
   onChange?: (characteristicId:number) => void;
-}> = ({ characteristics, onChange }) => {
+  isLatterHalfOfQuarter: boolean;
+}> = ({ characteristics, onChange, isLatterHalfOfQuarter }) => {
   // ON になっている特性の ID
   const [selectedId, setSelectedId] = useState<number>();
 
@@ -48,7 +52,7 @@ const CharacteristicGroup: FC<{
 
   return (
     <>
-      <Group justify="center">
+      <SimpleGrid cols={2} className={isLatterHalfOfQuarter ? classes.latterHalfOfQuarter : ''}>
         {characteristics.map((characteristic) => (
           <Tooltip
             key={characteristic.id}
@@ -59,20 +63,29 @@ const CharacteristicGroup: FC<{
             position="right"
             transitionProps={{ transition: 'pop' }}
           >
-            <div>
-              <Chip
-                key={characteristic.id}
-                value={characteristic.id}
-                variant="outline"
-                checked={selectedId === characteristic.id}
-                onClick={() => handleChangeCharacteristic(characteristic.id)}
-              >
+            <Paper
+              key={characteristic.id}
+              component="button"
+              onClick={() => handleChangeCharacteristic(characteristic.id)}
+              className={classes.button}
+              data-checked={selectedId === characteristic.id || undefined}
+            >
+              <Text fw={500} size="sm" lh={1}>
                 {characteristic.name}
-              </Chip>
-            </div>
+              </Text>
+              {
+                selectedId === characteristic.id
+                  ? <IconCircleCheckFilled
+                      style={{ width: rem(20), height: rem(20) }}
+                      className="inline-block"
+                      color="var(--mantine-color-blue-6)"
+                    />
+                  : ''
+              }
+            </Paper>
           </Tooltip>
         ))}
-      </Group>
+      </SimpleGrid>
     </>
   );
 };

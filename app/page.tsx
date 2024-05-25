@@ -219,11 +219,12 @@ export default function Index() {
               <Grid>
                 {Object
                   .entries(characteristicsGroupMap)
-                  .map(([groupId, characteristics]) =>
+                  .map(([groupId, characteristics], index) =>
                     <GridCol key={groupId} span={{ base: 12, xs: 6 }}>
                       <CharacteristicGroup
                         characteristics={characteristics}
                         onChange={onChangeCharacteristic}
+                        isLatterHalfOfQuarter={index % 4 === 1 || index % 4 === 2}
                       />
                     </GridCol>
                   )

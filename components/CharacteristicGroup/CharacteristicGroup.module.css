@@ -1,0 +1,52 @@
+.button {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2.5rem;
+  width: 100%;
+
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-xs) var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+
+  border: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-8));
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
+
+  @mixin hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7)) !important;
+  }
+
+  &[data-checked] {
+    border-color: var(--mantine-color-blue-filled);
+    background-color: var(--mantine-color-blue-light);
+
+    @mixin hover {
+      background-color: light-dark(var(--mantine-color-blue-1), var(--mantine-color-blue-9)) !important;
+    }
+
+    &::before {
+      background-color: var(--mantine-color-blue-6);
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: rem(3px);
+    width: 100%;
+
+    background-color: var(--mantine-color-gray-2);
+  }
+}
+
+.latterHalfOfQuarter .button {
+  &::before {
+    background-color: var(--mantine-color-dark-0);
+  }
+  &[data-checked] {
+    &::before {
+      background-color: var(--mantine-color-blue-6);
+    }
+  }
+}
