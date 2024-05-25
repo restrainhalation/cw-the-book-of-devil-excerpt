@@ -8,6 +8,48 @@ import { IconCircleCheckFilled } from '@tabler/icons-react';
 import { NATURES } from '@/constants';
 import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
 import classes from './Nature.module.css';
+import { Nature } from '@/types';
+
+/**
+ * 素質情報タグコンポーネントのパラメータ
+ * @typedef NatureDescriptionTagsParams
+ * @property {Nature} nature 素質
+ */
+
+/**
+ * 素質情報タグ
+ * @param {NatureDescriptionTagsParams} param0 コンポーネントのパラメータ
+ * @return {React.FC<NatureDescriptionTagsParams>} コンポーネント
+ */
+const NatureDescriptionTags: FC<{
+  nature: Nature,
+}> = ({ nature }) => nature.maxLevel !== 10 || nature.baseNaturesId.length
+    ? (
+    <>
+      <Group
+        align="flex-start"
+        className="grow my-1"
+        gap={6}
+      >
+        {
+          nature.maxLevel !== 10
+            ? <Badge size="sm" radius="xs" color="dark.1">
+                LV {nature.maxLevel}
+              </Badge>
+            : ''
+        }
+        {nature.baseNaturesId.map((baseNaturesId) => {
+          const _nature = NATURES.find((current) => current.id === baseNaturesId)
+          return _nature
+            ? <Badge key={_nature?.id} size="sm" radius="xs" color="gray.5">
+                {_nature?.name}
+              </Badge>
+            : ''
+        })}
+      </Group>
+    </>
+  )
+  : ''
 
 /**
  * 素質コンポーネントのパラメータ
@@ -48,7 +90,7 @@ const NatureInput: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange }
 
   return (
     <>
-      <SimpleGrid cols={3} spacing={0}>
+      <SimpleGrid cols={3} spacing={12}>
         {
           NATURES.map((nature) => (
             <Tooltip
@@ -60,83 +102,47 @@ const NatureInput: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange }
               position="right"
               transitionProps={{ transition: 'pop' }}
             >
-              <div>
+              <div className="flex">
                 <UnstyledButton
                   className={
                     selectedId === nature.id
                       ? nature.isSpecial
-                        ? `${classes.nature} ${classes.selected} ${classes.isSpecial}`
-                        : `${classes.nature} ${classes.selected}`
+                        ? `${classes.nature} ${classes.isSpecial}`
+                        : classes.nature
                       : classes.nature
                   }
                   key={nature.id}
                   value={nature.id}
                   onClick={() => handleChangeNature(nature.id)}
+                  data-checked={selectedId === nature.id || undefined}
                 >
-                  <Group wrap="nowrap" align="flex-start">
+                  <Group wrap="nowrap" align="flex-start" className="grow" gap={12}>
                     <ThemeIcon
                       size={34}
                       variant="default"
                       radius="md"
-                      className={
-                        selectedId === nature.id
-                          ? nature.isSpecial
-                            ? `${classes.selected} ${classes.isSpecial}`
-                            : classes.selected
-                          : ''
-                      }
+                      className={classes.icon}
                     >
-                      <nature.icon
-                        style={{ width: rem(22), height: rem(22) }}
-                        color={
-                          nature.isSpecial
-                            ? 'var(--mantine-color-orange-6)'
-                            : 'var(--mantine-color-blue-6)'
-                        }
-                      />
+                      <nature.icon style={{ width: rem(22), height: rem(22) }} />
                     </ThemeIcon>
-                    <div>
-                      <Text
-                        size="sm"
-                        fw={500}
-                        className={
-                          selectedId === nature.id
-                            ? nature.isSpecial
-                              ? `${classes.selectedText} ${classes.isSpecial} flex items-center`
-                              : `${classes.selectedText} flex items-center`
-                            : 'flex items-center'
-                        }
-                      >
-                        {nature.name}
+                    <div className="grow">
+                      <div className={classes.name}>
+                        <Text>
+                          {nature.name}
+                        </Text>
                         {
                           selectedId === nature.id
                             ? <IconCircleCheckFilled
                                 style={{ width: rem(18), height: rem(18) }}
-                                className="inline-block ml-2"
+                                className={classes.icon}
                               />
                             : ''
                         }
-                      </Text>
+                      </div>
                       <Text size="xs" c="dimmed">
                         {nature.description}
                       </Text>
-                      <SimpleGrid cols={2}>
-                        {
-                          nature.maxLevel !== 10
-                            ? <Badge size="sm" radius="xs" color="pink.4">
-                                LV {nature.maxLevel}
-                              </Badge>
-                            : ''
-                        }
-                        {nature.baseNaturesId.map((baseNaturesId) => {
-                          const _nature = NATURES.find((current) => current.id === baseNaturesId)
-                          return _nature
-                            ? <Badge key={_nature?.id} size="sm" radius="xs" color="gray.5">
-                                {_nature?.name}
-                              </Badge>
-                            : ''
-                        })}
-                      </SimpleGrid>
+                      <NatureDescriptionTags nature={nature} />
                     </div>
                   </Group>
                 </UnstyledButton>
