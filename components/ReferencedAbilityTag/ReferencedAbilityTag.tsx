@@ -3,7 +3,7 @@ import { useAtomValue } from 'jotai'
 import { FC } from 'react'
 import { Mental, Physical } from '@/types'
 import { abilityReferenceAtom } from '@/store'
-import classes from '@/components/ReferencedAbilityBadge/ReferencedAbilityBadge.module.css'
+import classes from '@/components/ReferencedAbilityTag/ReferencedAbilityTag.module.css'
 
 /**
  * 参照中能力タグコンポーネントのパラメータ
