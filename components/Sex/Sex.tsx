@@ -61,10 +61,11 @@ const Sex: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) => {
             <UnstyledButton
               className={
                 selectedId === sex.id
-                  ? classes[`selected${sex.name}`]
+                  ? classes.selected
                   : ''
               }
               onClick={() => handleChangeSex(sex.id)}
+              data-sex={sex.name.toLocaleLowerCase()}
             >
               <div className={classes.wrapper}>
                 <div>

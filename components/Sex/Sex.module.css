@@ -1,36 +1,32 @@
-.selected .wrapper {
-  background-color: var(--mantine-color-gray-4);
-}
-
-.selectedMale .wrapper {
-  background-color: var(--mantine-color-blue-4);
-}
-
-.selectedFemale .wrapper {
-  background-color: var(--mantine-color-pink-4);
-}
-
-.selectedMale .wrapper .name, .selectedFemale .wrapper .name {
-  color: var(--mantine-color-white);
-}
-
-.selectedMale .wrapper .overlay, .selectedFemale .wrapper .overlay {
-  color: var(--mantine-color-white);
-}
-
-.selectedMale .wrapper {
-  border: rem(1px) solid var(--mantine-color-blue-4);
-
-  @mixin hover {
-    background-color: var(--mantine-color-blue-7) !important;
+.selected {
+  &[data-sex=male] .wrapper {
+    background-color: var(--mantine-color-blue-4);
+    border: rem(1px) solid var(--mantine-color-blue-4);
+  
+    @mixin hover {
+      background-color: var(--mantine-color-blue-7) !important;
+    }
+    .name {
+      color: var(--mantine-color-white);
+    }
+    .overlay {
+      color: var(--mantine-color-white);
+    }
   }
-}
 
-.selectedFemale .wrapper {
-  border: rem(1px) solid var(--mantine-color-pink-4);
+  &[data-sex=female] .wrapper {
+    background-color: var(--mantine-color-pink-4);
+    border: rem(1px) solid var(--mantine-color-pink-4);
 
-  @mixin hover {
-    background-color: var(--mantine-color-pink-7) !important;
+    @mixin hover {
+      background-color: var(--mantine-color-pink-7) !important;
+    }
+    .name {
+      color: var(--mantine-color-white);
+    }
+    .overlay {
+      color: var(--mantine-color-white);
+    }
   }
 }
 
