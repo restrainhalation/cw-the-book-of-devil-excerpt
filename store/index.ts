@@ -38,3 +38,6 @@ export const abilityAtom = atom<Ability>({
     trickish: 0,
   },
 });
+
+/** 能力参照 atom */
+export const abilityReferenceAtom = atom<string>('')

@@ -1,0 +1,13 @@
+.referencedAbility {
+  position: absolute;
+  top: rem(-8px);
+  left: rem(10px);
+
+  &[data-positive-value] {
+    background-color: var(--mantine-color-teal-7);
+  }
+
+  &[data-negative-value] {
+    background-color: var(--mantine-color-red-8);
+  }
+}
