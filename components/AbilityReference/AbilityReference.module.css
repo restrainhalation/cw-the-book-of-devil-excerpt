@@ -1,0 +1,76 @@
+.card {
+  position: relative;
+  overflow: visible;
+  padding: var(--mantine-spacing-sm);
+  padding-right: var(--mantine-spacing-lg);
+  margin-top: 20px;
+  width: 100%;
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
+
+  @mixin hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7)) !important;
+  }
+
+  .iconWrapper {
+    .icon {
+      position: absolute;
+      top: rem(-15px);
+      left: rem(15px);
+      background-color: var(--mantine-color-gray-6);
+    }
+
+    &::after {
+      position: absolute;
+      top: rem(10px);
+      left: rem(15px);
+      display: inline-block;
+
+      content: '';
+      background-color: var(--mantine-color-gray-6);
+      width: rem(30px);
+      height: rem(2px);
+      margin-top: var(--mantine-spacing-sm);
+    }
+  }
+
+  .checked {
+    margin-left: 1.5rem;
+    color: var(--mantine-color-blue-filled);
+    width: rem(16px);
+    height: rem(16px);
+  }
+
+  &[data-checked] {
+    border-color: var(--mantine-color-blue-filled);
+    background-color: var(--mantine-color-blue-light);
+
+    @mixin hover {
+      background-color: light-dark(var(--mantine-color-blue-1), var(--mantine-color-blue-9)) !important;
+    }
+
+    .iconWrapper {
+      .icon {
+        background-color: var(--mantine-color-blue-filled);
+      }  
+      &::after {
+        background-color: var(--mantine-color-blue-filled);
+      }
+    }
+  }
+
+  &:not([data-is-physical]) {
+    .iconWrapper {
+      .icon {
+        background-color: var(--mantine-color-dark-3);
+      }  
+      &::after {
+        background-color: var(--mantine-color-dark-3);
+      }
+    }
+  }
+
+  .title {
+    line-height: 1;
+    padding-left: calc(var(--mantine-spacing-xl) + rem(15px));
+  }
+}
