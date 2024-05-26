@@ -1,31 +1,10 @@
 .selected {
-  &[data-sex=male] .wrapper {
-    background-color: var(--mantine-color-blue-4);
-    border: rem(1px) solid var(--mantine-color-blue-4);
+  .wrapper {
+    border: rem(1px) solid var(--mantine-color-blue-filled);
+    background-color: var(--mantine-color-blue-light);
   
     @mixin hover {
-      background-color: var(--mantine-color-blue-7) !important;
-    }
-    .name {
-      color: var(--mantine-color-white);
-    }
-    .overlay {
-      color: var(--mantine-color-white);
-    }
-  }
-
-  &[data-sex=female] .wrapper {
-    background-color: var(--mantine-color-pink-4);
-    border: rem(1px) solid var(--mantine-color-pink-4);
-
-    @mixin hover {
-      background-color: var(--mantine-color-pink-7) !important;
-    }
-    .name {
-      color: var(--mantine-color-white);
-    }
-    .overlay {
-      color: var(--mantine-color-white);
+      background-color: light-dark(var(--mantine-color-blue-1), var(--mantine-color-blue-9)) !important;
     }
   }
 }
@@ -38,8 +17,8 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
-  padding: calc(var(--mantine-spacing-lg) * 1.5) var(--mantine-spacing-lg);
-  border-radius: var(--mantine-radius-lg);
+  padding: calc(var(--mantine-spacing-lg) * 1.5) var(--mantine-spacing-sm);
+  border-radius: var(--mantine-radius-md);
   border: rem(1px) solid var(--mantine-color-gray-3);
 
   @mixin hover {
@@ -55,7 +34,7 @@
   font-weight: 800;
   letter-spacing: rem(-0.5px);
   line-height: 0;
-  top: rem(15px);
+  top: rem(14px);
 }
 
 .overlay {
@@ -66,5 +45,12 @@
   opacity: 0.1;
   font-size: rem(30px);
   line-height: 1;
-  top: rem(3px);
+  top: rem(6px);
+}
+
+.checked {
+  display: inline-block;
+  color: var(--mantine-color-blue-6);
+  width: rem(32px);
+  height: rem(32px);
 }

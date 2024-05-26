@@ -1,7 +1,7 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import { Text, Tooltip, UnstyledButton, SimpleGrid, rem } from '@mantine/core';
+import { Text, Tooltip, UnstyledButton, SimpleGrid } from '@mantine/core';
 import { IconCircleCheckFilled } from '@tabler/icons-react';
 import { SEXES } from '@/constants';
 import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
@@ -47,7 +47,7 @@ const Sex: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) => {
 
   return (
     <>
-      <SimpleGrid cols={2} spacing={10}>
+      <SimpleGrid cols={2} spacing={14}>
         {SEXES.map((sex) => (
 
           <Tooltip
@@ -81,9 +81,7 @@ const Sex: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) => {
                 {
                   selectedId === sex.id
                     ? <IconCircleCheckFilled
-                        style={{ width: rem(40), height: rem(40) }}
-                        className="inline-block"
-                        color="white"
+                        className={classes.checked}
                       />
                     : ''
                 }
