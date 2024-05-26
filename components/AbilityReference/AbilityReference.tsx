@@ -82,7 +82,7 @@ export const AbilityReference: FC<{
         </div>
 
         <div className="flex items-center justify-between">
-          <Text fw={700} className={classes.title}>
+          <Text fw={500} className={classes.title}>
             {name}
           </Text>
           {
