@@ -9,6 +9,7 @@ import { NATURES } from '@/constants';
 import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
 import classes from './Nature.module.css';
 import { Nature } from '@/types';
+import ReferencedAbilityTag from '@/components/ReferencedAbilityTag/ReferencedAbilityTag'
 
 /**
  * 素質情報タグコンポーネントのパラメータ
@@ -116,6 +117,7 @@ const NatureInput: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange }
                   onClick={() => handleChangeNature(nature.id)}
                   data-checked={selectedId === nature.id || undefined}
                 >
+                  <ReferencedAbilityTag physical={nature.physical} mental={nature.mental} />
                   <Group wrap="nowrap" align="flex-start" className="grow" gap={12}>
                     <ThemeIcon
                       size={34}

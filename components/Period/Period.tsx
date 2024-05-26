@@ -6,6 +6,7 @@ import { IconCircleCheckFilled } from '@tabler/icons-react';
 import { PERIODS } from '@/constants';
 import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
 import classes from '@/components/Period/Period.module.css';
+import ReferencedAbilityTag from '@/components/ReferencedAbilityTag/ReferencedAbilityTag';
 
 /**
  * 年代コンポーネントのパラメータ
@@ -63,6 +64,7 @@ const Period: FC<{ onChange?: (periodId:number) => void; }> = ({ onChange }) => 
                 data-checked={selectedId === period.id || undefined}
                 className={classes.button}
               >
+                <ReferencedAbilityTag physical={period.physical} mental={period.mental} />
                 <div className={classes.body}>
                   <Text c="dimmed" size="xs" lh={1} mb={5}>
                     {period.subName}

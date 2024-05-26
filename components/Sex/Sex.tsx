@@ -6,6 +6,7 @@ import { IconCircleCheckFilled } from '@tabler/icons-react';
 import { SEXES } from '@/constants';
 import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
 import classes from '@/components/Sex/Sex.module.css';
+import ReferencedAbilityTag from '@/components/ReferencedAbilityTag/ReferencedAbilityTag';
 
 /**
  * 性別コンポーネントのパラメータ
@@ -68,6 +69,7 @@ const Sex: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) => {
               data-sex={sex.name.toLocaleLowerCase()}
             >
               <div className={classes.wrapper}>
+                <ReferencedAbilityTag physical={sex.physical} mental={sex.mental} />
                 <div>
                   <Text className={classes.name}>
                     <sex.icon />

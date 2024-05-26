@@ -7,10 +7,9 @@ import {
   GridCol,
   Stack,
   Container,
-  Skeleton,
 } from '@mantine/core';
 import { useAtom } from 'jotai';
-import { abilityAtom, characterAtom } from '@/store';
+import { abilityAtom, characterAtom, abilityReferenceAtom } from '@/store';
 import { SEXES, PERIODS, NATURES, CHARACTERISTICS } from '@/constants';
 import type { Characteristic, Physical, Mental } from '@/types';
 import Sex from '@/components/Sex/Sex';
@@ -19,6 +18,7 @@ import Nature from '@/components/Nature/Nature';
 import CharacteristicGroup from '@/components/CharacteristicGroup/CharacteristicGroup';
 import PhysicalAbilityChart from '@/components/PhysicalAbilityChart/PhysicalAbilityChart';
 import MentalAbilityChart from '@/components/MentalAbilityChart/MentalAbilityChart';
+import { AbilityReference } from '@/components/AbilityReference/AbilityReference';
 
 // ２つ１組の特性マップ
 const characteristicsGroupMap: { [key: number]: Characteristic[] } = {};
@@ -37,6 +37,8 @@ export default function Index() {
   const [character, setCharacter] = useAtom(characterAtom);
   // Jotai の能力 atom
   const [ability, setAbility] = useAtom(abilityAtom);
+  // Jotai の能力参照 atom
+  const [abilityReference, setAbilityReference] = useAtom(abilityReferenceAtom)
 
   useEffect(() => {
     // 能力 atom を更新する
@@ -170,6 +172,20 @@ export default function Index() {
   };
 
   /**
+   * 能力参照の ON／OFF が変更されたときに実行して
+   * Jotai の能力参照 atom を更新する
+   * @param abilityId 能力 ID
+   */
+  const onChangeAbilityReference = (abilityId:string) => {
+    // Jotai の能力参照 atom を更新する
+    if (abilityReference === abilityId) {
+      setAbilityReference('');
+    } else {
+      setAbilityReference(abilityId);
+    }
+  };
+
+  /**
    * キャラクター atom が変更されたとき、能力 atom を更新する
    */
   const onChangeCharacterAtom = () => {
@@ -236,7 +252,7 @@ export default function Index() {
             <Stack>
               <PhysicalAbilityChart physicalAbilities={ability.physical}></PhysicalAbilityChart>
               <MentalAbilityChart mentalAbilities={ability.mental}></MentalAbilityChart>
-              <Skeleton height={250} radius="md" animate={false} />
+              <AbilityReference onChange={onChangeAbilityReference} />
             </Stack>
           </GridCol>
         </Grid>

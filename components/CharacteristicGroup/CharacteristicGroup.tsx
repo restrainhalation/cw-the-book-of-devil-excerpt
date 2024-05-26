@@ -6,6 +6,7 @@ import { IconCircleCheckFilled } from '@tabler/icons-react';
 import type { Characteristic } from '@/types';
 import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
 import classes from '@/components/CharacteristicGroup/CharacteristicGroup.module.css'
+import ReferencedAbilityTag from '@/components/ReferencedAbilityTag/ReferencedAbilityTag';
 
 /**
  * ２つ１組の特性コンポーネントのパラメータ
@@ -70,6 +71,7 @@ const CharacteristicGroup: FC<{
               className={classes.button}
               data-checked={selectedId === characteristic.id || undefined}
             >
+              <ReferencedAbilityTag physical={characteristic.physical} mental={characteristic.mental} />
               <Text fw={500} size="sm" lh={1}>
                 {characteristic.name}
               </Text>
