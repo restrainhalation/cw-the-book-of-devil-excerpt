@@ -1,6 +1,6 @@
 import React, { FC, useState, ForwardRefExoticComponent, RefAttributes } from 'react';
 import { Text, rem, Paper, ThemeIcon, SimpleGrid } from '@mantine/core';
-import { Icon, IconCircleCheckFilled, IconProps } from '@tabler/icons-react';
+import { Icon, IconEye, IconProps } from '@tabler/icons-react';
 import { MENTAL_ABILITIES, PHYSICAL_ABILITIES } from '@/constants';
 import classes from '@/components/AbilityReference/AbilityReference.module.css'
 
@@ -87,7 +87,7 @@ export const AbilityReference: FC<{
           </Text>
           {
             selectedId === id
-              ? <IconCircleCheckFilled className={classes.checked} />
+              ? <IconEye className={classes.checked} />
               : ''
           }
         </div>

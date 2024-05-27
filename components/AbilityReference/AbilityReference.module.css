@@ -16,6 +16,7 @@
       position: absolute;
       top: rem(-15px);
       left: rem(15px);
+      color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
       background-color: var(--mantine-color-gray-4);
     }
 
@@ -35,25 +36,26 @@
 
   .checked {
     margin-left: 1.5rem;
-    color: var(--mantine-color-blue-filled);
+    color: var(--mantine-color-violet-filled);
     width: rem(24px);
     height: rem(24px);
   }
 
   &[data-checked] {
-    border-color: var(--mantine-color-blue-filled);
-    background-color: var(--mantine-color-blue-light);
+    border-color: var(--mantine-color-violet-filled);
+    background-color: var(--mantine-color-violet-light);
 
     @mixin hover {
-      background-color: light-dark(var(--mantine-color-blue-1), var(--mantine-color-blue-9)) !important;
+      background-color: light-dark(var(--mantine-color-violet-1), var(--mantine-color-violet-9)) !important;
     }
 
     .iconWrapper {
       .icon {
-        background-color: var(--mantine-color-blue-filled) !important;
+        color: var(--mantine-color-white);
+        background-color: var(--mantine-color-violet-filled) !important;
       }  
       &::after {
-        background-color: var(--mantine-color-blue-filled) !important;
+        background-color: var(--mantine-color-violet-filled) !important;
       }
     }
   }
