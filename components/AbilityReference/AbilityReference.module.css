@@ -36,13 +36,13 @@
 
   .checked {
     margin-left: 1.5rem;
-    color: var(--mantine-color-violet-filled);
+    color: var(--mantine-color-violet-5);
     width: rem(24px);
     height: rem(24px);
   }
 
   &[data-checked] {
-    border-color: var(--mantine-color-violet-filled);
+    border-color: var(--mantine-color-violet-5);
     background-color: var(--mantine-color-violet-light);
 
     @mixin hover {
@@ -52,10 +52,10 @@
     .iconWrapper {
       .icon {
         color: var(--mantine-color-white);
-        background-color: var(--mantine-color-violet-filled) !important;
+        background-color: var(--mantine-color-violet-5) !important;
       }  
       &::after {
-        background-color: var(--mantine-color-violet-filled) !important;
+        background-color: var(--mantine-color-violet-5) !important;
       }
     }
   }
@@ -67,6 +67,22 @@
       }  
       &::after {
         background-color: var(--mantine-color-dark-0);
+      }
+    }
+
+    .checked {
+      color: var(--mantine-color-violet-9);
+    }
+
+    &[data-checked] {
+      border-color: var(--mantine-color-violet-9);
+      .iconWrapper {
+        .icon {
+          background-color: var(--mantine-color-violet-9) !important;
+        }
+        &::after {
+          background-color: var(--mantine-color-violet-9) !important;
+        }
       }
     }
   }
