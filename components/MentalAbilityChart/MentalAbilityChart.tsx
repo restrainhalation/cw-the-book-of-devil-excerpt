@@ -9,6 +9,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { useMantineTheme } from '@mantine/core';
 import type { Mental } from '@/types';
 import { MENTAL_ABILITIES } from '@/constants';
 
@@ -87,6 +88,7 @@ export const options = {
  * @return {React.FC<MentalAbilityChartParams>} コンポーネント
  */
 const MentalAbilityChart: FC<{ mentalAbilities: Mental; }> = ({ mentalAbilities }) => {
+  const { colors } = useMantineTheme();
   const data = {
     labels: ['', '', '', '', ''],
     datasets: Object.entries(mentalAbilities).map(([key, value], index) => {
@@ -97,7 +99,7 @@ const MentalAbilityChart: FC<{ mentalAbilities: Mental; }> = ({ mentalAbilities 
         scaleID: isPositive ? 'y2' : 'y',
         label: MENTAL_ABILITIES.find((mentalAbility) => mentalAbility.id === key)?.names[isPositive ? 1 : 0] || '',
         data: tempData,
-        backgroundColor: isPositive ? 'rgb(53, 162, 235)' : 'rgb(255, 99, 132)',
+        backgroundColor: isPositive ? colors.blue[6] : colors.pink[4],
       };
     }),
   };

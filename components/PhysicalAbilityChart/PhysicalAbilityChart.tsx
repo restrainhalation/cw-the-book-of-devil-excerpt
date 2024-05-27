@@ -9,6 +9,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { useMantineTheme } from '@mantine/core';
 import type { Physical } from '@/types';
 import { PHYSICAL_ABILITIES } from '@/constants';
 
@@ -73,6 +74,7 @@ export const options = {
  * @return {React.FC<PhysicalAbilityChartParams>} コンポーネント
  */
 const PhysicalAbilityChart: FC<{ physicalAbilities: Physical; }> = ({ physicalAbilities }) => {
+  const { colors } = useMantineTheme();
   const data = {
     labels: PHYSICAL_ABILITY_NAMES,
     datasets: [
@@ -80,7 +82,7 @@ const PhysicalAbilityChart: FC<{ physicalAbilities: Physical; }> = ({ physicalAb
         scaleID: 'y',
         label: '身体的特徴',
         data: Object.values(physicalAbilities),
-        backgroundColor: 'rgb(53, 162, 235)',
+        backgroundColor: colors.blue[6],
       },
     ]
     ,
