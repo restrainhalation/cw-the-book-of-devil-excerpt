@@ -4,10 +4,10 @@
   left: rem(10px);
 
   &[data-positive-value] {
-    background-color: var(--mantine-color-teal-7);
+    background-color: var(--mantine-color-teal-5);
   }
 
   &[data-negative-value] {
-    background-color: var(--mantine-color-red-8);
+    background-color: var(--mantine-color-pink-4);
   }
 }

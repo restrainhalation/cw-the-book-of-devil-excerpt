@@ -100,8 +100,8 @@ const AbilityInfomation: FC<{
   const valueTextColorClass = value === 0
     ? 'text-gray-500'
     : isPositive
-      ? 'text-teal-700'
-      : 'text-red-800';
+      ? 'text-teal-500'
+      : 'text-pink-400';
   const valueClasses = `${valueTextColorClass} leading-none flex items-center`;
   return (
     <Group justify="space-between" m="2" className="w-40">
