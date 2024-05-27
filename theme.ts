@@ -16,4 +16,19 @@ const breakpoints: Partial<MantineBreakpointsValues> = tailwindScreens
 
 export const theme = createTheme({
   breakpoints,
+  colors: {
+    // Mantine colors generator を使い、原作の色 #000096 から作り出したタプル
+    gulafu: [
+      '#ebebff',
+      '#d1d0fa',
+      '#9e9df8',
+      '#6865f7',
+      '#3f39f6',
+      '#291df7',
+      '#2011f8',
+      '#1707dd',
+      '#0f04c5',
+      '#0000ad',
+    ],
+  },
 });
