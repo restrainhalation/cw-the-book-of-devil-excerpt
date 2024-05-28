@@ -34,7 +34,7 @@ const NatureDescriptionTags: FC<{
       >
         {
           nature.maxLevel !== 10
-            ? <Badge size="sm" radius="xs" color="dark.1">
+            ? <Badge size="sm" radius="xs" className={classes.maxLvBadge}>
                 LV {nature.maxLevel}
               </Badge>
             : ''
@@ -42,7 +42,7 @@ const NatureDescriptionTags: FC<{
         {nature.baseNaturesId.map((baseNaturesId) => {
           const _nature = NATURES.find((current) => current.id === baseNaturesId)
           return _nature
-            ? <Badge key={_nature?.id} size="sm" radius="xs" color="gray.5">
+            ? <Badge key={_nature?.id} size="sm" radius="xs" className={classes.baseNatureBadge}>
                 {_nature?.name}
               </Badge>
             : ''
@@ -105,17 +105,12 @@ const NatureInput: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange }
             >
               <div className="flex">
                 <UnstyledButton
-                  className={
-                    selectedId === nature.id
-                      ? nature.isSpecial
-                        ? `${classes.nature} ${classes.isSpecial}`
-                        : classes.nature
-                      : classes.nature
-                  }
+                  className={classes.nature}
                   key={nature.id}
                   value={nature.id}
                   onClick={() => handleChangeNature(nature.id)}
                   data-checked={selectedId === nature.id || undefined}
+                  data-is-special={nature.isSpecial === true || undefined}
                 >
                   <ReferencedAbilityTag physical={nature.physical} mental={nature.mental} />
                   <Group wrap="nowrap" align="flex-start" className="grow" gap={12}>
@@ -141,9 +136,6 @@ const NatureInput: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange }
                             : ''
                         }
                       </div>
-                      <Text size="xs" c="dimmed">
-                        {nature.description}
-                      </Text>
                       <NatureDescriptionTags nature={nature} />
                     </div>
                   </Group>

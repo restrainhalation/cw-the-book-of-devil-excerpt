@@ -17,6 +17,35 @@
     align-items: center;
     justify-content: space-between;
   }
+  &:not([data-is-special]) {
+    .name {
+      &::after {
+        position: absolute;
+        bottom: rem(12px);
+        right: rem(10px);
+        display: inline-block;
+        content: '';
+        background-color: var(--mantine-color-gray-4);
+        width: calc(100% - 66px);
+        height: rem(2px);
+      }
+    }
+    &[data-checked] {
+      .name {
+        &::after {
+          background-color: var(--mantine-color-blue-6);
+        }
+      }
+    }
+  }
+
+  .maxLvBadge {
+    background-color: var(--mantine-color-dark-1);
+  }
+
+  .baseNatureBadge {
+    background-color: var(--mantine-color-gray-5);
+  }
 
   &[data-checked] {
     border-color: var(--mantine-color-blue-filled);
@@ -31,18 +60,12 @@
       color: var(--mantine-color-blue-6);
     }
 
-    &.isSpecial {
-      border-color: var(--mantine-color-green-filled);
-      background-color: var(--mantine-color-green-light);
-
-      .icon {
-        border-color: var(--mantine-color-green-filled);
-        color: var(--mantine-color-green-6);
-      }
-
-      @mixin hover {
-        background-color: light-dark(var(--mantine-color-green-1), var(--mantine-color-green-9)) !important;
-      }
+    .maxLvBadge {
+      background-color: var(--mantine-color-indigo-7);
+    }
+  
+    .baseNatureBadge {
+      background-color: var(--mantine-color-blue-6);
     }
   }
 }
