@@ -39,8 +39,7 @@ export const options = {
       display: false,
     },
     title: {
-      display: true,
-      text: '身体的特徴',
+      display: false,
     },
     tooltip: {
       callbacks: {

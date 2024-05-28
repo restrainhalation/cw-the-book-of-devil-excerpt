@@ -43,8 +43,7 @@ export const options = {
       display: false,
     },
     title: {
-      display: true,
-      text: '精神的特徴',
+      display: false,
     },
     tooltip: {
       callbacks: {
