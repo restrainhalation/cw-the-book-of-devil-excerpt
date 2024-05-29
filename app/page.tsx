@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import {
-  Title,
   Grid,
   GridCol,
   Stack,
@@ -222,9 +221,6 @@ export default function Index() {
 
   return (
     <>
-      <Title ta="center" mt={50}>
-        タイトル
-      </Title>
       <Container my="md" size="lg">
         <Grid>
           <GridCol span={{ base: 12, xs: 6 }}>

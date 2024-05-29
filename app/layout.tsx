@@ -1,6 +1,10 @@
 import '@/styles/globals.css';
 import React from 'react';
-import { MantineProvider, ColorSchemeScript } from '@mantine/core';
+import {
+  MantineProvider, ColorSchemeScript, AppShell, AppShellHeader,
+  AppShellMain,
+  Title,
+} from '@mantine/core';
 import { theme } from '../theme';
 
 export const metadata = {
@@ -20,7 +24,19 @@ export default function RootLayout({ children }: { children: any }) {
         />
       </head>
       <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider theme={theme}>
+          <AppShell
+            header={{ height: 60 }}
+          >
+            <AppShellHeader>
+              <Title>
+                タイトル
+              </Title>
+            </AppShellHeader>
+
+            <AppShellMain>{children}</AppShellMain>
+          </AppShell>
+        </MantineProvider>
       </body>
     </html>
   );
