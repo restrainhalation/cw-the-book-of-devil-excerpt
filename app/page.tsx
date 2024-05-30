@@ -6,10 +6,11 @@ import {
   GridCol,
   Stack,
   Container,
+  Button,
 } from '@mantine/core';
 import { useAtom } from 'jotai';
-import { abilityAtom, characterAtom, abilityReferenceAtom } from '@/store';
-import { SEXES, PERIODS, NATURES, CHARACTERISTICS } from '@/constants';
+import { abilityAtom, characterAtom, abilityReferenceAtom, keyForResetAtom } from '@/store';
+import { SEXES, PERIODS, NATURES, CHARACTERISTICS, DEFAULT_CHARACTER_ATOM, DEFAULT_ABILITY_ATOM } from '@/constants';
 import type { Characteristic, Physical, Mental } from '@/types';
 import Sex from '@/components/Sex/Sex';
 import Period from '@/components/Period/Period';
@@ -38,6 +39,8 @@ export default function Index() {
   const [ability, setAbility] = useAtom(abilityAtom);
   // Jotai の能力参照 atom
   const [abilityReference, setAbilityReference] = useAtom(abilityReferenceAtom)
+  // Jotai のリセット用キー atom
+  const [keyForReset, setKeyForReset] = useAtom(keyForResetAtom)
 
   useEffect(() => {
     // 能力 atom を更新する
@@ -219,21 +222,36 @@ export default function Index() {
     });
   };
 
+  /**
+   * 入力をリセットする
+   */
+  const reset = () => {
+    // Jotai のキャラクター atom を更新する
+    setCharacter(DEFAULT_CHARACTER_ATOM)
+    // 能力 atom を更新する
+    setAbility(DEFAULT_ABILITY_ATOM)
+    // Jotai の能力参照 atom を更新する
+    setAbilityReference('');
+    // Jotai のリセット用キー atom を更新する
+    setKeyForReset(new Date().getTime())
+  }
+
   return (
     <>
       <Container my="md" size="lg">
         <Grid>
           <GridCol span={{ base: 12, xs: 6 }}>
             <Stack justify="center">
-              <Sex onChange={onChangeSex}></Sex>
-              <Period onChange={onChangePeriod}></Period>
-              <Nature onChange={onChangeNature}></Nature>
+              <Sex key={`${keyForReset}-sex`} onChange={onChangeSex}></Sex>
+              <Period key={`${keyForReset}-period`} onChange={onChangePeriod}></Period>
+              <Nature key={`${keyForReset}-nature`} onChange={onChangeNature}></Nature>
               <Grid>
                 {Object
                   .entries(characteristicsGroupMap)
                   .map(([groupId, characteristics], index) =>
                     <GridCol key={groupId} span={{ base: 12, xs: 6 }}>
                       <CharacteristicGroup
+                        key={`${keyForReset}-${index}-characteristic`}
                         characteristics={characteristics}
                         onChange={onChangeCharacteristic}
                         isLatterHalfOfQuarter={index % 4 === 1 || index % 4 === 2}
@@ -248,7 +266,8 @@ export default function Index() {
             <Stack>
               <PhysicalAbilityChart physicalAbilities={ability.physical}></PhysicalAbilityChart>
               <MentalAbilityChart mentalAbilities={ability.mental}></MentalAbilityChart>
-              <AbilityReference onChange={onChangeAbilityReference} />
+              <AbilityReference key={`${keyForReset}-abilityReference`} onChange={onChangeAbilityReference} />
+              <Button onClick={reset}>RESET</Button>
             </Stack>
           </GridCol>
         </Grid>
