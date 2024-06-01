@@ -6,11 +6,10 @@ import {
   GridCol,
   Stack,
   Container,
-  Button,
 } from '@mantine/core';
-import { useAtom } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import { abilityAtom, characterAtom, abilityReferenceAtom, keyForResetAtom } from '@/store';
-import { SEXES, PERIODS, NATURES, CHARACTERISTICS, DEFAULT_CHARACTER_ATOM, DEFAULT_ABILITY_ATOM } from '@/constants';
+import { SEXES, PERIODS, NATURES, CHARACTERISTICS } from '@/constants';
 import type { Characteristic, Physical, Mental } from '@/types';
 import Sex from '@/components/Sex/Sex';
 import Period from '@/components/Period/Period';
@@ -40,7 +39,7 @@ export default function Index() {
   // Jotai の能力参照 atom
   const [abilityReference, setAbilityReference] = useAtom(abilityReferenceAtom)
   // Jotai のリセット用キー atom
-  const [keyForReset, setKeyForReset] = useAtom(keyForResetAtom)
+  const keyForReset = useAtomValue(keyForResetAtom)
 
   useEffect(() => {
     // 能力 atom を更新する
@@ -222,20 +221,6 @@ export default function Index() {
     });
   };
 
-  /**
-   * 入力をリセットする
-   */
-  const reset = () => {
-    // Jotai のキャラクター atom を更新する
-    setCharacter(DEFAULT_CHARACTER_ATOM)
-    // 能力 atom を更新する
-    setAbility(DEFAULT_ABILITY_ATOM)
-    // Jotai の能力参照 atom を更新する
-    setAbilityReference('');
-    // Jotai のリセット用キー atom を更新する
-    setKeyForReset(new Date().getTime())
-  }
-
   return (
     <>
       <Container my="md" size="lg">
@@ -267,7 +252,6 @@ export default function Index() {
               <PhysicalAbilityChart physicalAbilities={ability.physical}></PhysicalAbilityChart>
               <MentalAbilityChart mentalAbilities={ability.mental}></MentalAbilityChart>
               <AbilityReference key={`${keyForReset}-abilityReference`} onChange={onChangeAbilityReference} />
-              <Button onClick={reset}>RESET</Button>
             </Stack>
           </GridCol>
         </Grid>

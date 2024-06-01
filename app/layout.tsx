@@ -3,9 +3,9 @@ import React from 'react';
 import {
   MantineProvider, ColorSchemeScript, AppShell, AppShellHeader,
   AppShellMain,
-  Title,
 } from '@mantine/core';
 import { theme } from '../theme';
+import { Header } from '@/components/Header'
 
 export const metadata = {
   title: 'Mantine Next.js template',
@@ -28,10 +28,8 @@ export default function RootLayout({ children }: { children: any }) {
           <AppShell
             header={{ height: 60 }}
           >
-            <AppShellHeader>
-              <Title>
-                タイトル
-              </Title>
+            <AppShellHeader className="flex items-center">
+              <Header />
             </AppShellHeader>
 
             <AppShellMain>{children}</AppShellMain>
