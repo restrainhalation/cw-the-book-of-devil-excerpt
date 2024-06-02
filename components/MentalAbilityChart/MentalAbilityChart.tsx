@@ -1,13 +1,4 @@
 import React, { FC } from 'react';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { useMantineTheme } from '@mantine/core';
 import type { Mental } from '@/types';
@@ -19,15 +10,6 @@ const NEGATIVE_MENTAL_ABILITY_NAME = MENTAL_ABILITIES.map((mentalAbility) => men
 const POSITIVE_MENTAL_ABILITY_NAME = MENTAL_ABILITIES.map((mentalAbility) => mentalAbility.names1[1]);
 /** Chart.js の datasets[n].data 向けに使う配列のテンプレート */
 const DATA_TEMPLATE = [null, null, null, null, null];
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
 
 /** Chart.js の設定 */
 export const options = {

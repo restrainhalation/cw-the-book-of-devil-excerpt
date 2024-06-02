@@ -1,0 +1,1 @@
+export { registPluginOfChart } from './Chart';

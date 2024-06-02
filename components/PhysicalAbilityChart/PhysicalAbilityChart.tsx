@@ -1,31 +1,11 @@
 import React, { FC } from 'react';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import annotationPlugin from 'chartjs-plugin-annotation';
 import { useMantineTheme } from '@mantine/core';
 import type { Physical } from '@/types';
 import { PHYSICAL_ABILITIES } from '@/constants';
 
 /** 身体的特徴の名前の配列 */
 const PHYSICAL_ABILITY_NAMES = PHYSICAL_ABILITIES.map((physicalAbility) => physicalAbility.name);
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  annotationPlugin,
-);
 
 /** アノテーションのデフォルトの設定値 */
 const DEFAULT_ANNOTATION_OPTIONS = {
