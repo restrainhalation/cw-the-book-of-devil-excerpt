@@ -14,3 +14,6 @@ export const abilityReferenceAtom = atom<string>('')
 
 /** リセット用キー atom */
 export const keyForResetAtom = atom<Key>(0)
+
+/** 能力ツールチップ表示 atom */
+export const showAbilityTooltipAtom = atom<boolean>(false)

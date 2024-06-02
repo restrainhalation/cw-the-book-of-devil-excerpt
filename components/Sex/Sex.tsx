@@ -3,10 +3,12 @@
 import React, { FC, useState } from 'react';
 import { Text, Tooltip, UnstyledButton, SimpleGrid } from '@mantine/core';
 import { IconCircleCheckFilled } from '@tabler/icons-react';
+import { useAtomValue } from 'jotai';
 import { SEXES } from '@/constants';
 import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
 import classes from '@/components/Sex/Sex.module.css';
 import ReferencedAbilityTag from '@/components/ReferencedAbilityTag/ReferencedAbilityTag';
+import { showAbilityTooltipAtom } from '@/store';
 
 /**
  * 性別コンポーネントのパラメータ
@@ -22,6 +24,9 @@ import ReferencedAbilityTag from '@/components/ReferencedAbilityTag/ReferencedAb
 const Sex: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) => {
   // ON になっている性別の ID
   const [selectedId, setSelectedId] = useState<number>();
+
+  // Jotai の能力ツールチップ表示 atom
+  const showAbilityTooltip = useAtomValue<boolean>(showAbilityTooltipAtom)
 
   /**
    * 当該性別の ON／OFF が変更されたときに実行する
@@ -58,6 +63,7 @@ const Sex: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) => {
             withArrow
             position="right"
             transitionProps={{ transition: 'pop' }}
+            disabled={!showAbilityTooltip}
           >
             <UnstyledButton
               className={

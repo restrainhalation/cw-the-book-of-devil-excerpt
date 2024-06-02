@@ -3,10 +3,12 @@
 import React, { FC, useState } from 'react';
 import { Text, Tooltip, rem, Paper, SimpleGrid } from '@mantine/core';
 import { IconCircleCheckFilled } from '@tabler/icons-react';
+import { useAtomValue } from 'jotai';
 import type { Characteristic } from '@/types';
 import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
 import classes from '@/components/CharacteristicGroup/CharacteristicGroup.module.css'
 import ReferencedAbilityTag from '@/components/ReferencedAbilityTag/ReferencedAbilityTag';
+import { showAbilityTooltipAtom } from '@/store';
 
 /**
  * ２つ１組の特性コンポーネントのパラメータ
@@ -28,6 +30,9 @@ const CharacteristicGroup: FC<{
 }> = ({ characteristics, onChange, isLatterHalfOfQuarter }) => {
   // ON になっている特性の ID
   const [selectedId, setSelectedId] = useState<number>();
+
+  // Jotai の能力ツールチップ表示 atom
+  const showAbilityTooltip = useAtomValue<boolean>(showAbilityTooltipAtom)
 
   /**
    * 当該特性の ON／OFF が変更されたときに実行する
@@ -63,6 +68,7 @@ const CharacteristicGroup: FC<{
             withArrow
             position="right"
             transitionProps={{ transition: 'pop' }}
+            disabled={!showAbilityTooltip}
           >
             <Paper
               key={characteristic.id}

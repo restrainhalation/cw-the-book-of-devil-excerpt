@@ -7,24 +7,12 @@
   align-items: center;
   justify-content: center;
 
-  @mixin light {
-    border-color: var(--mantine-color-gray-3);
-    color: var(--mantine-color-gray-7);
-    background-color: var(--mantine-color-white);
+  border-color: light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-white));
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
 
-    @mixin hover {
-      background-color: var(--mantine-color-gray-0);
-    }
-  }
-
-  @mixin dark {
-    border-color: var(--mantine-color-dark-4);
-    color: var(--mantine-color-white);
-    background-color: var(--mantine-color-dark-6);
-
-    @mixin hover {
-      background-color: var(--mantine-color-dark-5);
-    }
+  &:hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-5));
   }
 
   &.button {
@@ -32,8 +20,20 @@
     background-color: var(--mantine-color-gray-6);
     color: var(--mantine-color-white);
 
-    @mixin hover {
+    &:hover {
       background-color: var(--mantine-color-gray-5);
+    }
+  }
+
+  &.switch {
+    &[data-checked] {
+      border-color: var(--mantine-color-blue-filled);
+      background-color: var(--mantine-color-blue-light);
+      color: var(--mantine-color-blue-6);
+
+      @mixin hover {
+        background-color: light-dark(var(--mantine-color-blue-1), var(--mantine-color-blue-9));
+      }
     }
   }
 }

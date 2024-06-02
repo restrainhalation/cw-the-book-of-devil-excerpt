@@ -5,11 +5,13 @@ import {
   Badge, Text, Group, Tooltip, SimpleGrid, ThemeIcon, UnstyledButton, rem,
 } from '@mantine/core';
 import { IconCircleCheckFilled } from '@tabler/icons-react';
+import { useAtomValue } from 'jotai';
 import { NATURES } from '@/constants';
 import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
 import classes from './Nature.module.css';
 import { Nature } from '@/types';
 import ReferencedAbilityTag from '@/components/ReferencedAbilityTag/ReferencedAbilityTag'
+import { showAbilityTooltipAtom } from '@/store';
 
 /**
  * 素質情報タグコンポーネントのパラメータ
@@ -67,6 +69,9 @@ const NatureInput: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange }
   // ON になっている素質の ID
   const [selectedId, setSelectedId] = useState<number>();
 
+  // Jotai の能力ツールチップ表示 atom
+  const showAbilityTooltip = useAtomValue<boolean>(showAbilityTooltipAtom)
+
   /**
    * 当該素質の ON／OFF が変更されたときに実行する
    * 値を変更した際に実行するメソッドがあれば実行する
@@ -102,6 +107,7 @@ const NatureInput: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange }
               withArrow
               position="right"
               transitionProps={{ transition: 'pop' }}
+              disabled={!showAbilityTooltip}
             >
               <div className="flex">
                 <UnstyledButton

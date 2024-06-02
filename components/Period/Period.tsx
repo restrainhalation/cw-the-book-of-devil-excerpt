@@ -3,10 +3,12 @@
 import React, { FC, useState } from 'react';
 import { Tooltip, SimpleGrid, Text, UnstyledButton, rem } from '@mantine/core';
 import { IconCircleCheckFilled } from '@tabler/icons-react';
+import { useAtomValue } from 'jotai';
 import { PERIODS } from '@/constants';
 import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
 import classes from '@/components/Period/Period.module.css';
 import ReferencedAbilityTag from '@/components/ReferencedAbilityTag/ReferencedAbilityTag';
+import { showAbilityTooltipAtom } from '@/store';
 
 /**
  * 年代コンポーネントのパラメータ
@@ -22,6 +24,9 @@ import ReferencedAbilityTag from '@/components/ReferencedAbilityTag/ReferencedAb
 const Period: FC<{ onChange?: (periodId:number) => void; }> = ({ onChange }) => {
   // ON になっている年代の ID
   const [selectedId, setSelectedId] = useState<number>();
+
+  // Jotai の能力ツールチップ表示 atom
+  const showAbilityTooltip = useAtomValue<boolean>(showAbilityTooltipAtom)
 
   /**
    * 当該年代の ON／OFF が変更されたときに実行する
@@ -57,6 +62,7 @@ const Period: FC<{ onChange?: (periodId:number) => void; }> = ({ onChange }) => 
             withArrow
             position="right"
             transitionProps={{ transition: 'pop' }}
+            disabled={!showAbilityTooltip}
           >
             <div>
               <UnstyledButton
