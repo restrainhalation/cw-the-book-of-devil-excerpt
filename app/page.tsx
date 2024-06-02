@@ -6,6 +6,7 @@ import {
   GridCol,
   Stack,
   Container,
+  TooltipGroup,
 } from '@mantine/core';
 import { useAtom, useAtomValue } from 'jotai';
 import { abilityAtom, characterAtom, abilityReferenceAtom, keyForResetAtom } from '@/store';
@@ -224,37 +225,39 @@ export default function Index() {
   return (
     <>
       <Container my="md" size="lg">
-        <Grid>
-          <GridCol span={{ base: 12, xs: 6 }}>
-            <Stack justify="center">
-              <Sex key={`${keyForReset}-sex`} onChange={onChangeSex}></Sex>
-              <Period key={`${keyForReset}-period`} onChange={onChangePeriod}></Period>
-              <Nature key={`${keyForReset}-nature`} onChange={onChangeNature}></Nature>
-              <Grid>
-                {Object
-                  .entries(characteristicsGroupMap)
-                  .map(([groupId, characteristics], index) =>
-                    <GridCol key={groupId} span={{ base: 12, xs: 6 }}>
-                      <CharacteristicGroup
-                        key={`${keyForReset}-${index}-characteristic`}
-                        characteristics={characteristics}
-                        onChange={onChangeCharacteristic}
-                        isLatterHalfOfQuarter={index % 4 === 1 || index % 4 === 2}
-                      />
-                    </GridCol>
-                  )
-                }
-              </Grid>
-            </Stack>
-          </GridCol>
-          <GridCol span={{ base: 12, xs: 6 }}>
-            <Stack>
-              <PhysicalAbilityChart physicalAbilities={ability.physical}></PhysicalAbilityChart>
-              <MentalAbilityChart mentalAbilities={ability.mental}></MentalAbilityChart>
-              <AbilityReference key={`${keyForReset}-abilityReference`} onChange={onChangeAbilityReference} />
-            </Stack>
-          </GridCol>
-        </Grid>
+        <TooltipGroup openDelay={600} closeDelay={100}>
+          <Grid>
+            <GridCol span={{ base: 12, xs: 6 }}>
+              <Stack justify="center">
+                <Sex key={`${keyForReset}-sex`} onChange={onChangeSex}></Sex>
+                <Period key={`${keyForReset}-period`} onChange={onChangePeriod}></Period>
+                <Nature key={`${keyForReset}-nature`} onChange={onChangeNature}></Nature>
+                <Grid>
+                  {Object
+                    .entries(characteristicsGroupMap)
+                    .map(([groupId, characteristics], index) =>
+                      <GridCol key={groupId} span={{ base: 12, xs: 6 }}>
+                        <CharacteristicGroup
+                          key={`${keyForReset}-${index}-characteristic`}
+                          characteristics={characteristics}
+                          onChange={onChangeCharacteristic}
+                          isLatterHalfOfQuarter={index % 4 === 1 || index % 4 === 2}
+                        />
+                      </GridCol>
+                    )
+                  }
+                </Grid>
+              </Stack>
+            </GridCol>
+            <GridCol span={{ base: 12, xs: 6 }}>
+              <Stack>
+                <PhysicalAbilityChart physicalAbilities={ability.physical}></PhysicalAbilityChart>
+                <MentalAbilityChart mentalAbilities={ability.mental}></MentalAbilityChart>
+                <AbilityReference key={`${keyForReset}-abilityReference`} onChange={onChangeAbilityReference} />
+              </Stack>
+            </GridCol>
+          </Grid>
+        </TooltipGroup>
       </Container>
     </>
   );
