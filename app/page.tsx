@@ -9,7 +9,9 @@ import {
   TooltipGroup,
 } from '@mantine/core';
 import { useAtom, useAtomValue } from 'jotai';
-import { abilityAtom, characterAtom, abilityReferenceAtom, keyForResetAtom } from '@/store';
+import {
+  abilityAtom, characterAtom, abilityReferenceAtom, keyForResetAtom, keyForResetBySpecialNatureAtom,
+} from '@/store';
 import { SEXES, PERIODS, NATURES, CHARACTERISTICS } from '@/constants';
 import type { Characteristic, Physical, Mental } from '@/types';
 import Sex from '@/components/Sex/Sex';
@@ -41,6 +43,8 @@ export default function Index() {
   const [abilityReference, setAbilityReference] = useAtom(abilityReferenceAtom)
   // Jotai のリセット用キー atom
   const keyForReset = useAtomValue(keyForResetAtom)
+  // Jotai の特殊型 ON／OFF によるリセット用キー atom
+  const keyForResetBySpecialNature = useAtomValue(keyForResetBySpecialNatureAtom)
 
   useEffect(() => {
     // 能力 atom を更新する
@@ -231,7 +235,7 @@ export default function Index() {
               <Stack justify="center">
                 <Sex key={`${keyForReset}-sex`} onChange={onChangeSex}></Sex>
                 <Period key={`${keyForReset}-period`} onChange={onChangePeriod}></Period>
-                <Nature key={`${keyForReset}-nature`} onChange={onChangeNature}></Nature>
+                <Nature key={`${keyForReset}-${keyForResetBySpecialNature}-nature`} onChange={onChangeNature}></Nature>
                 <Grid>
                   {Object
                     .entries(characteristicsGroupMap)

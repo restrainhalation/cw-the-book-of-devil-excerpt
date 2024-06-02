@@ -11,7 +11,7 @@ import { AbilityInfomationList } from '@/components/AbilityInfomationList/Abilit
 import classes from './Nature.module.css';
 import { Nature } from '@/types';
 import ReferencedAbilityTag from '@/components/ReferencedAbilityTag/ReferencedAbilityTag'
-import { showAbilityTooltipAtom } from '@/store';
+import { showAbilityTooltipAtom, showSpecialNatureAtom } from '@/store';
 
 /**
  * 素質情報タグコンポーネントのパラメータ
@@ -71,6 +71,8 @@ const NatureInput: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange }
 
   // Jotai の能力ツールチップ表示 atom
   const showAbilityTooltip = useAtomValue<boolean>(showAbilityTooltipAtom)
+  // Jotai の特殊型表示 atom
+  const showSpecialNature = useAtomValue<boolean>(showSpecialNatureAtom)
 
   /**
    * 当該素質の ON／OFF が変更されたときに実行する
@@ -97,8 +99,9 @@ const NatureInput: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange }
   return (
     <>
       <SimpleGrid cols={3} spacing={12}>
-        {
-          NATURES.map((nature) => (
+        {NATURES
+          .filter((nature) => !nature.isSpecial || (nature.isSpecial && showSpecialNature))
+          .map((nature) => (
             <Tooltip
               key={nature.id}
               label={

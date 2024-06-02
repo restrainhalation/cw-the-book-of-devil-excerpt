@@ -15,5 +15,11 @@ export const abilityReferenceAtom = atom<string>('')
 /** リセット用キー atom */
 export const keyForResetAtom = atom<Key>(0)
 
+/** 特殊型 ON／OFF によるリセット用キー atom */
+export const keyForResetBySpecialNatureAtom = atom<Key>(0)
+
 /** 能力ツールチップ表示 atom */
 export const showAbilityTooltipAtom = atom<boolean>(false)
+
+/** 特殊型表示 atom */
+export const showSpecialNatureAtom = atom<boolean>(false)
