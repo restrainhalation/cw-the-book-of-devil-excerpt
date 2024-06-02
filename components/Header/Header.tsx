@@ -4,7 +4,7 @@ import {
   Container, Group, Title, Tooltip, TooltipGroup, UnstyledButton, useComputedColorScheme, useMantineColorScheme,
 } from '@mantine/core';
 import { useAtom, useSetAtom } from 'jotai';
-import { IconMoon, IconReload, IconSun, IconTooltip } from '@tabler/icons-react';
+import { IconMessage, IconMoon, IconReload, IconSun } from '@tabler/icons-react';
 import cx from 'clsx';
 import {
   abilityAtom,
@@ -67,7 +67,7 @@ export function Header() {
                 data-checked={showAbilityTooltip || undefined}
                 onClick={() => setShowAbilityTooltip(!showAbilityTooltip)}
               >
-                <IconTooltip className={classes.icon} />
+                <IconMessage className={classes.icon} />
               </UnstyledButton>
             </Tooltip>
 
