@@ -157,8 +157,12 @@ export type PhysicalAbilityConstant = {
 export type MentalAbilityConstant = {
   /** ID */
   id: string;
-  /** 正負の名前の配列 */
-  names: string[];
+  /** 正負の名前の配列1 */
+  names1: string[];
+  /** 正負の名前の配列2 */
+  names2: string[];
+  /** 正負の名前の配列3 */
+  names3: string[];
   /** 正負を結合した名前１ */
   nameOfBoth1: string;
   /** 正負を結合した名前２ */
