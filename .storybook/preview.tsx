@@ -5,7 +5,7 @@ import { DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
 import { MantineProvider, useMantineColorScheme } from '@mantine/core';
 import { theme } from '../theme';
 import { useSetAtom } from 'jotai';
-import { abilityReferenceAtom } from '../store';
+import { abilityReferenceAtom, showAbilityTooltipAtom, showSpecialNatureAtom } from '../store';
 
 const channel = addons.getChannel();
 
@@ -13,9 +13,13 @@ function ColorSchemeWrapper({ children }: { children: React.ReactNode }) {
   const { setColorScheme } = useMantineColorScheme();
   const handleColorScheme = (value: boolean) => setColorScheme(value ? 'dark' : 'light');
   const setAbilityReference = useSetAtom(abilityReferenceAtom)
+  const setShowAbilityTooltip = useSetAtom(showAbilityTooltipAtom)
+  const setShowSpecialNature = useSetAtom(showSpecialNatureAtom)
 
   useEffect(() => {
     setAbilityReference('')
+    setShowAbilityTooltip(false)
+    setShowSpecialNature(false)
     channel.on(DARK_MODE_EVENT_NAME, handleColorScheme);
     return () => channel.off(DARK_MODE_EVENT_NAME, handleColorScheme);
   }, [channel]);
