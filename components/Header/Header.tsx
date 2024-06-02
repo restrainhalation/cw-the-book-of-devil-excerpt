@@ -1,8 +1,10 @@
 'use client';
 
-import { Container, Group, Title, Tooltip, TooltipGroup, UnstyledButton } from '@mantine/core';
+import {
+  Container, Group, Title, Tooltip, TooltipGroup, UnstyledButton, useComputedColorScheme, useMantineColorScheme,
+} from '@mantine/core';
 import { useAtom, useSetAtom } from 'jotai';
-import { IconReload, IconTooltip } from '@tabler/icons-react';
+import { IconMoon, IconReload, IconSun, IconTooltip } from '@tabler/icons-react';
 import cx from 'clsx';
 import {
   abilityAtom,
@@ -15,6 +17,11 @@ import { DEFAULT_ABILITY_ATOM, DEFAULT_CHARACTER_ATOM } from '@/constants';
 import classes from './Header.module.css'
 
 export function Header() {
+  // 配色設定メソッド
+  const { setColorScheme } = useMantineColorScheme()
+  // 配色
+  const computedColorScheme = useComputedColorScheme('light', { getInitialValueInEffect: true })
+
   // Jotai のキャラクター atom
   const setCharacter = useSetAtom(characterAtom);
   // Jotai の能力 atom
@@ -61,6 +68,16 @@ export function Header() {
                 onClick={() => setShowAbilityTooltip(!showAbilityTooltip)}
               >
                 <IconTooltip className={classes.icon} />
+              </UnstyledButton>
+            </Tooltip>
+
+            <Tooltip
+              onClick={() => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')}
+              label={`${computedColorScheme === 'dark' ? 'ライト' : 'ダーク'}モード`}
+            >
+              <UnstyledButton className={classes.control}>
+                <IconSun className={cx(classes.icon, classes.light)} stroke={1.5} />
+                <IconMoon className={cx(classes.icon, classes.dark)} stroke={1.5} />
               </UnstyledButton>
             </Tooltip>
           </Group>
