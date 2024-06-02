@@ -5,9 +5,9 @@ import { Tooltip, SimpleGrid, Text, UnstyledButton, rem } from '@mantine/core';
 import { IconCircleCheckFilled } from '@tabler/icons-react';
 import { useAtomValue } from 'jotai';
 import { PERIODS } from '@/constants';
-import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
+import { AbilityInfomationList } from '@/components/AbilityInfomationList';
 import classes from '@/components/Period/Period.module.css';
-import ReferencedAbilityTag from '@/components/ReferencedAbilityTag/ReferencedAbilityTag';
+import { ReferencedAbilityTag } from '@/components/ReferencedAbilityTag';
 import { showAbilityTooltipAtom } from '@/store';
 
 /**
@@ -21,7 +21,7 @@ import { showAbilityTooltipAtom } from '@/store';
  * @param {PeriodParams} param0 コンポーネントのパラメータ
  * @return {React.FC<PeriodParams>} コンポーネント
  */
-const Period: FC<{ onChange?: (periodId:number) => void; }> = ({ onChange }) => {
+export const Period: FC<{ onChange?: (periodId:number) => void; }> = ({ onChange }) => {
   // ON になっている年代の ID
   const [selectedId, setSelectedId] = useState<number>();
 
@@ -96,5 +96,3 @@ const Period: FC<{ onChange?: (periodId:number) => void; }> = ({ onChange }) => 
     </>
   );
 };
-
-export default Period;

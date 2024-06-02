@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react';
-import Sex from './Sex';
+import { Sex } from './Sex';
 
 const meta: Meta<typeof Sex> = {
   title: 'Sex',

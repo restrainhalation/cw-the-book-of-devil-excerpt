@@ -91,7 +91,7 @@ const getOptions = (annotationBorderColor: string) => ({
  * @param {PhysicalAbilityChartParams} param0 コンポーネントのパラメータ
  * @return {React.FC<PhysicalAbilityChartParams>} コンポーネント
  */
-const PhysicalAbilityChart: FC<{ physicalAbilities: Physical; }> = ({ physicalAbilities }) => {
+export const PhysicalAbilityChart: FC<{ physicalAbilities: Physical; }> = ({ physicalAbilities }) => {
   const { colors } = useMantineTheme();
   const data = {
     labels: PHYSICAL_ABILITY_NAMES,
@@ -113,5 +113,3 @@ const PhysicalAbilityChart: FC<{ physicalAbilities: Physical; }> = ({ physicalAb
     />
   );
 };
-
-export default PhysicalAbilityChart;

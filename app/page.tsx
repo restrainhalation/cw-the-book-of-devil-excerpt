@@ -14,13 +14,13 @@ import {
 } from '@/store';
 import { SEXES, PERIODS, NATURES, CHARACTERISTICS } from '@/constants';
 import type { Characteristic, Physical, Mental } from '@/types';
-import Sex from '@/components/Sex/Sex';
-import Period from '@/components/Period/Period';
-import Nature from '@/components/Nature/Nature';
-import CharacteristicGroup from '@/components/CharacteristicGroup/CharacteristicGroup';
-import PhysicalAbilityChart from '@/components/PhysicalAbilityChart/PhysicalAbilityChart';
-import MentalAbilityChart from '@/components/MentalAbilityChart/MentalAbilityChart';
-import { AbilityReference } from '@/components/AbilityReference/AbilityReference';
+import { Sex } from '@/components/Sex';
+import { Period } from '@/components/Period';
+import { Nature } from '@/components/Nature';
+import { CharacteristicGroup } from '@/components/CharacteristicGroup';
+import { PhysicalAbilityChart } from '@/components/PhysicalAbilityChart';
+import { MentalAbilityChart } from '@/components/MentalAbilityChart';
+import { AbilityReference } from '@/components/AbilityReference';
 import { registPluginOfChart } from '@/lib';
 
 // Chart.js へプラグインを登録する

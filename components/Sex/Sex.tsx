@@ -5,9 +5,9 @@ import { Text, Tooltip, UnstyledButton, SimpleGrid } from '@mantine/core';
 import { IconCircleCheckFilled } from '@tabler/icons-react';
 import { useAtomValue } from 'jotai';
 import { SEXES } from '@/constants';
-import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
+import { AbilityInfomationList } from '@/components/AbilityInfomationList';
 import classes from '@/components/Sex/Sex.module.css';
-import ReferencedAbilityTag from '@/components/ReferencedAbilityTag/ReferencedAbilityTag';
+import { ReferencedAbilityTag } from '@/components/ReferencedAbilityTag';
 import { showAbilityTooltipAtom } from '@/store';
 
 /**
@@ -21,7 +21,7 @@ import { showAbilityTooltipAtom } from '@/store';
  * @param {SexParams} param0 コンポーネントのパラメータ
  * @return {React.FC<SexParams>} コンポーネント
  */
-const Sex: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) => {
+export const Sex: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) => {
   // ON になっている性別の ID
   const [selectedId, setSelectedId] = useState<number>();
 
@@ -99,5 +99,3 @@ const Sex: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) => {
     </>
   );
 };
-
-export default Sex;

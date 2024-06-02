@@ -7,16 +7,16 @@ import {
 import { IconCircleCheckFilled } from '@tabler/icons-react';
 import { useAtomValue } from 'jotai';
 import { NATURES } from '@/constants';
-import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
+import { AbilityInfomationList } from '@/components/AbilityInfomationList';
 import classes from './Nature.module.css';
-import { Nature } from '@/types';
-import ReferencedAbilityTag from '@/components/ReferencedAbilityTag/ReferencedAbilityTag'
+import { Nature as NatureType } from '@/types';
+import { ReferencedAbilityTag } from '@/components/ReferencedAbilityTag'
 import { showAbilityTooltipAtom, showSpecialNatureAtom } from '@/store';
 
 /**
  * 素質情報タグコンポーネントのパラメータ
  * @typedef NatureDescriptionTagsParams
- * @property {Nature} nature 素質
+ * @property {NatureType} nature 素質
  */
 
 /**
@@ -25,7 +25,7 @@ import { showAbilityTooltipAtom, showSpecialNatureAtom } from '@/store';
  * @return {React.FC<NatureDescriptionTagsParams>} コンポーネント
  */
 const NatureDescriptionTags: FC<{
-  nature: Nature,
+  nature: NatureType,
 }> = ({ nature }) => nature.maxLevel !== 10 || nature.baseNaturesId.length
     ? (
     <>
@@ -65,7 +65,7 @@ const NatureDescriptionTags: FC<{
  * @param {NatureParams} param0 コンポーネントのパラメータ
  * @return {React.FC<NatureParams>} コンポーネント
  */
-const NatureInput: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange }) => {
+export const Nature: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange }) => {
   // ON になっている素質の ID
   const [selectedId, setSelectedId] = useState<number>();
 
@@ -157,5 +157,3 @@ const NatureInput: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange }
     </>
   );
 };
-
-export default NatureInput;

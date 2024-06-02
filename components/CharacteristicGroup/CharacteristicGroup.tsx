@@ -5,9 +5,9 @@ import { Text, Tooltip, rem, Paper, SimpleGrid } from '@mantine/core';
 import { IconCircleCheckFilled } from '@tabler/icons-react';
 import { useAtomValue } from 'jotai';
 import type { Characteristic } from '@/types';
-import { AbilityInfomationList } from '@/components/AbilityInfomationList/AbilityInfomationList';
+import { AbilityInfomationList } from '@/components/AbilityInfomationList';
 import classes from '@/components/CharacteristicGroup/CharacteristicGroup.module.css'
-import ReferencedAbilityTag from '@/components/ReferencedAbilityTag/ReferencedAbilityTag';
+import { ReferencedAbilityTag } from '@/components/ReferencedAbilityTag';
 import { showAbilityTooltipAtom } from '@/store';
 
 /**
@@ -23,7 +23,7 @@ import { showAbilityTooltipAtom } from '@/store';
  * @param {CharacteristicGroupParams} param0 コンポーネントのパラメータ
  * @return {React.FC<CharacteristicGroupParams>} コンポーネント
  */
-const CharacteristicGroup: FC<{
+export const CharacteristicGroup: FC<{
   characteristics: Characteristic[];
   onChange?: (characteristicId:number) => void;
   isLatterHalfOfQuarter: boolean;
@@ -97,5 +97,3 @@ const CharacteristicGroup: FC<{
     </>
   );
 };
-
-export default CharacteristicGroup;

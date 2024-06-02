@@ -17,7 +17,7 @@ import classes from '@/components/ReferencedAbilityTag/ReferencedAbilityTag.modu
  * @param {ReferencedAbilityTagParams} param0 コンポーネントのパラメータ
  * @return {React.FC<ReferencedAbilityTagParams>} コンポーネント
  */
-const ReferencedAbilityTag: FC<{
+export const ReferencedAbilityTag: FC<{
   physical: Physical,
   mental: Mental,
 }> = ({ physical, mental }) => {
@@ -44,5 +44,3 @@ const ReferencedAbilityTag: FC<{
         </Badge>
   )
 }
-
-export default ReferencedAbilityTag;

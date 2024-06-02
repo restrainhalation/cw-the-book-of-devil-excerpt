@@ -68,7 +68,7 @@ export const options = {
  * @param {MentalAbilityChartParams} param0 コンポーネントのパラメータ
  * @return {React.FC<MentalAbilityChartParams>} コンポーネント
  */
-const MentalAbilityChart: FC<{ mentalAbilities: Mental; }> = ({ mentalAbilities }) => {
+export const MentalAbilityChart: FC<{ mentalAbilities: Mental; }> = ({ mentalAbilities }) => {
   const { colors } = useMantineTheme();
   const data = {
     labels: ['', '', '', '', ''],
@@ -86,5 +86,3 @@ const MentalAbilityChart: FC<{ mentalAbilities: Mental; }> = ({ mentalAbilities 
   };
   return <Bar options={options} data={data} />;
 };
-
-export default MentalAbilityChart;
