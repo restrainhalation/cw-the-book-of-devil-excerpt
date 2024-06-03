@@ -6,6 +6,10 @@ import { MantineProvider, useMantineColorScheme } from '@mantine/core';
 import { theme } from '../theme';
 import { useSetAtom } from 'jotai';
 import { abilityReferenceAtom, showAbilityTooltipAtom, showSpecialNatureAtom } from '../store';
+import { registPluginOfChart } from '../lib';
+
+// Chart.js へプラグインを登録する
+registPluginOfChart()
 
 const channel = addons.getChannel();
 
