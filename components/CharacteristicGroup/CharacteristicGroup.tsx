@@ -1,14 +1,12 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import { Text, Tooltip, rem, Paper, SimpleGrid } from '@mantine/core';
+import { Text, rem, Paper, SimpleGrid } from '@mantine/core';
 import { IconCircleCheckFilled } from '@tabler/icons-react';
-import { useAtomValue } from 'jotai';
 import type { Characteristic } from '@/types';
-import { AbilityInfomationList } from '@/components/AbilityInfomationList';
 import classes from '@/components/CharacteristicGroup/CharacteristicGroup.module.css'
 import { ReferencedAbilityTag } from '@/components/ReferencedAbilityTag';
-import { showAbilityTooltipAtom } from '@/store';
+import { AbilityTooltip } from '@/components/AbilityTooltip';
 
 /**
  * ２つ１組の特性コンポーネントのパラメータ
@@ -30,9 +28,6 @@ export const CharacteristicGroup: FC<{
 }> = ({ characteristics, onChange, isLatterHalfOfQuarter }) => {
   // ON になっている特性の ID
   const [selectedId, setSelectedId] = useState<number>();
-
-  // Jotai の能力ツールチップ表示 atom
-  const showAbilityTooltip = useAtomValue<boolean>(showAbilityTooltipAtom)
 
   /**
    * 当該特性の ON／OFF が変更されたときに実行する
@@ -60,16 +55,7 @@ export const CharacteristicGroup: FC<{
     <>
       <SimpleGrid cols={2} className={isLatterHalfOfQuarter ? classes.latterHalfOfQuarter : ''}>
         {characteristics.map((characteristic) => (
-          <Tooltip
-            key={characteristic.id}
-            label={
-              <AbilityInfomationList physical={characteristic.physical} mental={characteristic.mental} />
-            }
-            withArrow
-            position="right"
-            transitionProps={{ transition: 'pop' }}
-            disabled={!showAbilityTooltip}
-          >
+          <AbilityTooltip physical={characteristic.physical} mental={characteristic.mental}>
             <Paper
               key={characteristic.id}
               component="button"
@@ -91,7 +77,7 @@ export const CharacteristicGroup: FC<{
                   : ''
               }
             </Paper>
-          </Tooltip>
+          </AbilityTooltip>
         ))}
       </SimpleGrid>
     </>

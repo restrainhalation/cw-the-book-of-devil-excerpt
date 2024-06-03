@@ -1,14 +1,12 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import { Text, Tooltip, UnstyledButton, SimpleGrid } from '@mantine/core';
+import { Text, UnstyledButton, SimpleGrid } from '@mantine/core';
 import { IconCircleCheckFilled } from '@tabler/icons-react';
-import { useAtomValue } from 'jotai';
 import { SEXES } from '@/constants';
-import { AbilityInfomationList } from '@/components/AbilityInfomationList';
 import classes from '@/components/Sex/Sex.module.css';
 import { ReferencedAbilityTag } from '@/components/ReferencedAbilityTag';
-import { showAbilityTooltipAtom } from '@/store';
+import { AbilityTooltip } from '@/components/AbilityTooltip';
 
 /**
  * 性別コンポーネントのパラメータ
@@ -24,9 +22,6 @@ import { showAbilityTooltipAtom } from '@/store';
 export const Sex: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) => {
   // ON になっている性別の ID
   const [selectedId, setSelectedId] = useState<number>();
-
-  // Jotai の能力ツールチップ表示 atom
-  const showAbilityTooltip = useAtomValue<boolean>(showAbilityTooltipAtom)
 
   /**
    * 当該性別の ON／OFF が変更されたときに実行する
@@ -55,16 +50,7 @@ export const Sex: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) =>
       <SimpleGrid cols={2} spacing={14}>
         {SEXES.map((sex) => (
 
-          <Tooltip
-            key={sex.id}
-            label={
-              <AbilityInfomationList physical={sex.physical} mental={sex.mental} />
-            }
-            withArrow
-            position="right"
-            transitionProps={{ transition: 'pop' }}
-            disabled={!showAbilityTooltip}
-          >
+          <AbilityTooltip physical={sex.physical} mental={sex.mental}>
             <UnstyledButton
               className={
                 selectedId === sex.id
@@ -93,7 +79,7 @@ export const Sex: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) =>
                 }
               </div>
             </UnstyledButton>
-          </Tooltip>
+          </AbilityTooltip>
         ))}
       </SimpleGrid>
     </>

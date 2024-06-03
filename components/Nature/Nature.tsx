@@ -2,16 +2,16 @@
 
 import React, { FC, useState } from 'react';
 import {
-  Badge, Text, Group, Tooltip, SimpleGrid, ThemeIcon, UnstyledButton, rem,
+  Badge, Text, Group, SimpleGrid, ThemeIcon, UnstyledButton, rem,
 } from '@mantine/core';
 import { IconCircleCheckFilled } from '@tabler/icons-react';
 import { useAtomValue } from 'jotai';
 import { NATURES } from '@/constants';
-import { AbilityInfomationList } from '@/components/AbilityInfomationList';
 import classes from './Nature.module.css';
 import { Nature as NatureType } from '@/types';
 import { ReferencedAbilityTag } from '@/components/ReferencedAbilityTag'
-import { showAbilityTooltipAtom, showSpecialNatureAtom } from '@/store';
+import { showSpecialNatureAtom } from '@/store';
+import { AbilityTooltip } from '@/components/AbilityTooltip';
 
 /**
  * 素質情報タグコンポーネントのパラメータ
@@ -69,8 +69,6 @@ export const Nature: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange
   // ON になっている素質の ID
   const [selectedId, setSelectedId] = useState<number>();
 
-  // Jotai の能力ツールチップ表示 atom
-  const showAbilityTooltip = useAtomValue<boolean>(showAbilityTooltipAtom)
   // Jotai の特殊型表示 atom
   const showSpecialNature = useAtomValue<boolean>(showSpecialNatureAtom)
 
@@ -102,16 +100,7 @@ export const Nature: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange
         {NATURES
           .filter((nature) => !nature.isSpecial || (nature.isSpecial && showSpecialNature))
           .map((nature) => (
-            <Tooltip
-              key={nature.id}
-              label={
-                <AbilityInfomationList physical={nature.physical} mental={nature.mental} />
-              }
-              withArrow
-              position="right"
-              transitionProps={{ transition: 'pop' }}
-              disabled={!showAbilityTooltip}
-            >
+            <AbilityTooltip physical={nature.physical} mental={nature.mental}>
               <div className="flex">
                 <UnstyledButton
                   className={classes.nature}
@@ -150,7 +139,7 @@ export const Nature: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange
                   </Group>
                 </UnstyledButton>
               </div>
-            </Tooltip>
+            </AbilityTooltip>
           ))
         }
       </SimpleGrid>

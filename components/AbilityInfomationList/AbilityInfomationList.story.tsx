@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Chip, Group, Tooltip } from '@mantine/core';
+import { Chip, Group } from '@mantine/core';
 import { AbilityInfomationList } from './AbilityInfomationList';
 import { NATURES, PERIODS } from '@/constants';
+import { AbilityTooltip } from '@/components/AbilityTooltip';
 
 const meta: Meta<typeof AbilityInfomationList> = {
   title: 'AbilityInfomationList',
@@ -27,15 +28,7 @@ export const UseOnTooltip: Story = {
     <>
       <Group justify="center">
         {PERIODS.map((period) => (
-          <Tooltip
-            key={period.id}
-            label={
-              <AbilityInfomationList physical={period.physical} mental={period.mental} />
-            }
-            withArrow
-            position="right"
-            transitionProps={{ transition: 'pop' }}
-          >
+          <AbilityTooltip physical={period.physical} mental={period.mental}>
             <div>
               <Chip
                 key={period.id}
@@ -45,7 +38,7 @@ export const UseOnTooltip: Story = {
                 {period.name}
               </Chip>
             </div>
-          </Tooltip>
+          </AbilityTooltip>
         ))}
       </Group>
     </>
