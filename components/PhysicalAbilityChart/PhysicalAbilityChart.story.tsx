@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import PhysicalAbilityChart from './PhysicalAbilityChart';
+import { PhysicalAbilityChart } from './PhysicalAbilityChart';
 
 const meta: Meta<typeof PhysicalAbilityChart> = {
   title: 'PhysicalAbilityChart',

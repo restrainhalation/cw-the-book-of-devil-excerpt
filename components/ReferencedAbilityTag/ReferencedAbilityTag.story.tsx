@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useSetAtom } from 'jotai';
 import { Chip, SimpleGrid } from '@mantine/core';
 import { useEffect } from 'react';
-import ReferencedAbilityTag from './ReferencedAbilityTag';
+import { ReferencedAbilityTag } from './ReferencedAbilityTag';
 import { abilityReferenceAtom } from '@/store';
 
 const meta: Meta<typeof ReferencedAbilityTag> = {

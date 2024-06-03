@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Grid, GridCol } from '@mantine/core';
-import CharacteristicGroup from './CharacteristicGroup';
+import { CharacteristicGroup } from './CharacteristicGroup';
 import { Characteristic } from '@/types';
 import { CHARACTERISTICS } from '@/constants';
 

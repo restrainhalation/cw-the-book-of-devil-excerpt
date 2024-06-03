@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react';
-import Period from './Period';
+import { Period } from './Period';
 
 const meta: Meta<typeof Period> = {
   title: 'Period',

@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react';
-import Nature from './Nature';
+import { Nature } from './Nature';
 
 const meta: Meta<typeof Nature> = {
   title: 'Nature',
