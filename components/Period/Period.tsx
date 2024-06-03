@@ -49,7 +49,7 @@ export const Period: FC<{ onChange?: (periodId:number) => void; }> = ({ onChange
     <>
       <SimpleGrid cols={4}>
         {PERIODS.map((period) => (
-          <AbilityTooltip physical={period.physical} mental={period.mental}>
+          <AbilityTooltip key={period.id} physical={period.physical} mental={period.mental}>
             <div>
               <UnstyledButton
                 onClick={() => handleChangePeriod(period.id)}

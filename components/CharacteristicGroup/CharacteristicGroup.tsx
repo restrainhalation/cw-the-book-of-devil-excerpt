@@ -55,7 +55,7 @@ export const CharacteristicGroup: FC<{
     <>
       <SimpleGrid cols={2} className={isLatterHalfOfQuarter ? classes.latterHalfOfQuarter : ''}>
         {characteristics.map((characteristic) => (
-          <AbilityTooltip physical={characteristic.physical} mental={characteristic.mental}>
+          <AbilityTooltip key={characteristic.id} physical={characteristic.physical} mental={characteristic.mental}>
             <Paper
               key={characteristic.id}
               component="button"

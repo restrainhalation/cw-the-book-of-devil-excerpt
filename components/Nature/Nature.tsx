@@ -100,7 +100,7 @@ export const Nature: FC<{ onChange?: (natureId:number) => void; }> = ({ onChange
         {NATURES
           .filter((nature) => !nature.isSpecial || (nature.isSpecial && showSpecialNature))
           .map((nature) => (
-            <AbilityTooltip physical={nature.physical} mental={nature.mental}>
+            <AbilityTooltip key={nature.id} physical={nature.physical} mental={nature.mental}>
               <div className="flex">
                 <UnstyledButton
                   className={classes.nature}

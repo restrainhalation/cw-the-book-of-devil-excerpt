@@ -50,7 +50,7 @@ export const Sex: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) =>
       <SimpleGrid cols={2} spacing={14}>
         {SEXES.map((sex) => (
 
-          <AbilityTooltip physical={sex.physical} mental={sex.mental}>
+          <AbilityTooltip key={sex.id} physical={sex.physical} mental={sex.mental}>
             <UnstyledButton
               className={
                 selectedId === sex.id
