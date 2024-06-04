@@ -6,6 +6,7 @@ import {
 } from '@mantine/core';
 import { theme } from '../theme';
 import { Header } from '@/components/Header'
+import { Footer } from '@/components/Footer'
 
 export const metadata = {
   title: 'Mantine Next.js template',
@@ -32,7 +33,10 @@ export default function RootLayout({ children }: { children: any }) {
               <Header />
             </AppShellHeader>
 
-            <AppShellMain>{children}</AppShellMain>
+            <AppShellMain>
+              {children}
+              <Footer />
+            </AppShellMain>
           </AppShell>
         </MantineProvider>
       </body>
