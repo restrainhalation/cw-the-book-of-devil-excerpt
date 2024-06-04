@@ -13,7 +13,7 @@ import {
   abilityAtom, characterAtom, abilityReferenceAtom, keyForResetAtom, keyForResetBySpecialNatureAtom,
 } from '@/store';
 import { SEXES, PERIODS, NATURES, CHARACTERISTICS } from '@/constants';
-import type { Characteristic, Physical, Mental } from '@/types';
+import type { Characteristic } from '@/types';
 import { Sex } from '@/components/Sex';
 import { Period } from '@/components/Period';
 import { Nature } from '@/components/Nature';
@@ -22,6 +22,7 @@ import { PhysicalAbilityChart } from '@/components/PhysicalAbilityChart';
 import { MentalAbilityChart } from '@/components/MentalAbilityChart';
 import { AbilityReference } from '@/components/AbilityReference';
 import { registPluginOfChart } from '@/lib';
+import { calculateAbility } from '@/utils';
 
 // Chart.js へプラグインを登録する
 registPluginOfChart()
@@ -199,35 +200,7 @@ export default function Index() {
    * キャラクター atom が変更されたとき、能力 atom を更新する
    */
   const onChangeCharacterAtom = () => {
-    // 身体的特徴
-    let physicalAbilities: Physical[] = [];
-    if (character.sex?.physical) physicalAbilities.push(character.sex.physical);
-    if (character.period?.physical) physicalAbilities.push(character.period.physical);
-    if (character.nature?.physical) physicalAbilities.push(character.nature.physical);
-    physicalAbilities = physicalAbilities.concat(character.characteristics.map((current) => current.physical));
-    // 精神的特徴
-    let mentalAbilities: Mental[] = [];
-    if (character.sex?.mental) mentalAbilities.push(character.sex.mental);
-    if (character.period?.mental) mentalAbilities.push(character.period.mental);
-    if (character.nature?.mental) mentalAbilities.push(character.nature.mental);
-    mentalAbilities = mentalAbilities.concat(character.characteristics.map((current) => current.mental));
-    setAbility({
-      physical: {
-        dexterity: 6 + physicalAbilities.reduce((sum, physical) => sum + physical.dexterity, 0),
-        agility: 6 + physicalAbilities.reduce((sum, physical) => sum + physical.agility, 0),
-        intelligence: 6 + physicalAbilities.reduce((sum, physical) => sum + physical.intelligence, 0),
-        strength: 6 + physicalAbilities.reduce((sum, physical) => sum + physical.strength, 0),
-        vitality: 6 + physicalAbilities.reduce((sum, physical) => sum + physical.vitality, 0),
-        mind: 6 + physicalAbilities.reduce((sum, physical) => sum + physical.mind, 0),
-      },
-      mental: {
-        aggressive: mentalAbilities.reduce((sum, mental) => sum + mental.aggressive, 0),
-        cheerful: mentalAbilities.reduce((sum, mental) => sum + mental.cheerful, 0),
-        brave: mentalAbilities.reduce((sum, mental) => sum + mental.brave, 0),
-        cautious: mentalAbilities.reduce((sum, mental) => sum + mental.cautious, 0),
-        trickish: mentalAbilities.reduce((sum, mental) => sum + mental.trickish, 0),
-      },
-    });
+    setAbility(calculateAbility(character));
   };
 
   return (

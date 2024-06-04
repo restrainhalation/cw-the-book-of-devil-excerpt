@@ -14,8 +14,8 @@ export const DEFAULT_CHARACTER_ATOM: Character = {
   characteristics: [],
 }
 
-/** 能力 atom の初期値 */
-export const DEFAULT_ABILITY_ATOM: Ability = {
+/** 能力の初期値 */
+export const DEFAULT_ABILITY: Ability = {
   physical: {
     /** 器用度 */
     dexterity: 6,

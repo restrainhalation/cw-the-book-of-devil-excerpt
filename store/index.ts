@@ -1,13 +1,13 @@
 import { atom } from 'jotai';
 import { Key } from 'react';
 import { Character, Ability } from '@/types';
-import { DEFAULT_ABILITY_ATOM, DEFAULT_CHARACTER_ATOM } from '@/constants';
+import { DEFAULT_ABILITY, DEFAULT_CHARACTER_ATOM } from '@/constants';
 
 /** キャラクター atom */
 export const characterAtom = atom<Character>(DEFAULT_CHARACTER_ATOM);
 
 /** 能力 atom */
-export const abilityAtom = atom<Ability>(DEFAULT_ABILITY_ATOM);
+export const abilityAtom = atom<Ability>(DEFAULT_ABILITY);
 
 /** 能力参照 atom */
 export const abilityReferenceAtom = atom<string>('')
