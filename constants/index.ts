@@ -6,6 +6,14 @@ export * from '@/constants/natures';
 export * from '@/constants/characteristics';
 export * from '@/constants/ability';
 
+/** メタデータ */
+export const METADATA = {
+  /** タイトル */
+  title: 'Mantine Next.js template',
+  /** 要約 */
+  description: 'I am using Mantine with Next.js!',
+};
+
 /** キャラクター atom の初期値 */
 export const DEFAULT_CHARACTER_ATOM: Character = {
   /** 経歴 */

@@ -8,10 +8,7 @@ import { theme } from '../theme';
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 
-export const metadata = {
-  title: 'Mantine Next.js template',
-  description: 'I am using Mantine with Next.js!',
-};
+export { METADATA as metadata } from '@/constants';
 
 export default function RootLayout({ children }: { children: any }) {
   return (

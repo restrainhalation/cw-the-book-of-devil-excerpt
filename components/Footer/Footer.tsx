@@ -4,6 +4,7 @@ import { Text, Container, ActionIcon, Group, rem, Anchor } from '@mantine/core';
 import { IconBrandGithub } from '@tabler/icons-react';
 import cx from 'clsx';
 import classes from './Footer.module.css';
+import { METADATA } from '@/constants'
 
 /** リンクの定義 */
 const data = [
@@ -58,9 +59,9 @@ export function Footer() {
     <footer className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
-          タイトル
+          {METADATA.title}
           <Text size="xs" c="dimmed" className={classes.description}>
-            説明文
+            {METADATA.description}
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>

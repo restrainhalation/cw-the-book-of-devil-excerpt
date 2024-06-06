@@ -15,7 +15,7 @@ import {
   showAbilityTooltipAtom,
   showSpecialNatureAtom,
 } from '@/store';
-import { DEFAULT_ABILITY, DEFAULT_CHARACTER_ATOM } from '@/constants';
+import { DEFAULT_ABILITY, DEFAULT_CHARACTER_ATOM, METADATA } from '@/constants';
 import classes from './Header.module.css'
 import { calculateAbility } from '@/utils';
 
@@ -89,7 +89,7 @@ export function Header() {
     <>
       <Container size="lg" className="inline-flex justify-between items-center w-full">
         <Title className="inline-block">
-          タイトル
+          {METADATA.title}
         </Title>
         <TooltipGroup openDelay={600} closeDelay={100}>
           <Group justify="center" className="inline-flex" gap="xs">
