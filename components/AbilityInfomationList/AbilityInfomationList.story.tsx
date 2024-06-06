@@ -28,7 +28,7 @@ export const UseOnTooltip: Story = {
     <>
       <Group justify="center">
         {PERIODS.map((period) => (
-          <AbilityTooltip physical={period.physical} mental={period.mental}>
+          <AbilityTooltip key={period.id} physical={period.physical} mental={period.mental}>
             <div>
               <Chip
                 key={period.id}
