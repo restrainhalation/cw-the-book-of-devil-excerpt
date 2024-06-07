@@ -1,6 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import { Plugin } from 'chart.js'
 import { Bar } from 'react-chartjs-2';
-import { useMantineTheme } from '@mantine/core';
+import { Skeleton, useMantineTheme } from '@mantine/core';
 import type { Mental } from '@/types';
 import { MENTAL_ABILITIES } from '@/constants';
 
@@ -55,6 +56,7 @@ export const options = {
       },
     },
   },
+  maintainAspectRatio: false,
 };
 
 /**
@@ -70,6 +72,13 @@ export const options = {
  */
 export const MentalAbilityChart: FC<{ mentalAbilities: Mental; }> = ({ mentalAbilities }) => {
   const { colors } = useMantineTheme();
+  const [loading, setLoading] = useState(true);
+  const [plugins] = useState<Plugin<'bar'>>({
+    id: 'handleEvent',
+    afterInit: () => {
+      setLoading(false)
+    },
+  });
   const data = {
     labels: ['', '', '', '', ''],
     datasets: Object.entries(mentalAbilities).map(([key, value], index) => {
@@ -84,5 +93,14 @@ export const MentalAbilityChart: FC<{ mentalAbilities: Mental; }> = ({ mentalAbi
       };
     }),
   };
-  return <Bar options={options} data={data} />;
+  return (
+    <Skeleton visible={loading} className="h-72">
+      <Bar
+        options={options}
+        data={data}
+        plugins={[plugins]}
+        height={288}
+      />
+    </Skeleton>
+  )
 };
