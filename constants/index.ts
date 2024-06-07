@@ -9,9 +9,9 @@ export * from '@/constants/ability';
 /** メタデータ */
 export const METADATA = {
   /** タイトル */
-  title: 'Mantine Next.js template',
+  title: '悪魔の書（抄）',
   /** 要約 */
-  description: 'I am using Mantine with Next.js!',
+  description: 'CardWirth では徹底的に隠蔽されるのが基本である『数字に関する事』のユーティリティーです。',
 };
 
 /** キャラクター atom の初期値 */
