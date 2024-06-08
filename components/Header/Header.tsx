@@ -13,7 +13,7 @@ import {
   keyForResetAtom,
   keyForResetBySpecialNatureAtom,
   showAbilityTooltipAtom,
-  showCautionAtom,
+  showIntroductionAtom,
   showSpecialNatureAtom,
 } from '@/store';
 import { DEFAULT_ABILITY, DEFAULT_CHARACTER_ATOM, METADATA } from '@/constants';
@@ -40,8 +40,8 @@ export function Header() {
   const [showSpecialNature, setShowSpecialNature] = useAtom<boolean>(showSpecialNatureAtom)
   // Jotai の特殊型 ON／OFF によるリセット用キー atom
   const setKeyForResetBySpecialNatureAtom = useSetAtom(keyForResetBySpecialNatureAtom)
-  // Jotai の注意モーダル表示 atom
-  const setShowCaution = useSetAtom(showCautionAtom)
+  // Jotai のはじめにモーダル表示 atom
+  const setShowIntroduction = useSetAtom(showIntroductionAtom)
 
   /**
    * 入力をリセットする
@@ -95,13 +95,15 @@ export function Header() {
           <Title className="inline-block">
             {METADATA.title}
           </Title>
-          <UnstyledButton
-            onClick={() => setShowCaution(true)}
-            className={cx(classes.control, classes.button, classes.info)}
-            component="button"
-          >
-            <IconInfoSmall className={classes.icon} />
-          </UnstyledButton>
+          <Tooltip label="はじめに" openDelay={600} closeDelay={100}>
+            <UnstyledButton
+              onClick={() => setShowIntroduction(true)}
+              className={cx(classes.control, classes.button, classes.info)}
+              component="button"
+            >
+              <IconInfoSmall className={classes.icon} />
+            </UnstyledButton>
+          </Tooltip>
         </div>
         <TooltipGroup openDelay={600} closeDelay={100}>
           <Group justify="center" className="inline-flex" gap="xs">

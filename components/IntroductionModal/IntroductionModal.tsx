@@ -5,18 +5,18 @@ import { Blockquote, Container, Modal, Text } from '@mantine/core'
 import cx from 'clsx'
 
 /**
- * 注意モーダルコンポーネントのパラメータ
+ * はじめにモーダルコンポーネントのパラメータ
  * @typedef AbilityTooltipParams
  * @property {boolean} opened モーダルを表示するか
  * @property {() => void} onClose モーダルを閉じる操作をしたときに実行する関数
  */
 
 /**
- * 注意モーダルコンポーネント
- * @param {CautionModalParams} param0 コンポーネントのパラメータ
- * @return {React.FC<CautionModalParams>} コンポーネント
+ * はじめにモーダルコンポーネント
+ * @param {IntroductionModalParams} param0 コンポーネントのパラメータ
+ * @return {React.FC<IntroductionModalParams>} コンポーネント
  */
-export const CautionModal: FC<{
+export const IntroductionModal: FC<{
   opened: boolean;
   onClose: () => void;
 }> = ({ opened, onClose }) => (
@@ -25,7 +25,7 @@ export const CautionModal: FC<{
         <Modal.Overlay blur={20} />
         <Modal.Content>
           <Modal.Header px="xl">
-            <Modal.Title className={cx('text-xl', 'font-semibold')}>注意</Modal.Title>
+            <Modal.Title className={cx('text-xl', 'font-semibold')}>はじめに</Modal.Title>
             <Modal.CloseButton />
           </Modal.Header>
           <Modal.Body px="xl">
