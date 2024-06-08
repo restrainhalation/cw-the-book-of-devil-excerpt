@@ -49,18 +49,12 @@ export const Sex: FC<{ onChange?: (sexId:number) => void; }> = ({ onChange }) =>
     <>
       <SimpleGrid cols={2} spacing={14}>
         {SEXES.map((sex) => (
-
           <AbilityTooltip key={sex.id} physical={sex.physical} mental={sex.mental}>
             <UnstyledButton
-              className={
-                selectedId === sex.id
-                  ? classes.selected
-                  : ''
-              }
               onClick={() => handleChangeSex(sex.id)}
               data-sex={sex.name.toLocaleLowerCase()}
             >
-              <div className={classes.wrapper}>
+              <div className={classes.wrapper} data-checked={selectedId === sex.id || undefined}>
                 <ReferencedAbilityTag physical={sex.physical} mental={sex.mental} />
                 <div>
                   <Text className={classes.name}>

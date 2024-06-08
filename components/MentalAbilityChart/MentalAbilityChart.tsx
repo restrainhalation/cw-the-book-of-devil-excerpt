@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { Plugin } from 'chart.js'
 import { Bar } from 'react-chartjs-2';
-import { Skeleton, useMantineTheme } from '@mantine/core';
+import { Skeleton, useMantineColorScheme, useMantineTheme } from '@mantine/core';
 import type { Mental } from '@/types';
 import { MENTAL_ABILITIES } from '@/constants';
 
@@ -72,6 +72,7 @@ export const options = {
  */
 export const MentalAbilityChart: FC<{ mentalAbilities: Mental; }> = ({ mentalAbilities }) => {
   const { colors } = useMantineTheme();
+  const { colorScheme } = useMantineColorScheme();
   const [loading, setLoading] = useState(true);
   const [plugins] = useState<Plugin<'bar'>>({
     id: 'handleEvent',
@@ -89,7 +90,11 @@ export const MentalAbilityChart: FC<{ mentalAbilities: Mental; }> = ({ mentalAbi
         scaleID: isPositive ? 'y2' : 'y',
         label: MENTAL_ABILITIES.find((mentalAbility) => mentalAbility.id === key)?.names1[isPositive ? 1 : 0] || '',
         data: tempData,
-        backgroundColor: isPositive ? colors.blue[6] : colors.pink[4],
+        backgroundColor: isPositive
+          ? colors.blue[6]
+          : (colorScheme === 'light'
+            ? colors.pink[4]
+            : colors.pink[6]),
       };
     }),
   };

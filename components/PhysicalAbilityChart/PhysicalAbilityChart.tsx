@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { Plugin } from 'chart.js'
 import { Bar } from 'react-chartjs-2';
-import { Skeleton, useMantineTheme } from '@mantine/core';
+import { Skeleton, useMantineColorScheme, useMantineTheme } from '@mantine/core';
 import type { Physical } from '@/types';
 import { PHYSICAL_ABILITIES } from '@/constants';
 
@@ -95,6 +95,7 @@ const getOptions = (annotationBorderColor: string) => ({
  */
 export const PhysicalAbilityChart: FC<{ physicalAbilities: Physical; }> = ({ physicalAbilities }) => {
   const { colors } = useMantineTheme();
+  const { colorScheme } = useMantineColorScheme();
   const [loading, setLoading] = useState(true);
   const [plugins] = useState<Plugin<'bar'>>({
     id: 'handleEvent',
@@ -118,7 +119,7 @@ export const PhysicalAbilityChart: FC<{ physicalAbilities: Physical; }> = ({ phy
   return (
     <Skeleton visible={loading} className="h-72">
       <Bar
-        options={getOptions(colors.pink[4])}
+        options={getOptions(colorScheme === 'light' ? colors.pink[4] : colors.pink[6])}
         data={data}
         plugins={[plugins]}
         height={288}

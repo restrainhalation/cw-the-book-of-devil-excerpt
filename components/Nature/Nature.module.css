@@ -4,7 +4,18 @@
   width: 100%;
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-xs);
   border-radius: var(--mantine-radius-md);
-  border: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-8));
+  border: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
+
+  .maxLvBadge {
+    color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-0));
+    background-color: light-dark(var(--mantine-color-dark-1), var(--mantine-color-dark-5));
+  }
+
+  .baseNatureBadge {
+    color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-0));
+    background-color: light-dark(var(--mantine-color-gray-5), var(--mantine-color-gray-8));
+  }
 
   @mixin hover {
     background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7)) !important;
@@ -25,7 +36,7 @@
         right: rem(10px);
         display: inline-block;
         content: '';
-        background-color: var(--mantine-color-gray-4);
+        background-color: light-dark(var(--mantine-color-gray-4), var(--mantine-color-dark-4));
         width: calc(100% - 66px);
         height: rem(2px);
       }
@@ -37,14 +48,6 @@
         }
       }
     }
-  }
-
-  .maxLvBadge {
-    background-color: var(--mantine-color-dark-1);
-  }
-
-  .baseNatureBadge {
-    background-color: var(--mantine-color-gray-5);
   }
 
   &[data-checked] {
@@ -61,10 +64,12 @@
     }
 
     .maxLvBadge {
+      color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
       background-color: var(--mantine-color-indigo-7);
     }
   
     .baseNatureBadge {
+      color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8));
       background-color: var(--mantine-color-blue-6);
     }
   }

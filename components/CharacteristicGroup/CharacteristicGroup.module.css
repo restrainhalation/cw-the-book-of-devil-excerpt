@@ -8,11 +8,22 @@
 
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-xs) var(--mantine-spacing-xs) var(--mantine-spacing-sm);
 
-  border: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-8));
+  border: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
   background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
 
   @mixin hover {
     background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7)) !important;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: rem(3px);
+    width: 100%;
+
+    background-color: light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-4));
   }
 
   &[data-checked] {
@@ -27,22 +38,11 @@
       background-color: var(--mantine-color-blue-6);
     }
   }
-
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: rem(3px);
-    width: 100%;
-
-    background-color: var(--mantine-color-gray-2);
-  }
 }
 
 .latterHalfOfQuarter .button {
   &::before {
-    background-color: var(--mantine-color-dark-0);
+    background-color: light-dark(var(--mantine-color-dark-0), var(--mantine-color-gray-7));
   }
   &[data-checked] {
     &::before {

@@ -1,5 +1,6 @@
 import React, { FC, ForwardRefExoticComponent, RefAttributes } from 'react';
-import { Badge, Text, Group, rem } from '@mantine/core';
+import cx from 'clsx'
+import { Badge, Text, Group, rem, useMantineColorScheme } from '@mantine/core';
 import {
   Icon, IconProps,
   IconArrowUpRight, IconArrowDownRight, IconArrowRight,
@@ -92,6 +93,7 @@ const AbilityInfomation: FC<{
   isPhysical?: boolean,
   isPositive?: boolean,
 }> = ({ id, value, isPhysical, isPositive }) => {
+  const { colorScheme } = useMantineColorScheme();
   const DiffIcon = value === 0
     ? IconArrowRight
     : isPositive
@@ -100,13 +102,16 @@ const AbilityInfomation: FC<{
   const valueTextColorClass = value === 0
     ? 'text-gray-500'
     : isPositive
-      ? 'text-teal-500'
-      : 'text-pink-400';
-  const valueClasses = `${valueTextColorClass} leading-none flex items-center`;
+      ? colorScheme === 'light'
+        ? 'text-teal-500'
+        : 'text-teal-800'
+      : colorScheme === 'light'
+        ? 'text-pink-400'
+        : 'text-pink-600';
   return (
     <Group justify="space-between" m="2" className="w-40">
       <AbilityNameTag id={id} isPhysical={!!isPhysical} />
-      <Text className={valueClasses}>
+      <Text className={cx(valueTextColorClass, 'leading-none', 'flex', 'items-center')}>
         <span>{value}</span>
         <DiffIcon size="1rem" stroke={1.5} className="flex" />
       </Text>
