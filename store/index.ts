@@ -23,3 +23,6 @@ export const showAbilityTooltipAtom = atom<boolean>(false)
 
 /** 特殊型表示 atom */
 export const showSpecialNatureAtom = atom<boolean>(false)
+
+/** 注意モーダル表示 atom */
+export const showCautionAtom = atom<boolean>(false)

@@ -11,6 +11,7 @@ import {
 import { useAtom, useAtomValue } from 'jotai';
 import {
   abilityAtom, characterAtom, abilityReferenceAtom, keyForResetAtom, keyForResetBySpecialNatureAtom,
+  showCautionAtom,
 } from '@/store';
 import { SEXES, PERIODS, NATURES, CHARACTERISTICS } from '@/constants';
 import type { Characteristic } from '@/types';
@@ -23,6 +24,7 @@ import { MentalAbilityChart } from '@/components/MentalAbilityChart';
 import { AbilityReference } from '@/components/AbilityReference';
 import { registPluginOfChart } from '@/lib';
 import { calculateAbility } from '@/utils';
+import { CautionModal } from '@/components/CautionModal';
 
 // Chart.js へプラグインを登録する
 registPluginOfChart()
@@ -50,6 +52,8 @@ export default function Index() {
   const keyForReset = useAtomValue(keyForResetAtom)
   // Jotai の特殊型 ON／OFF によるリセット用キー atom
   const keyForResetBySpecialNature = useAtomValue(keyForResetBySpecialNatureAtom)
+  // Jotai の注意モーダル表示 atom
+  const [showCaution, setShowCaution] = useAtom<boolean>(showCautionAtom)
 
   useEffect(() => {
     // 能力 atom を更新する
@@ -205,6 +209,8 @@ export default function Index() {
 
   return (
     <>
+      <CautionModal opened={showCaution} onClose={() => setShowCaution(false)} />
+
       <Container my="md" size="lg">
         <TooltipGroup openDelay={600} closeDelay={100}>
           <Grid>
@@ -232,8 +238,8 @@ export default function Index() {
             </GridCol>
             <GridCol span={{ base: 12, xs: 6 }}>
               <Stack>
-                <PhysicalAbilityChart physicalAbilities={ability.physical}></PhysicalAbilityChart>
-                <MentalAbilityChart mentalAbilities={ability.mental}></MentalAbilityChart>
+                <PhysicalAbilityChart physicalAbilities={ability.physical} />
+                <MentalAbilityChart mentalAbilities={ability.mental} />
                 <AbilityReference key={`${keyForReset}-abilityReference`} onChange={onChangeAbilityReference} />
               </Stack>
             </GridCol>

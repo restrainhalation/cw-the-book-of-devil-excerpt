@@ -4,7 +4,7 @@ import {
   Container, Group, Title, Tooltip, TooltipGroup, UnstyledButton, useComputedColorScheme, useMantineColorScheme,
 } from '@mantine/core';
 import { useAtom, useSetAtom } from 'jotai';
-import { IconCube, IconMessage, IconMoon, IconReload, IconSun } from '@tabler/icons-react';
+import { IconCube, IconInfoSmall, IconMessage, IconMoon, IconReload, IconSun } from '@tabler/icons-react';
 import cx from 'clsx';
 import {
   abilityAtom,
@@ -13,6 +13,7 @@ import {
   keyForResetAtom,
   keyForResetBySpecialNatureAtom,
   showAbilityTooltipAtom,
+  showCautionAtom,
   showSpecialNatureAtom,
 } from '@/store';
 import { DEFAULT_ABILITY, DEFAULT_CHARACTER_ATOM, METADATA } from '@/constants';
@@ -39,6 +40,8 @@ export function Header() {
   const [showSpecialNature, setShowSpecialNature] = useAtom<boolean>(showSpecialNatureAtom)
   // Jotai の特殊型 ON／OFF によるリセット用キー atom
   const setKeyForResetBySpecialNatureAtom = useSetAtom(keyForResetBySpecialNatureAtom)
+  // Jotai の注意モーダル表示 atom
+  const setShowCaution = useSetAtom(showCautionAtom)
 
   /**
    * 入力をリセットする
@@ -88,9 +91,18 @@ export function Header() {
   return (
     <>
       <Container size="lg" className="inline-flex justify-between items-center w-full">
-        <Title className="inline-block">
-          {METADATA.title}
-        </Title>
+        <div className={cx('flex', 'items-center')}>
+          <Title className="inline-block">
+            {METADATA.title}
+          </Title>
+          <UnstyledButton
+            onClick={() => setShowCaution(true)}
+            className={cx(classes.control, classes.button, classes.info)}
+            component="button"
+          >
+            <IconInfoSmall className={classes.icon} />
+          </UnstyledButton>
+        </div>
         <TooltipGroup openDelay={600} closeDelay={100}>
           <Group justify="center" className="inline-flex" gap="xs">
             <Tooltip label="リセット">
