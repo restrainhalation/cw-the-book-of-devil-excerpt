@@ -5,7 +5,7 @@ import { DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
 import { MantineProvider, useMantineColorScheme } from '@mantine/core';
 import { theme } from '../theme';
 import { useSetAtom } from 'jotai';
-import { abilityReferenceAtom, showAbilityTooltipAtom, showSpecialNatureAtom } from '../store';
+import { abilityReferenceAtom, showAbilityTooltipAtom, showIntroductionAtom, showSpecialNatureAtom } from '../store';
 import { registPluginOfChart } from '../lib';
 
 // Chart.js へプラグインを登録する
@@ -19,11 +19,13 @@ function ColorSchemeWrapper({ children }: { children: React.ReactNode }) {
   const setAbilityReference = useSetAtom(abilityReferenceAtom)
   const setShowAbilityTooltip = useSetAtom(showAbilityTooltipAtom)
   const setShowSpecialNature = useSetAtom(showSpecialNatureAtom)
+  const setShowIntroduction = useSetAtom(showIntroductionAtom)
 
   useEffect(() => {
     setAbilityReference('')
     setShowAbilityTooltip(false)
     setShowSpecialNature(false)
+    setShowIntroduction(false)
     channel.on(DARK_MODE_EVENT_NAME, handleColorScheme);
     return () => channel.off(DARK_MODE_EVENT_NAME, handleColorScheme);
   }, [channel]);
