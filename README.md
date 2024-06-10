@@ -1,11 +1,11 @@
 # 悪魔の書（抄）
 
 ![](https://img.shields.io/badge/Node.js-v21.7.3-%23339933?logo=nodedotjs)
-![](https://img.shields.io/badge/Next.js-v14.1.3-%23000000?logo=nextdotjs)
-![](https://img.shields.io/badge/Mantine-v7.9.1-%23339AF0?logo=mantine)
-![](https://img.shields.io/badge/Tailwind%20CSS-v3.4.3-%2306B6D4?logo=tailwindcss)
-![](https://img.shields.io/badge/Chart.js-v4.4.2-%23FF6384?logo=chartdotjs)
-[![](https://img.shields.io/badge/Jotai-v2.8.0-%23ffffff)](https://jotai.org)
+![](https://img.shields.io/badge/Next.js-v14.2.3-%23000000?logo=nextdotjs)
+![](https://img.shields.io/badge/Mantine-v7.10.1-%23339AF0?logo=mantine)
+![](https://img.shields.io/badge/Tailwind%20CSS-v3.4.4-%2306B6D4?logo=tailwindcss)
+![](https://img.shields.io/badge/Chart.js-v4.4.3-%23FF6384?logo=chartdotjs)
+[![](https://img.shields.io/badge/Jotai-v2.8.3-%23ffffff)](https://jotai.org)
 
 ## 概要
 
