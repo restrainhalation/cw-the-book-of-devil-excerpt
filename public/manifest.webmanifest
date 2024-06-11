@@ -1,7 +1,7 @@
 {
   "name": "悪魔の書（抄）",
   "icons": [
-    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
-    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
+    { "src": "/cw-the-book-of-devil-excerpt/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/cw-the-book-of-devil-excerpt/icon-512.png", "type": "image/png", "sizes": "512x512" }
   ]
 }

@@ -2,6 +2,14 @@ import { DEFAULT_ABILITY } from '@/constants';
 import { Ability, Character, Mental, Physical } from '@/types';
 
 /**
+ * 指定されたパスの先頭に環境差を埋めるためのパスのプレフィックスを追加した文字列を返却する
+ * @param {string} path パス
+ * @return {string} プレフィックスを追加したパス
+ */
+export const addPrefix = (path: string) =>
+  `${process.env.NODE_ENV === 'production' ? '/cw-the-book-of-devil-excerpt' : ''}${path}`
+
+/**
  * 指定したキャラクターの情報から能力を計算する
  * @param {Character} character キャラクター
  * @return {Ability} 能力
