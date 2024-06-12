@@ -14,7 +14,7 @@ export { METADATA as metadata } from '@/constants';
 
 export default function RootLayout({ children }: { children: any }) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <head>
         <ColorSchemeScript />
         <link rel="manifest" href={addPrefix('/manifest.webmanifest')} />
