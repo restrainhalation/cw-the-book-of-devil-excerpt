@@ -8,19 +8,21 @@ import { theme } from '../theme';
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { JotaiProvider } from '@/components/JotaiProvider';
-import { addPrefix } from '@/utils';
+import nextConfig from '../next.config.mjs'
 
 export { METADATA as metadata } from '@/constants';
+
+const BASE_PATH = nextConfig.basePath ? nextConfig.basePath : ''
 
 export default function RootLayout({ children }: { children: any }) {
   return (
     <html lang="ja">
       <head>
         <ColorSchemeScript />
-        <link rel="manifest" href={addPrefix('/manifest.webmanifest')} />
-        <link rel="icon" href={addPrefix('/favicon.ico')} sizes="any" />
-        <link rel="icon" href={addPrefix('/icon.svg')} type="image/svg+xml" />
-        <link rel="apple-touch-icon" href={addPrefix('/apple-touch-icon.png')} />
+        <link rel="manifest" href={`${BASE_PATH}/manifest.webmanifest`} />
+        <link rel="icon" href={`${BASE_PATH}/favicon.ico`} sizes="any" />
+        <link rel="icon" href={`${BASE_PATH}/icon.svg`} type="image/svg+xml" />
+        <link rel="apple-touch-icon" href={`${BASE_PATH}/apple-touch-icon.png`} />
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
