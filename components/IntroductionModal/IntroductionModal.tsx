@@ -36,7 +36,8 @@ export const IntroductionModal: FC<{
             </Blockquote>
             <Container my="xl" px={0} lh="xl">
               <Text>本サービスは CardWirth シナリオ『悪魔の書』の手動診断を参考にした機能を提供します。</Text>
-              <Text>能力値を秘するシステムが特徴の CardWirth ですが、本サービスはそれらを暴き立ててしまいます。</Text>
+              <Text>冒険者登録の要領で各種個性を選ぶと、それらが積み重なった結果である冒険者の能力値が可視化されます。</Text>
+              <Text>能力値を秘する CardWirth において、これは秘密を暴き立てることを意味します。</Text>
               <Text>プレイヤーの楽しみを奪い、世界観を壊してしまう恐れがありますので、用法・用量を守って正しくお使い下さい。</Text>
             </Container>
           </Modal.Body>
