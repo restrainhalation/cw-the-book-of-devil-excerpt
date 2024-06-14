@@ -25,6 +25,7 @@ import { AbilityReference } from '@/components/AbilityReference';
 import { registPluginOfChart } from '@/lib';
 import { calculateAbility } from '@/utils';
 import { IntroductionModal } from '@/components/IntroductionModal';
+import { ApplicationWrapper } from '@/components/ApplicationWrapper';
 
 // Chart.js へプラグインを登録する
 registPluginOfChart()
@@ -208,7 +209,7 @@ export default function Index() {
   };
 
   return (
-    <>
+    <ApplicationWrapper>
       <IntroductionModal opened={showIntroduction} onClose={() => setShowIntroduction(false)} />
 
       <Container my="md" size="lg">
@@ -246,6 +247,6 @@ export default function Index() {
           </Grid>
         </TooltipGroup>
       </Container>
-    </>
+    </ApplicationWrapper>
   );
 }

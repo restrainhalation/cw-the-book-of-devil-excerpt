@@ -1,12 +1,9 @@
 import '@/styles/globals.css';
 import React from 'react';
 import {
-  MantineProvider, ColorSchemeScript, AppShell, AppShellHeader,
-  AppShellMain,
+  MantineProvider, ColorSchemeScript,
 } from '@mantine/core';
 import { theme } from '../theme';
-import { Header } from '@/components/Header'
-import { Footer } from '@/components/Footer'
 import { JotaiProvider } from '@/components/JotaiProvider';
 import nextConfig from '../next.config.mjs'
 
@@ -31,18 +28,7 @@ export default function RootLayout({ children }: { children: any }) {
       <body>
         <JotaiProvider>
           <MantineProvider theme={theme}>
-            <AppShell
-              header={{ height: 60 }}
-            >
-              <AppShellHeader className="flex items-center">
-                <Header />
-              </AppShellHeader>
-
-              <AppShellMain>
-                {children}
-                <Footer />
-              </AppShellMain>
-            </AppShell>
+            {children}
           </MantineProvider>
         </JotaiProvider>
       </body>
