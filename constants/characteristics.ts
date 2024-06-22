@@ -8,6 +8,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '秀麗',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: -1 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.0, cheerful: 0.5, trickish: 0.0 },
+    flavorText: '美人薄命。',
   },
   {
     id: 2,
@@ -15,6 +16,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '醜悪',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: 1 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.0, cheerful: -0.5, trickish: 0.0 },
+    flavorText: '能力的にはこっちの方が得。',
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '高貴の出',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: -0.5, brave: 0.5, cautious: 0.0, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '高貴だから良い人という事は言えない。',
   },
   {
     id: 4,
@@ -29,6 +32,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '下賎の出',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: -0.5, cheerful: 0.0, trickish: 0.5 },
+    flavorText: '先天的な物でする苦労は大抵理不尽だ…',
   },
   {
     id: 5,
@@ -36,6 +40,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '都会育ち',
     physical: { agility: 0, dexterity: 0, intelligence: 1, mind: 0, strength: 0, vitality: -1 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.0, cheerful: 0.5, trickish: 0.5 },
+    flavorText: '得る物も失う物も多い場所。',
   },
   {
     id: 6,
@@ -43,6 +48,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '田舎育ち',
     physical: { agility: -1, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: 1 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.0, cheerful: 0.0, trickish: -0.5 },
+    flavorText: 'そこには安らぎがあるかもしれない。',
   },
   {
     id: 7,
@@ -50,6 +56,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '裕福',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: -1, strength: 0, vitality: 0 },
     mental: { aggressive: -0.5, brave: 0.0, cautious: 0.0, cheerful: 0.0, trickish: -0.5 },
+    flavorText: '登場するなら金よこせ！',
   },
   {
     id: 8,
@@ -57,6 +64,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '貧乏',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 1, strength: 0, vitality: 0 },
     mental: { aggressive: 0.5, brave: -0.5, cautious: 0.0, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '同情するなら金をくれ！',
   },
   {
     id: 9,
@@ -64,6 +72,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '厚き信仰',
     physical: { agility: 0, dexterity: 0, intelligence: -1, mind: 1, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.5, cautious: 0.0, cheerful: 0.0, trickish: -0.5 },
+    flavorText: '存在を信じるのか、信頼を寄せるのか…',
   },
   {
     id: 10,
@@ -71,6 +80,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '不心得者',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.5, cheerful: 0.0, trickish: 0.5 },
+    flavorText: '供養より施行より稼業。',
   },
   {
     id: 11,
@@ -78,6 +88,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '誠実',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.5, cautious: 0.0, cheerful: 0.0, trickish: -0.5 },
+    flavorText: 'いつかは報われると思いたい物だ…',
   },
   {
     id: 12,
@@ -85,6 +96,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '不実',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: -0.5, cautious: 0.0, cheerful: 0.0, trickish: 0.5 },
+    flavorText: '過度の嘘は身を滅ぼす。',
   },
   {
     id: 13,
@@ -92,6 +104,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '冷静沈着',
     physical: { agility: -1, dexterity: 0, intelligence: 1, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.5, cheerful: 0.0, trickish: 0.5 },
+    flavorText: '急いては事をし損じる。',
   },
   {
     id: 14,
@@ -99,6 +112,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '猪突猛進',
     physical: { agility: 1, dexterity: 0, intelligence: 0, mind: -1, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: -0.5, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '先手必勝。',
   },
   {
     id: 15,
@@ -106,6 +120,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '貪欲',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: -1, strength: 0, vitality: 1 },
     mental: { aggressive: 0.5, brave: -0.5, cautious: -0.5, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '求めるが故に失う物も有る…。',
   },
   {
     id: 16,
@@ -113,6 +128,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '無欲',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: -0.5, brave: 0.0, cautious: 0.0, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '食欲ぐらいは残しておこうよ。',
   },
   {
     id: 17,
@@ -120,6 +136,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '献身的',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 1, strength: 0, vitality: -1 },
     mental: { aggressive: -0.5, brave: 0.0, cautious: 0.0, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '自己犠牲は時として暴走する事も有る。',
   },
   {
     id: 18,
@@ -127,6 +144,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '利己的',
     physical: { agility: 1, dexterity: -1, intelligence: 0, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: 0.5, brave: 0.0, cautious: 0.0, cheerful: -0.5, trickish: 0.5 },
+    flavorText: '…その形質が表面に出るとは限らない。',
   },
   {
     id: 19,
@@ -134,6 +152,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '秩序派',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: 0.5, brave: 0.0, cautious: 0.0, cheerful: 0.0, trickish: -0.5 },
+    flavorText: '秩序の頂点に立つ者は混沌。',
   },
   {
     id: 20,
@@ -141,6 +160,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '混沌派',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: -1, strength: 1, vitality: 0 },
     mental: { aggressive: 0.5, brave: 0.0, cautious: 0.0, cheerful: 0.0, trickish: 0.5 },
+    flavorText: '自由は他人に押し付ける物では無いかと…',
   },
   {
     id: 21,
@@ -148,6 +168,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '進取派',
     physical: { agility: 1, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: -1 },
     mental: { aggressive: 0.0, brave: 0.5, cautious: -0.5, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '勇み足には注意せよ。',
   },
   {
     id: 22,
@@ -155,6 +176,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '保守派',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 1, strength: -1, vitality: 0 },
     mental: { aggressive: -0.5, brave: 0.0, cautious: 0.5, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '運命に逆らうのは、ただ一度。',
   },
   {
     id: 23,
@@ -162,6 +184,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '神経質',
     physical: { agility: 1, dexterity: 0, intelligence: 0, mind: 0, strength: -1, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.5, cheerful: -0.5, trickish: 0.0 },
+    flavorText: '度が過ぎるとパラノイアになるかもね。',
   },
   {
     id: 24,
@@ -169,6 +192,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '鈍感',
     physical: { agility: 0, dexterity: 0, intelligence: -1, mind: 0, strength: 0, vitality: 1 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.0, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '場の空気位は読めた方が便利。',
   },
   {
     id: 25,
@@ -176,6 +200,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '好奇心旺盛',
     physical: { agility: 0, dexterity: 1, intelligence: 0, mind: 0, strength: 0, vitality: -1 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.0, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '飽き性にはならない様に。',
   },
   {
     id: 26,
@@ -183,6 +208,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '無頓着',
     physical: { agility: -1, dexterity: 0, intelligence: 0, mind: 1, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.0, cheerful: -0.5, trickish: 0.0 },
+    flavorText: '興味無いね。',
   },
   {
     id: 27,
@@ -190,6 +216,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '過激',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 1, vitality: -1 },
     mental: { aggressive: 0.5, brave: 0.0, cautious: -0.5, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '過ぎたるは及ばざるが如し。',
   },
   {
     id: 28,
@@ -197,6 +224,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '穏健',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: -0.5, brave: 0.0, cautious: 0.5, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '事なかれ主義？',
   },
   {
     id: 29,
@@ -204,6 +232,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '楽観的',
     physical: { agility: -1, dexterity: 1, intelligence: 0, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.5, cautious: -0.5, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '勇気と無謀は別物。',
   },
   {
     id: 30,
@@ -211,6 +240,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '悲観的',
     physical: { agility: 0, dexterity: 0, intelligence: 1, mind: -1, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: -0.5, cautious: 0.5, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '期待しなければ傷つく事も無い…か。',
   },
   {
     id: 31,
@@ -218,6 +248,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '勤勉',
     physical: { agility: 0, dexterity: -1, intelligence: 0, mind: 0, strength: 0, vitality: 1 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.0, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '日々勉強よ。',
   },
   {
     id: 32,
@@ -225,6 +256,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '遊び人',
     physical: { agility: 0, dexterity: 1, intelligence: -1, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.0, cheerful: 0.5, trickish: 0.5 },
+    flavorText: '賢者に転職…は出来ません。',
   },
   {
     id: 33,
@@ -232,6 +264,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '陽気',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.0, cheerful: 0.5, trickish: 0.0 },
+    flavorText: '陽気＝いい人と言う訳では無いらしい。',
   },
   {
     id: 34,
@@ -239,6 +272,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '内気',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: -0.5, cautious: 0.0, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '内気＝陰気とは少し違う気も。',
   },
   {
     id: 35,
@@ -246,6 +280,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '派手',
     physical: { agility: 1, dexterity: 0, intelligence: -1, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: -0.5, cheerful: 0.5, trickish: 0.0 },
+    flavorText: '派手なら目立つってモンでも無い気が…',
   },
   {
     id: 36,
@@ -253,6 +288,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '地味',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: -1, vitality: 1 },
     mental: { aggressive: 0.0, brave: -0.5, cautious: 0.0, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '地味なら渋いかと言うと、そうでも無い。',
   },
   {
     id: 37,
@@ -260,6 +296,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '高慢',
     physical: { agility: 0, dexterity: -1, intelligence: 0, mind: 1, strength: 0, vitality: 0 },
     mental: { aggressive: 0.5, brave: 0.0, cautious: 0.0, cheerful: -0.5, trickish: 0.0 },
+    flavorText: 'それ行け、やれ行け、どんと行け！',
   },
   {
     id: 38,
@@ -267,6 +304,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '謙虚',
     physical: { agility: 0, dexterity: -1, intelligence: 1, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.5, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '毒にも薬にもならないかも。',
   },
   {
     id: 39,
@@ -274,6 +312,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '上品',
     physical: { agility: 0, dexterity: 0, intelligence: 1, mind: 0, strength: -1, vitality: 0 },
     mental: { aggressive: -0.5, brave: 0.0, cautious: 0.0, cheerful: 0.5, trickish: 0.0 },
+    flavorText: '上品な口調で下品な事は言わないように。',
   },
   {
     id: 40,
@@ -281,6 +320,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '粗野',
     physical: { agility: 0, dexterity: 0, intelligence: -1, mind: 0, strength: 1, vitality: 0 },
     mental: { aggressive: 0.5, brave: 0.0, cautious: 0.0, cheerful: -0.5, trickish: 0.0 },
+    flavorText: 'ガラの悪い台詞になる事が多い気がする…',
   },
   {
     id: 41,
@@ -288,6 +328,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '武骨',
     physical: { agility: 0, dexterity: -1, intelligence: 0, mind: 0, strength: 1, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.5, cautious: 0.0, cheerful: -0.5, trickish: 0.0 },
+    flavorText: '小細工なんて大嫌い～♪',
   },
   {
     id: 42,
@@ -295,6 +336,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '繊細',
     physical: { agility: 0, dexterity: 1, intelligence: 0, mind: 0, strength: -1, vitality: 0 },
     mental: { aggressive: 0.0, brave: -0.5, cautious: 0.5, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '繊細を自称すると変な目で見られるぞ。',
   },
   {
     id: 43,
@@ -302,6 +344,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '硬派',
     physical: { agility: -1, dexterity: 0, intelligence: 0, mind: 0, strength: 1, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.5, cautious: 0.0, cheerful: 0.0, trickish: -0.5 },
+    flavorText: '堅苦しい奴だと思われること請け合い？',
   },
   {
     id: 44,
@@ -309,6 +352,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '軟派',
     physical: { agility: 0, dexterity: 1, intelligence: 0, mind: -1, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: -0.5, cautious: 0.0, cheerful: 0.5, trickish: 0.0 },
+    flavorText: '〆る時位は〆て下さいね。',
   },
   {
     id: 45,
@@ -316,6 +360,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: 'お人好し',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.0, cheerful: 0.5, trickish: -0.5 },
+    flavorText: 'いいひと。',
   },
   {
     id: 46,
@@ -323,6 +368,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: 'ひねくれ者',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.0, cheerful: -0.5, trickish: 0.0 },
+    flavorText: '又の名を天の邪鬼？',
   },
   {
     id: 47,
@@ -330,6 +376,7 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '名誉こそ命',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: 0.0, brave: 0.5, cautious: -0.5, cheerful: 0.0, trickish: -0.5 },
+    flavorText: '名声の方が現実的やね。',
   },
   {
     id: 48,
@@ -337,5 +384,6 @@ export const CHARACTERISTICS: Characteristic[] = [
     name: '愛に生きる',
     physical: { agility: 0, dexterity: 0, intelligence: 0, mind: 0, strength: 0, vitality: 0 },
     mental: { aggressive: -0.5, brave: 0.0, cautious: 0.0, cheerful: 0.0, trickish: 0.0 },
+    flavorText: '哀なら知っているけどな…',
   },
 ];
