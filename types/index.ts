@@ -77,6 +77,8 @@ export type Sex = {
   mental: Mental;
   /** アイコンコンポーネント */
   icon: ForwardRefExoticComponent<Omit<IconProps, 'ref'> & RefAttributes<Icon>>;
+  /** フレーバーテキスト */
+  flavorText: string;
 };
 
 /** 年代 */
@@ -99,6 +101,8 @@ export type Period = {
   mental: Mental;
   /** 経歴（クーポン） */
   coupons: Coupon[];
+  /** フレーバーテキスト */
+  flavorText: string;
 };
 
 /** 素質 */
@@ -125,6 +129,8 @@ export type Nature = {
   baseNaturesId: number[];
   /** アイコンコンポーネント */
   icon: ForwardRefExoticComponent<Omit<IconProps, 'ref'> & RefAttributes<Icon>>;
+  /** フレーバーテキスト */
+  flavorText: string;
 };
 
 /** 特性 */
@@ -139,6 +145,8 @@ export type Characteristic = {
   physical: Physical;
   /** 精神的特徴 */
   mental: Mental;
+  /** フレーバーテキスト */
+  flavorText: string;
 };
 
 /** 身体的特徴定数 */

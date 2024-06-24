@@ -29,6 +29,7 @@ export const NATURES: Nature[] = [
     description: 'バランスのよい肉体を意志力が支える',
     baseNaturesId: [],
     icon: IconClover,
+    flavorText: '何気に僧侶向け。',
   },
   {
     id: 2,
@@ -42,6 +43,7 @@ export const NATURES: Nature[] = [
     description: '抜け目のなさであらゆる局面に対応',
     baseNaturesId: [],
     icon: IconScale,
+    flavorText: '盗賊系。でも、意外と強いかも知れない…',
   },
   {
     id: 3,
@@ -55,6 +57,7 @@ export const NATURES: Nature[] = [
     description: '力強く隙のない能力の持ち主',
     baseNaturesId: [],
     icon: IconShieldHalf,
+    flavorText: '戦士系全般向け。使い易い。',
   },
   {
     id: 4,
@@ -68,6 +71,7 @@ export const NATURES: Nature[] = [
     description: '全てを正面突破する戦車の如き勇者',
     baseNaturesId: [],
     icon: IconTrident,
+    flavorText: '名は体を表す。ごうかいさんだぁ～♪',
   },
   {
     id: 5,
@@ -81,6 +85,7 @@ export const NATURES: Nature[] = [
     description: '理性と智力に裏打ちされた実力',
     baseNaturesId: [],
     icon: IconVocabulary,
+    flavorText: '魔術師系全般向け。欲張ると半端な奴に。',
   },
   {
     id: 6,
@@ -94,6 +99,7 @@ export const NATURES: Nature[] = [
     description: '知性一つを武器にあらゆる存在と渡り合う',
     baseNaturesId: [],
     icon: IconCards,
+    flavorText: '魔導師系仕様。体は流石に貧弱っス。',
   },
   {
     id: 7,
@@ -106,6 +112,7 @@ export const NATURES: Nature[] = [
     mental: { aggressive: 0.0, brave: -0.5, cautious: 0.5, cheerful: 0.0, trickish: 0.0 },
     baseNaturesId: [],
     icon: IconUser,
+    flavorText: '一に努力、二に努力、三四が無くて(後略',
   },
   {
     id: 8,
@@ -121,6 +128,7 @@ export const NATURES: Nature[] = [
       2, // 万能型
     ],
     icon: IconDiamond,
+    flavorText: '真の意味でオールマイティ一歩手前。',
   },
   {
     id: 9,
@@ -136,6 +144,7 @@ export const NATURES: Nature[] = [
       4, // 豪傑型
     ],
     icon: IconAward,
+    flavorText: '君の強さに限界無し…一騎当千？',
   },
   {
     id: 10,
@@ -151,6 +160,7 @@ export const NATURES: Nature[] = [
       6, // 策士型
     ],
     icon: IconBulb,
+    flavorText: '天災の方が多いような気がする…',
   },
   {
     id: 11,
@@ -163,6 +173,7 @@ export const NATURES: Nature[] = [
     mental: { aggressive: 0.0, brave: 0.5, cautious: 0.0, cheerful: 0.5, trickish: -0.5 },
     baseNaturesId: [],
     icon: IconPeace,
+    flavorText: '光の勇者様に勝てると思ってるのかい？',
   },
   {
     id: 12,
@@ -175,5 +186,6 @@ export const NATURES: Nature[] = [
     mental: { aggressive: 0.0, brave: 0.0, cautious: 0.0, cheerful: 0.0, trickish: 0.0 },
     baseNaturesId: [],
     icon: IconUniverse,
+    flavorText: 'その強さはバランスだって破壊するかも。',
   },
 ];
