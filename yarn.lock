@@ -2816,12 +2816,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/bundle-analyzer@npm:^14.1.3":
-  version: 14.2.3
-  resolution: "@next/bundle-analyzer@npm:14.2.3"
+"@next/bundle-analyzer@npm:14.2.28":
+  version: 14.2.28
+  resolution: "@next/bundle-analyzer@npm:14.2.28"
   dependencies:
     webpack-bundle-analyzer: "npm:4.10.1"
-  checksum: 10c0/f219e372ca211b161a530fcbcc7395e049e9dc039c37279cae56eed1ddfc678e8f28b12813548f0901276b932dee591067f4683b8502e03156ce1c79ff3a50a4
+  checksum: 10c0/897b2ad9a0dd2be79b110b091715f82d50cb31879f7ba2f0a37dd898ad289a860215291b2d69576254f11a8b055ff7f2f99a60a6245665cfa3bff380181d3f8b
   languageName: node
   linkType: hard
 
@@ -2832,12 +2832,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:^14.1.3":
-  version: 14.2.3
-  resolution: "@next/eslint-plugin-next@npm:14.2.3"
+"@next/eslint-plugin-next@npm:14.2.28":
+  version: 14.2.28
+  resolution: "@next/eslint-plugin-next@npm:14.2.28"
   dependencies:
     glob: "npm:10.3.10"
-  checksum: 10c0/de9af2c7465cce4eb4cb50654aa2548d4d2af788c8992d02e2b863b1bf4f99e3b6604d1f0775f8e50aca6a53cf30d51f4ac56810d1625d401548267ca5f1d883
+  checksum: 10c0/9b3b0360db03524d4de2657c4e4622751e26e62331f286cd29aa25949d8055ab58d1cfd36ee88cf48a022300f6342dbeaf030d9009810eb6ad0e2eac96c43a42
   languageName: node
   linkType: hard
 
@@ -6425,8 +6425,8 @@ __metadata:
     "@babel/core": "npm:^7.24.0"
     "@mantine/core": "npm:^7.10.1"
     "@mantine/hooks": "npm:^7.10.1"
-    "@next/bundle-analyzer": "npm:^14.1.3"
-    "@next/eslint-plugin-next": "npm:^14.1.3"
+    "@next/bundle-analyzer": "npm:14.2.28"
+    "@next/eslint-plugin-next": "npm:14.2.28"
     "@storybook/addon-essentials": "npm:^8.6.12"
     "@storybook/addon-styling-webpack": "npm:^1.0.1"
     "@storybook/blocks": "npm:^8.6.12"
@@ -6459,7 +6459,7 @@ __metadata:
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
     jotai: "npm:^2.8.3"
-    next: "npm:^14.2.26"
+    next: "npm:14.2.28"
     postcss: "npm:^8.4.38"
     postcss-nested: "npm:^6.0.1"
     postcss-preset-mantine: "npm:1.15.0"
@@ -10423,7 +10423,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^14.2.26":
+"next@npm:14.2.28":
   version: 14.2.28
   resolution: "next@npm:14.2.28"
   dependencies:
