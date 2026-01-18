@@ -67,7 +67,7 @@
     "postcss-preset-mantine": "1.15.0",
     "postcss-simple-vars": "^7.0.1",
     "prettier": "^3.2.5",
-    "storybook": "^8.6.12",
+    "storybook": "^8.6.15",
     "storybook-dark-mode": "^4.0.2",
     "stylelint": "^16.2.1",
     "stylelint-config-standard-scss": "^13.0.0",
